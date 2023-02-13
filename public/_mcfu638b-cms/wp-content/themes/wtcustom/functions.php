@@ -35,6 +35,7 @@ $websiteOptions[] = array('text', 'header_sub', 'Header Sub-titel');
 $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 
 add_action( 'init', 'create_posttype_news' );
+add_action( 'init', 'create_posttype_offices' );
 // add_action( 'init', 'create_posttype_job_offer' );
 // add_action( 'init', 'create_posttype_interview' );
 // add_action( 'init', 'register_taxonomy_job_cat' );
