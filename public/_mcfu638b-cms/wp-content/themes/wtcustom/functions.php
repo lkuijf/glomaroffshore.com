@@ -63,6 +63,26 @@ function create_posttype_news() {
             )
     );
 }
+function create_posttype_offices() {
+    register_post_type( 'office',
+        array(
+            'labels' => array(
+                'name' => __( 'Office' ),
+                'singular_name' => __( 'Office' ),
+                'add_new_item' => __( 'Add New Office' ),
+                'add_new' => __( 'Add New Office' ),
+                'edit_item' => __( 'Edit Office' ),
+                'update_item' => __( 'Update Office' ),
+            ),
+            'public' => true,
+            // 'has_archive' => true,
+            // 'rewrite' => array('slug' => 'movies'),
+            'show_in_rest' => true,
+            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            'supports'            => array( 'title'),
+            )
+    );
+}
 // function create_posttype_job_offer() {
 //     register_post_type( 'job_offer',
 //         array(
@@ -703,14 +723,24 @@ function crbRegisterFields($args) {
     //     ->add_fields( array(Field::make( 'text', 'crb_alt_url', __( 'Alternative URL' ))) );
     Container::make( 'post_meta', __( 'Information' ) )
         ->where( 'post_type', '=', 'news' )
-        // ->where( 'post_template', '=', 'template-section-based.php' )
         ->add_fields(array(
-            Field::make( 'text', 'site_title', __( 'Site title' ))->set_visible_in_rest_api($visible = true),
-            Field::make( 'text', 'news_url', __( 'News url' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'title', __( 'Title' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'textarea', 'card_text', __( 'Card text' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
-            Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
-            // Field::make( 'text', 'board_email', __( 'E-mail' ))->set_visible_in_rest_api($visible = true),
-            // Field::make( 'text', 'board_phone', __( 'Phone' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'image', 'small_image', __( 'Card image' ) )->set_visible_in_rest_api($visible = true),
+            Field::make( 'image', 'large_image', __( 'Hero image' ) )->set_visible_in_rest_api($visible = true),
+            )
+        );
+    Container::make( 'post_meta', __( 'Information' ) )
+        ->where( 'post_type', '=', 'office' )
+        ->add_fields(array(
+            Field::make( 'text', 'country', __( 'Country' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'phone', __( 'Phone number' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'email', __( 'E-mail address' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'address1', __( 'Address line 1' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'address2', __( 'Address line 2' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'address3', __( 'Address line 3' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'address4', __( 'Address line 4' ))->set_visible_in_rest_api($visible = true),
             )
         );
     // Container::make( 'post_meta', __( 'Information' ) )
