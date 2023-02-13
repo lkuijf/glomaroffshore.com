@@ -36,9 +36,11 @@ $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 
 add_action( 'init', 'create_posttype_news' );
 add_action( 'init', 'create_posttype_offices' );
+add_action( 'init', 'create_posttype_professionals' );
+add_action( 'init', 'create_posttype_vessels' );
 // add_action( 'init', 'create_posttype_job_offer' );
 // add_action( 'init', 'create_posttype_interview' );
-// add_action( 'init', 'register_taxonomy_job_cat' );
+add_action( 'init', 'register_taxonomy_vessel_type' );
 // add_action( 'init', 'register_taxonomy_uren_per_week' );
 // add_action( 'init', 'register_taxonomy_type_job' );
 // add_action( 'init', 'register_taxonomy_locatie' );
@@ -74,6 +76,46 @@ function create_posttype_offices() {
                 'add_new' => __( 'Add New Office' ),
                 'edit_item' => __( 'Edit Office' ),
                 'update_item' => __( 'Update Office' ),
+            ),
+            'public' => true,
+            // 'has_archive' => true,
+            // 'rewrite' => array('slug' => 'movies'),
+            'show_in_rest' => true,
+            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            'supports'            => array( 'title'),
+            )
+    );
+}
+function create_posttype_professionals() {
+    register_post_type( 'professional',
+        array(
+            'labels' => array(
+                'name' => __( 'Professionals' ),
+                'singular_name' => __( 'Professional' ),
+                'add_new_item' => __( 'Add New Professional' ),
+                'add_new' => __( 'Add New Professional' ),
+                'edit_item' => __( 'Edit Professional' ),
+                'update_item' => __( 'Update Professional' ),
+            ),
+            'public' => true,
+            // 'has_archive' => true,
+            // 'rewrite' => array('slug' => 'movies'),
+            'show_in_rest' => true,
+            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            'supports'            => array( 'title'),
+            )
+    );
+}
+function create_posttype_vessels() {
+    register_post_type( 'vessel',
+        array(
+            'labels' => array(
+                'name' => __( 'Vessels' ),
+                'singular_name' => __( 'Vessel' ),
+                'add_new_item' => __( 'Add New Vessel' ),
+                'add_new' => __( 'Add New Vessel' ),
+                'edit_item' => __( 'Edit Vessel' ),
+                'update_item' => __( 'Update Vessel' ),
             ),
             'public' => true,
             // 'has_archive' => true,
@@ -124,31 +166,31 @@ function create_posttype_offices() {
 //             )
 //     );
 // }
-// function register_taxonomy_job_cat() {
-//     $labels = array(
-//         'name'              => _x( 'Categories', 'taxonomy general name' ),
-//         'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
-//         'search_items'      => __( 'Search Categories' ),
-//         'all_items'         => __( 'All Categories' ),
-//         'parent_item'       => __( 'Parent Category' ),
-//         'parent_item_colon' => __( 'Parent Category:' ),
-//         'edit_item'         => __( 'Edit Category' ),
-//         'update_item'       => __( 'Update Category' ),
-//         'add_new_item'      => __( 'Add New Category' ),
-//         'new_item_name'     => __( 'New Category Name' ),
-//         'menu_name'         => __( 'Category' ),
-//     );
-//     $args   = array(
-//         'hierarchical'      => true, // make it hierarchical (like categories)
-//         'labels'            => $labels,
-//         'show_ui'           => true,
-//         'show_admin_column' => true,
-//         'show_in_rest'      => true,
-//         'query_var'         => true,
-//         'rewrite'           => [ 'slug' => 'job_cat' ],
-//     );
-//     register_taxonomy( 'job_cat', [ 'job_offer' ], $args );
-// }
+function register_taxonomy_vessel_type() {
+    $labels = array(
+        'name'              => _x( 'Types', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Type', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Types' ),
+        'all_items'         => __( 'All Types' ),
+        'parent_item'       => __( 'Parent Type' ),
+        'parent_item_colon' => __( 'Parent Type:' ),
+        'edit_item'         => __( 'Edit Type' ),
+        'update_item'       => __( 'Update Type' ),
+        'add_new_item'      => __( 'Add New Type' ),
+        'new_item_name'     => __( 'New Type Name' ),
+        'menu_name'         => __( 'Type' ),
+    );
+    $args   = array(
+        'hierarchical'      => true, // make it hierarchical (like categories)
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'query_var'         => true,
+        'rewrite'           => [ 'slug' => 'vessel_type' ],
+    );
+    register_taxonomy( 'vessel_type', [ 'vessel' ], $args );
+}
 // function register_taxonomy_uren_per_week() {
 //     $labels = array(
 //         'name'              => _x( 'Uren per week', 'taxonomy general name' ),
@@ -732,7 +774,7 @@ function crbRegisterFields($args) {
             Field::make( 'image', 'large_image', __( 'Hero image' ) )->set_visible_in_rest_api($visible = true),
             )
         );
-    Container::make( 'post_meta', __( 'Information' ) )
+        Container::make( 'post_meta', __( 'Information' ) )
         ->where( 'post_type', '=', 'office' )
         ->add_fields(array(
             Field::make( 'text', 'country', __( 'Country' ))->set_visible_in_rest_api($visible = true),
@@ -742,6 +784,25 @@ function crbRegisterFields($args) {
             Field::make( 'text', 'address2', __( 'Address line 2' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'text', 'address3', __( 'Address line 3' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'text', 'address4', __( 'Address line 4' ))->set_visible_in_rest_api($visible = true),
+            )
+        );
+        Container::make( 'post_meta', __( 'Information' ) )
+        ->where( 'post_type', '=', 'professional' )
+        ->add_fields(array(
+            Field::make( 'text', 'name', __( 'Name' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+            )
+        );
+    Container::make( 'post_meta', __( 'Information' ) )
+        ->where( 'post_type', '=', 'vessel' )
+        ->add_fields(array(
+            Field::make( 'image', 'small_image', __( 'Card image' ) )->set_visible_in_rest_api($visible = true),
+            Field::make( 'image', 'large_image', __( 'Hero image' ) )->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'name', __( 'Name' ))->set_visible_in_rest_api($visible = true),
+
+            // Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
+            // Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
             )
         );
     // Container::make( 'post_meta', __( 'Information' ) )
