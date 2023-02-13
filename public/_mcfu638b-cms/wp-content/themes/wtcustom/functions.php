@@ -68,7 +68,7 @@ function create_posttype_offices() {
     register_post_type( 'office',
         array(
             'labels' => array(
-                'name' => __( 'Office' ),
+                'name' => __( 'Offices' ),
                 'singular_name' => __( 'Office' ),
                 'add_new_item' => __( 'Add New Office' ),
                 'add_new' => __( 'Add New Office' ),
