@@ -1,0 +1,57 @@
+.hero {
+    .heroOverlay {
+        > :first-child {
+            margin-top: 0;
+        }
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        height: 500px;
+        padding: 60px;
+        font-size: 6em;
+        @media (max-width: $sbp1_desktop) {padding: 50px;font-size: 5em;}
+        @media (max-width: $sbp2_laptop) {padding: 40px;font-size: 4em;}
+        @media (max-width: $sbp3_tablet) {padding: 30px;font-size: 3em;}
+        @media (max-width: $sbp4_mobile) {padding: 20px;font-size: 2em;}
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.8));
+        color: $colorWhite;
+        font-weight: bold;
+        text-align: center;
+        z-index: 1;
+        img {
+            width: 340px;
+        }
+    }
+    .heroImages {
+        > div {
+            display: block;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            position: absolute;
+            background-color: $colorGrey;
+        }
+        &.zoom {
+            img {
+                animation: scale 40s linear infinite;
+            }
+        }
+        img {
+            position: absolute;
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: opacity 0.7s ease;
+            opacity: 0;
+            &:first-child {
+                opacity: 1;
+            }
+        }
+    }
+}

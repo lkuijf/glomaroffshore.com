@@ -1,0 +1,44 @@
+.getInTouchContent {
+    text-align: center;
+    > div {
+        > p {
+            margin: 40px;
+        }
+    }
+    .socials {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            width: 150px;
+            aspect-ratio: 1/1;
+            border: 2px solid $colorOrange;
+            border-radius: 50%;
+            background-color: $colorWhite;
+            text-decoration: none;
+            color: $colorOrange;
+            &:before {
+                font-family: "glomaroffshore";
+                font-size: 80px;
+            }
+            &.linkedIn:before {
+                content: '\e803';
+            }
+            &.twitter:before {
+                content: '\f099';
+            }
+            &:hover {
+                color: $colorWhite;
+                background-color: $colorOrange;
+                border-color: $colorWhite;
+            }
+            span {
+                display: none;
+            }
+        }
+    }
+}

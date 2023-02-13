@@ -1,0 +1,42 @@
+.ourVesselsContent {
+    text-align: center;
+    article {
+        text-transform: uppercase;
+        margin: 20px;
+        background-color: $colorWhite;
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2); 
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+        img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+        }
+        > div {
+            text-align: left;
+            padding: 30px;
+            > :first-child {
+                margin-top: 0;
+            }
+            h3, p {
+                margin: 0;
+            }
+            dl {
+                dt, dd {
+                    margin: 0;
+                }
+                dt {
+                    font-weight: bold;
+                }
+            }
+            a {
+                color: $colorOrange;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.2em;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+.introTextContent {
+    background-color: $colorWhite;
+    > div {
+        // display: flex;
+        // @media (max-width: $sbp3_tablet) {flex-wrap: wrap;}
+        // gap: 60px;
+        
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @media (max-width: $sbp3_tablet) {grid-template-columns: 1fr;}
+        gap: 60px;
+
+        .introTextWrap {
+            background-color: $colorWhite;
+            -webkit-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.3); 
+            box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.3);
+            > img {
+                width: 100%;
+            }
+            > div {
+                padding: 40px;
+                width: 100%;
+                text-align: center;
+                // word-break: break-all;
+                overflow-wrap: break-word;
+                > :first-child {
+                    margin-top: 0;
+                }
+                &:first-of-type {
+                    text-align: left;
+                }
+                .contactIcon {
+                    position: relative;
+                    padding-left: 34px;
+                    a {
+                        text-decoration: none;
+                        color: $colorBlack;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                    &:before {
+                        position: absolute;
+                        left: 0;
+                        top: -2px;
+                        font-family: "glomaroffshore";
+                        font-size: 1.5em;
+                        color: $colorGrey;
+                    }
+                    &.naw:before {content:'\e806'};
+                    &.phone:before {content:'\e801'};
+                    &.email:before {content:'\e802'};
+                }
+                
+            }
+        }
+    }
+}

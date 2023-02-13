@@ -1,0 +1,38 @@
+.newsContent {
+    text-align: center;
+    .newsContainer {
+        display: flex;
+        @media (max-width: $sbp3_tablet) {flex-wrap: wrap;}
+        gap: 20px;
+        article {
+            background-color: $colorGreyLighter;
+            > div {
+                text-align: left;
+                padding: 30px;
+                > :first-child {
+                    margin-top: 0;
+                }
+                > :last-child {
+                    margin-bottom: 0;
+                }
+                h3 {
+                    margin: 0;
+                }
+            }
+            img {
+                width: 100%;
+                aspect-ratio: 16/10;
+                object-fit: cover;
+            }
+            a {
+                color: $colorOrange;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.2em;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

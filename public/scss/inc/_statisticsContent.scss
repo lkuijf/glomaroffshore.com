@@ -1,0 +1,42 @@
+.statisticsContent {
+    background-color: $colorWhite;
+    > div {
+        .statsSwiper {
+            .statWrap {
+                margin: 0 10px;
+                text-align: center;
+
+                .statIcon {
+                    .f_icon {
+                        &:before {
+                            font-family: "glomaroffshore";
+                            font-size: 140px;
+                            color: $colorOrange;
+                        }
+                        &.icon_world:before {content: '\e806';}
+                        &.icon_crew:before {content: '\e807';}
+                        &.icon_calendar:before {content: '\e808';}
+                        &.icon_thumb:before {content: '\e809';}
+                        &.icon_recycle:before {content: '\e80b';}
+                        &.icon_wind:before {content: '\e80c';}
+                        &.icon_building:before {content: '\f0f7';}
+                    }
+                }
+                .statNumber {
+                    font-size: 80px;
+                    color: $colorGrey;
+                    font-weight: bold;
+                }
+                .statHeadline {
+                    font-size: 28px;
+                    line-height: 28px;
+                }
+                .statSubline {
+                    font-size: 18px;
+                }
+
+            }
+
+        }
+    }
+}

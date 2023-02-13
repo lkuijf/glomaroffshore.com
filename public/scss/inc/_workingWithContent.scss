@@ -1,0 +1,13 @@
+.workingWithContent {
+    background-color: $colorGreyLighter;
+    > div {
+        text-align: center;
+        .partnerSwiper {
+            padding: 20px;
+            // overflow: hidden;
+            img {
+                height: 100px;
+            }
+        }
+    }
+}
