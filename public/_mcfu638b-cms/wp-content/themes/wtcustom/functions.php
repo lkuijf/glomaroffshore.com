@@ -181,7 +181,7 @@ function register_taxonomy_vessel_type() {
         'menu_name'         => __( 'Type' ),
     );
     $args   = array(
-        'hierarchical'      => true, // make it hierarchical (like categories)
+        'hierarchical'      => false, // make it hierarchical (like categories)
         'labels'            => $labels,
         'show_ui'           => true,
         'show_admin_column' => true,
