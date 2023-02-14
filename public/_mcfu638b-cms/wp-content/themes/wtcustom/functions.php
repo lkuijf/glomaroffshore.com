@@ -370,6 +370,7 @@ function crbRegisterFields($args) {
             Field::make( 'complex', 'crb_sections', 'Sections' )->set_visible_in_rest_api($visible = true)
                 ->set_layout( 'tabbed-vertical' )
                 ->add_fields( 'hero', 'Hero (big header)', array(
+                    Field::make( 'separator', 'separator1', __( 'Hero (big header)' ) ),
                     Field::make( 'media_gallery', 'crb_media_gallery', __( 'Media Gallery' ) )
                         ->set_type( array( 'image' ) )->set_duplicates_allowed( false ),
                     Field::make( 'text', 'big_header', __( 'Big header text' ) ),
@@ -496,6 +497,7 @@ function crbRegisterFields($args) {
                     //     ->set_value_type( 'url' ),
                 ) )
                 ->add_fields( 'office_boxes', 'Offices', array(
+                    Field::make( 'separator', 'separator1', __( 'Offices' ) ),
                     Field::make( 'association', 'office_associations', __( 'Select offices' ))
                     ->set_types( array(
                         array(
@@ -505,6 +507,7 @@ function crbRegisterFields($args) {
                     ) )
                 ) )
                 ->add_fields( 'professional_boxes', 'Professionals', array(
+                    Field::make( 'separator', 'separator1', __( 'Professionals' ) ),
                     Field::make( 'association', 'professional_associations', __( 'Select professionals' ))
                     ->set_types( array(
                         array(
@@ -514,6 +517,7 @@ function crbRegisterFields($args) {
                     ) )
                 ) )
                 ->add_fields( 'news_boxes', 'News', array(
+                    Field::make( 'separator', 'separator1', __( 'News' ) ),
                     Field::make( 'association', 'news_associations', __( 'Select news (max 3)' ))
                     ->set_types( array(
                         array(
@@ -522,16 +526,20 @@ function crbRegisterFields($args) {
                         ),
                     ) )
                 ) )
-                ->add_fields( 'working_with', 'Working With', array(
+                ->add_fields( 'working_with', 'Working with', array(
+                    Field::make( 'separator', 'separator1', __( 'Working with' ) ),
                     Field::make( 'checkbox', 'show_working_with', __( 'Show "Working with" section' ) ),
                 ) )
                 ->add_fields( 'vessels', 'Vessels', array(
+                    Field::make( 'separator', 'separator1', __( 'Vessels' ) ),
                     Field::make( 'checkbox', 'show_vessels', __( 'Show "Vessels" section' ) ),
                 ) )
                 ->add_fields( 'get_in_touch', 'Get in touch', array(
+                    Field::make( 'separator', 'separator1', __( 'Get in touch' ) ),
                     Field::make( 'checkbox', 'show_get_in_touch', __( 'Show "Get in touch" section' ) ),
                 ) )
                 ->add_fields( 'statistics', 'Statistics', array(
+                    Field::make( 'separator', 'separator1', __( 'Statistics' ) ),
                     Field::make( 'select', 'icon', __( 'Icon' ) )
                         ->set_options( array(
                             'icon_world' => __( 'World' ),

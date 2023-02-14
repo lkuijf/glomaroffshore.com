@@ -28,6 +28,23 @@
             'imageAlt_2' => $section->image_2[0]['alt'],
             ])
     @endif
+    @if($section->_type == 'office_boxes')
+    <div class="introTextContent gridBoxes">
+        <div class="inner">
+            @foreach ($section->office_associations as $office)
+                @include('sections.text_office_boxes', [
+                    'header' => $office->country,
+                    'phone' => $office->phone,
+                    'email' => $office->email,
+                    'address_line_1' => $office->address1,
+                    'address_line_2' => $office->address2,
+                    'address_line_3' => $office->address3,
+                    'address_line_4' => $office->address4,
+                    ])
+            @endforeach
+        </div>
+    </div>
+    @endif
 
         {{-- @if ($section['type'] == '1column')
             @foreach ($section['1column'] as $secData)
