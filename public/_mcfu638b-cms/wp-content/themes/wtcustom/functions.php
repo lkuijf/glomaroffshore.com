@@ -486,15 +486,15 @@ function crbRegisterFields($args) {
                     //     ->set_type( array( 'image', ) ),
                     //     ->set_value_type( 'url' ),
                 ) )
-                ->add_fields( 'office_boxes', 'Offices', array(
-                    Field::make( 'association', 'office_associations', __( 'Select offices' ))
-                    ->set_types( array(
-                        array(
-                            'type' => 'post',
-                            'post_type' => 'office',
-                        ),
-                    ) )
-                ) )
+                // ->add_fields( 'office_boxes', 'Offices', array(
+                //     Field::make( 'association', 'office_associations', __( 'Select offices' ))
+                //     ->set_types( array(
+                //         array(
+                //             'type' => 'post',
+                //             'post_type' => 'office',
+                //         ),
+                //     ) )
+                // ) )
                 ->add_fields( 'working_with', 'Working With', array(
                     Field::make( 'checkbox', 'show_working_with', __( 'Show Working with section' ) ),
                 ) )
