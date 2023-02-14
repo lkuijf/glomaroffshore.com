@@ -445,6 +445,10 @@ function crbRegisterFields($args) {
                     Field::make( 'text', 'btn_orange_text', __( 'Button text' ) ),
                     Field::make( 'text', 'btn_orange_url', __( 'Button URL' ) ),
 
+                    Field::make( 'separator', 'crb_separator', __( 'Separator' ) ),
+
+                    Field::make( 'sidebar', 'crb_custom_sidebar', __( 'Select a Sidebar' ) ),
+
                     Field::make( 'text', 'header_2', __( 'Header (for second section, optional)' ) ),
                     Field::make( 'textarea', 'text_2', __( 'Text (for second section, optional)' ) ),
                     Field::make( 'image', 'image_2', __( 'Image (for second section, optional)' ) ),
