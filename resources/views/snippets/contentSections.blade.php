@@ -45,6 +45,9 @@
         </div>
     </div>
     @endif
+    @if($section->_type == 'working_with' && $section->show_working_with)
+        @include('sections.working_with')
+    @endif
 
         {{-- @if ($section['type'] == '1column')
             @foreach ($section['1column'] as $secData)

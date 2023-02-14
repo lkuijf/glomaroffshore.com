@@ -540,21 +540,24 @@ function crbRegisterFields($args) {
                 ) )
                 ->add_fields( 'statistics', 'Statistics', array(
                     Field::make( 'separator', 'separator1', __( 'Statistics' ) ),
-                    Field::make( 'select', 'icon', __( 'Icon' ) )
-                        ->set_options( array(
-                            'icon_world' => __( 'World' ),
-                            'icon_crew' => __( 'Crew' ),
-                            'icon_calendar' => __( 'Calendar' ),
-                            'icon_thumb' => __( 'Thumb' ),
-                            'icon_recycle' => __( 'Recycle' ),
-                            'icon_wind' => __( 'Wind' ),
-                            'icon_building' => __( 'Building' ),
-                        ) ),
-                    Field::make( 'text', 'number', __( 'Number' ) ),
-                    Field::make( 'text', 'headline', __( 'Headline' ) ),
-                    Field::make( 'text', 'subline', __( 'Subline' ) ),
+                    Field::make( 'complex', 'stats', __( 'Add statistic' ) )
+                        ->add_fields( array(
+                            Field::make( 'select', 'icon', __( 'Icon' ) )
+                            ->set_options( array(
+                                'icon_world' => __( 'World' ),
+                                'icon_crew' => __( 'Crew' ),
+                                'icon_calendar' => __( 'Calendar' ),
+                                'icon_thumb' => __( 'Thumb' ),
+                                'icon_recycle' => __( 'Recycle' ),
+                                'icon_wind' => __( 'Wind' ),
+                                'icon_building' => __( 'Building' ),
+                            ) ),
+                            Field::make( 'text', 'number', __( 'Number' ) ),
+                            Field::make( 'text', 'headline', __( 'Headline' ) ),
+                            Field::make( 'text', 'subline', __( 'Subline' ) ),
+                    ) )
                 ) )
-                // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
+                    // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
                 //     Field::make( 'text', 'header', __( 'Header' ) ),
                     // Field::make( 'rich_text', 'text_left', 'Text left' ),
                 //     Field::make( 'complex', 'links_left', __( 'Add links' ) )

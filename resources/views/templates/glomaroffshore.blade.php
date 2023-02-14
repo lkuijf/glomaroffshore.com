@@ -130,7 +130,7 @@
         </div> --}}
 
 
-        <div class="workingWithContent">
+        {{-- <div class="workingWithContent">
             <div class="inner">
                 <h2><strong>WORKING</strong> WITH</h2>
                 <div class="swiper partnerSwiper">
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
         <div class="statisticsContent">
