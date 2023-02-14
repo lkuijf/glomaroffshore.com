@@ -297,6 +297,10 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
+.professionalsContent .btnWhiteBorder:before {
+  font-family: "glomaroffshore";
+  content: "\e802 ";
+}
 
 .getInTouchContent {
   text-align: center;

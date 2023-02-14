@@ -150,7 +150,7 @@
         </div> --}}
 
 
-        <div class="statisticsContent">
+        {{-- <div class="statisticsContent">
             <div class="inner">
                 <div class="outerSwiperBox">
                     <div class="swiper statsSwiper">
@@ -184,10 +184,10 @@
                     <div class="swiperBtn sb-prev swiper-button-prev-stats"></div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
-        <div class="professionalsContent">
+        {{-- <div class="professionalsContent">
             <div class="inner">
                 <h2>OUR <strong>PROFESSIONALS</strong></h2>
                 
@@ -216,10 +216,10 @@
                 <p><a href="" class="btnWhiteBorder">[M] JOIN OUR TEAM</a></p>
 
             </div>
-        </div>
+        </div> --}}
 
 
-        <div class="getInTouchContent">
+        {{-- <div class="getInTouchContent">
             <div class="inner">
                 <h2>GET IN <strong>TOUCH</strong></h2>
                 <div class="socials">
@@ -228,7 +228,7 @@
                 </div>
                 <p><a href="" class="btnWhiteBorder">CONTACT</a></p>
             </div>
-        </div>
+        </div> --}}
 
 
         <div class="mapsContent">
@@ -238,7 +238,7 @@
         </div>
 
 
-        <div class="ourVesselsContent">
+        {{-- <div class="ourVesselsContent">
             <div class="inner">
                 <h2>OUR <strong>VESSELS</strong></h2>
 
@@ -277,7 +277,7 @@
 
                 <p><a href="" class="btnWhiteBorder">BROWSE ALL OUR VESSELS</a></p>
             </div>
-        </div>
+        </div> --}}
       
 
         <div class="newsContent">

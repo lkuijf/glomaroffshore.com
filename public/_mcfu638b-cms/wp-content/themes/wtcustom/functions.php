@@ -526,13 +526,19 @@ function crbRegisterFields($args) {
                         ),
                     ) )
                 ) )
+                ->add_fields( 'vessel_boxes', 'Vessels', array(
+                    Field::make( 'separator', 'separator1', __( 'Vessels' ) ),
+                    Field::make( 'association', 'vessels_associations', __( 'Select vessels' ))
+                    ->set_types( array(
+                        array(
+                            'type' => 'post',
+                            'post_type' => 'vessel',
+                        ),
+                    ) )
+                ) )
                 ->add_fields( 'working_with', 'Working with', array(
                     Field::make( 'separator', 'separator1', __( 'Working with' ) ),
                     Field::make( 'checkbox', 'show_working_with', __( 'Show "Working with" section' ) ),
-                ) )
-                ->add_fields( 'vessels', 'Vessels', array(
-                    Field::make( 'separator', 'separator1', __( 'Vessels' ) ),
-                    Field::make( 'checkbox', 'show_vessels', __( 'Show "Vessels" section' ) ),
                 ) )
                 ->add_fields( 'get_in_touch', 'Get in touch', array(
                     Field::make( 'separator', 'separator1', __( 'Get in touch' ) ),

@@ -48,6 +48,15 @@
     @if($section->_type == 'working_with' && $section->show_working_with)
         @include('sections.working_with')
     @endif
+    @if($section->_type == 'get_in_touch' && $section->show_get_in_touch)
+        @include('sections.get_in_touch')
+    @endif
+    @if($section->_type == 'statistics')
+        @include('sections.statistics', ['statistics' => $section->stats])
+    @endif
+    @if($section->_type == 'professional_boxes')
+        @include('sections.professionals', ['professionals' => $section->professional_associations])
+    @endif
 
         {{-- @if ($section['type'] == '1column')
             @foreach ($section['1column'] as $secData)

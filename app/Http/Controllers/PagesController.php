@@ -248,8 +248,15 @@ class PagesController extends Controller
                     $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4');
                     foreach($sec->office_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
-                        // if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
                         $sec->office_associations[$k] = $oCustPostType;
+                    }
+                }
+                if($sec->_type == 'professional_boxes') {
+                    $aValuesToRetreive = array('title', 'function', 'image');
+                    foreach($sec->professional_associations as $k => $assoc) {
+                        $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
+                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery($oCustPostType->image);
+                        $sec->professional_associations[$k] = $oCustPostType;
                     }
                 }
 
@@ -670,7 +677,7 @@ class PagesController extends Controller
                 $sections[] = $sec;
             }
         }
-// dd($sections);
+dd($sections);
         $res->pageMetaDescription = $metaDesc;
         $res->pageTitle = $hTitle;
         $res->contentSections = $sections;

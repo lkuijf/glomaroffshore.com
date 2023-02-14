@@ -38,4 +38,10 @@
             }
         }
     }
+    .btnWhiteBorder:before {
+        font-family: "glomaroffshore";
+        // font-size: 40px;
+        // color: #FFF;
+        content: '\e802\00a0';
+    }
 }
