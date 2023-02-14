@@ -439,21 +439,22 @@ function crbRegisterFields($args) {
                     //     'blue' => __( 'Blue' ),
                     //     'gold' => __( 'Gold' ),
                     // ) ),
+                    Field::make( 'separator', 'crb_separator', __( 'Section 1' ) ),
+
                     Field::make( 'text', 'header', __( 'Header' ) ),
                     Field::make( 'textarea', 'text', __( 'Text' ) ),
                     Field::make( 'image', 'image', __( 'Image' ) ),
                     Field::make( 'text', 'btn_orange_text', __( 'Button text' ) ),
                     Field::make( 'text', 'btn_orange_url', __( 'Button URL' ) ),
 
-                    Field::make( 'separator', 'crb_separator', __( 'Separator' ) ),
-
-                    Field::make( 'sidebar', 'crb_custom_sidebar', __( 'Select a Sidebar' ) ),
+                    Field::make( 'separator', 'crb_separator', __( 'Section 2 (optional)' ) ),
 
                     Field::make( 'text', 'header_2', __( 'Header (for second section, optional)' ) ),
                     Field::make( 'textarea', 'text_2', __( 'Text (for second section, optional)' ) ),
                     Field::make( 'image', 'image_2', __( 'Image (for second section, optional)' ) ),
                     Field::make( 'text', 'btn_orange_text_2', __( 'Button text (for second section, optional)' ) ),
                     Field::make( 'text', 'btn_orange_url_2', __( 'Button URL (for second section, optional)' ) ),
+
                     // Field::make( 'select', 'margin', __( 'Choose block letters top-margin' ) )
                     // ->set_options( array(
                     //     '0' => __( '0 pixels' ),
@@ -484,6 +485,18 @@ function crbRegisterFields($args) {
                     // Field::make( 'media_gallery', 'crb_media_gallery', __( 'Images' ) . ' (' . __( 'optional' ) . ')' )
                     //     ->set_type( array( 'image', ) ),
                     //     ->set_value_type( 'url' ),
+                ) )
+                ->add_fields( 'office_boxes', 'Offices', array(
+                    Field::make( 'association', 'office_associations', __( 'Select offices' ))
+                    ->set_types( array(
+                        array(
+                            'type' => 'post',
+                            'post_type' => 'office',
+                        ),
+                    ) )
+                ) )
+                ->add_fields( 'working_with', 'Working With', array(
+                    Field::make( 'checkbox', 'show_working_with', __( 'Show Working with section' ) ),
                 ) )
                 // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
                 //     Field::make( 'text', 'header', __( 'Header' ) ),
