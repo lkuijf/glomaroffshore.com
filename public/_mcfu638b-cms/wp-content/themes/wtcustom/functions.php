@@ -449,16 +449,20 @@ function crbRegisterFields($args) {
                     Field::make( 'text', 'header', __( 'Header' ) ),
                     Field::make( 'textarea', 'text', __( 'Text' ) ),
                     Field::make( 'image', 'image', __( 'Image' ) ),
-                    Field::make( 'text', 'btn_orange_text', __( 'Button text' ) ),
-                    Field::make( 'text', 'btn_orange_url', __( 'Button URL' ) ),
+                    Field::make( 'text', 'btn_orange_text', __( 'Orange button text' ) ),
+                    Field::make( 'text', 'btn_orange_url', __( 'Orange button URL' ) ),
+                    Field::make( 'text', 'btn_transparent_text', __( 'Transparent button text' ) ),
+                    Field::make( 'text', 'btn_transparent_url', __( 'Transparent button URL' ) ),
 
                     Field::make( 'separator', 'separator2', __( 'Section 2 (optional)' ) ),
 
                     Field::make( 'text', 'header_2', __( 'Header (for second section, optional)' ) ),
                     Field::make( 'textarea', 'text_2', __( 'Text (for second section, optional)' ) ),
                     Field::make( 'image', 'image_2', __( 'Image (for second section, optional)' ) ),
-                    Field::make( 'text', 'btn_orange_text_2', __( 'Button text (for second section, optional)' ) ),
-                    Field::make( 'text', 'btn_orange_url_2', __( 'Button URL (for second section, optional)' ) ),
+                    Field::make( 'text', 'btn_orange_text_2', __( 'Orange button text (for second section, optional)' ) ),
+                    Field::make( 'text', 'btn_orange_url_2', __( 'Orange button URL (for second section, optional)' ) ),
+                    Field::make( 'text', 'btn_transparent_text_2', __( 'Transparent button text (for second section, optional)' ) ),
+                    Field::make( 'text', 'btn_transparent_url_2', __( 'Transparent button URL (for second section, optional)' ) ),
 
                     // Field::make( 'select', 'margin', __( 'Choose block letters top-margin' ) )
                     // ->set_options( array(

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- <title>{{ $data['head_title'] }}</title> --}}
-    {{-- <meta name="description" content="{{ $data['meta_description'] }}"> --}}
+    <title>{{ $data['head_title'] }}</title>
+    <meta name="description" content="{{ $data['meta_description'] }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,37 +51,42 @@
                         <span></span>
                         <span></span>
                     </label>
-                    <ul itemscope="" itemtype="http://www.schema.org/SiteNavigationElement">
+                    {{-- <ul itemscope="" itemtype="http://www.schema.org/SiteNavigationElement">
                         <li itemprop="name"><a itemprop="url" href="/">HOME</a></li>
                         <li itemprop="name"><a itemprop="url" href="/about">ABOUT</a></li>
                         <li itemprop="name"><a itemprop="url" href="/our-services">VESSELS</a></li>
                         <li itemprop="name"><a itemprop="url" href="/our-clients">QHSE</a></li>
                         <li itemprop="name"><a itemprop="url" href="/downloads">CONTACT</a></li>
-                    </ul>
-                    {{-- {!! $data['html_menu'] !!} --}}
+                    </ul> --}}
+                    {!! $data['html_menu'] !!}
                 </nav>
             </div>
         </div>
     </header>
 
-    <div class="hero">
-        <div class="heroOverlay">
-            <p>Fleet of Offshore<br />Support Vessels</p>
-            <img src="{{ asset('statics/glomar-offshore-logo-orangewhite.png') }}" alt="">
-        </div>
-        <div class="heroImages zoom">
-            <div>
-                <img src="{{ asset('statics/slideshow/Glomar-Avior.jpg') }}" alt="">
-                <img src="{{ asset('statics/slideshow/Glomar-Wave.jpg') }}" alt="">
-                <img src="{{ asset('statics/slideshow/Glomar-Worker.jpg') }}" alt="">
-            </div>
-        </div>
-    </div>
+
+
 
     <div class="contentWrapper">
-        
+        @yield('content')
 
-        <div class="introTextContent">
+        {{-- <div class="hero">
+            <div class="heroOverlay">
+                <p>Fleet of Offshore<br />Support Vessels</p>
+                <img src="{{ asset('statics/glomar-offshore-logo-orangewhite.png') }}" alt="">
+            </div>
+            <div class="heroImages zoom">
+                <div>
+                    <img src="{{ asset('statics/slideshow/Glomar-Avior.jpg') }}" alt="">
+                    <img src="{{ asset('statics/slideshow/Glomar-Wave.jpg') }}" alt="">
+                    <img src="{{ asset('statics/slideshow/Glomar-Worker.jpg') }}" alt="">
+                </div>
+            </div>
+        </div> --}}
+    
+    
+
+        {{-- <div class="introTextContent">
             <div class="inner">
 
                 @for ($x=0;$x<2;$x++)
@@ -101,7 +106,7 @@
                 @endfor
 
             </div>
-        </div>
+        </div> --}}
 
 
 
@@ -299,7 +304,7 @@
         </div>
       
 
-        @yield('content')
+        
     </div>
     
     <footer>

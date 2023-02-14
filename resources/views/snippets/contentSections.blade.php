@@ -1,6 +1,31 @@
 @foreach ($data['content_sections'] as $section)
 
-        @if ($section['type'] == '1column')
+    @if($section->_type == 'hero')
+        @include('sections.hero', [
+            'images' => $section->crb_media_gallery,
+            'bigHeader' => $section->big_header,
+            'smallHeader' => $section->small_header,
+            'text' => $section->text,
+            ])
+    @endif
+    @if($section->_type == 'text')
+        @include('sections.text', [
+            'header' => $section->header,
+            'text' => $section->text,
+            'btn_orange_text' => $section->btn_orange_text,
+            'btn_orange_url' => $section->btn_orange_url,
+            'imageUrl' => $section->image[0]['url'],
+            'imageAlt' => $section->image[0]['alt'],
+            'header_2' => $section->header_2,
+            'text_2' => $section->text_2,
+            'btn_orange_text_2' => $section->btn_orange_text_2,
+            'btn_orange_url_2' => $section->btn_orange_url_2,
+            'imageUrl_2' => $section->image_2[0]['url'],
+            'imageAlt_2' => $section->image_2[0]['alt'],
+            ])
+    @endif
+
+        {{-- @if ($section['type'] == '1column')
             @foreach ($section['1column'] as $secData)
 
                 @if ($secData->_type == 'tekst')
@@ -50,7 +75,7 @@
                 </div>
             </div>
             </div>
-        @endif
+        @endif --}}
 
 
 

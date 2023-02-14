@@ -232,8 +232,17 @@ class PagesController extends Controller
         if(isset($pageData->crb_sections) && count($pageData->crb_sections)) {
             $loadWoo_once = true;
             foreach($pageData->crb_sections as $sec) {
-                $s = [];
-                $s['type'] = $sec->_type;
+                // $s = [];
+                // $s['type'] = $sec->_type;
+
+                if($sec->_type == 'hero') {
+                    $sec->crb_media_gallery = $this->getMediaGallery($sec->crb_media_gallery);
+                }
+                if($sec->_type == 'text') {
+                    $sec->image = $this->getMediaGallery($sec->image);
+                    $sec->image_2 = $this->getMediaGallery($sec->image_2);
+                }
+
                 // if($sec->_type == 'hero') {
                 //     $img = str_replace('_mcfu638b-cms/wp-content/uploads', 'media', $sec->image);
                 //     $s['img']['url'] = $img;
@@ -241,114 +250,120 @@ class PagesController extends Controller
                 // }
 
 
-                if($sec->_type == '1column') {
-                    if(isset($sec->fullwidth) && count($sec->fullwidth)) {
-                        $s['1column'] = array();
-                        foreach($sec->fullwidth as $fullWidthItem) {
-                            if($fullWidthItem->_type == 'afbeelding') {
-                                $fullWidthItem->img = $this->generateImageUrl($fullWidthItem->image);
-                                $fullWidthItem->alt = $this->generateImageAlt($fullWidthItem->image);
-                                unset($fullWidthItem->image);
-                            }
-                            if($fullWidthItem->_type == 'bestand') {
-                                $fullWidthItem->file = $this->generateImageUrl($fullWidthItem->file);
-                            }
+                // if($sec->_type == '1column') {
+                //     if(isset($sec->fullwidth) && count($sec->fullwidth)) {
+                //         $s['1column'] = array();
+                //         foreach($sec->fullwidth as $fullWidthItem) {
+                //             if($fullWidthItem->_type == 'afbeelding') {
+                //                 $fullWidthItem->img = $this->generateImageUrl($fullWidthItem->image);
+                //                 $fullWidthItem->alt = $this->generateImageAlt($fullWidthItem->image);
+                //                 unset($fullWidthItem->image);
+                //             }
+                //             if($fullWidthItem->_type == 'bestand') {
+                //                 $fullWidthItem->file = $this->generateImageUrl($fullWidthItem->file);
+                //             }
 
-                            if($fullWidthItem->_type == 'nieuws-items') {
-                                $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
-                                if(isset($fullWidthItem->news_associations) && count($fullWidthItem->news_associations)) {
-                                    foreach($fullWidthItem->news_associations as $k => $newsItem) {
-                                        $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
-                                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
-                                        $fullWidthItem->news_associations[$k] = $oCustPostType;
-                                    }
-                                }
-                            }
+                //             if($fullWidthItem->_type == 'nieuws-items') {
+                //                 $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
+                //                 if(isset($fullWidthItem->news_associations) && count($fullWidthItem->news_associations)) {
+                //                     foreach($fullWidthItem->news_associations as $k => $newsItem) {
+                //                         $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
+                //                         if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                //                         $fullWidthItem->news_associations[$k] = $oCustPostType;
+                //                     }
+                //                 }
+                //             }
 
-                            $s['1column'][] =  $fullWidthItem;
-                        }
-                    }
-                }
-                if($sec->_type == '2column') {
-                    $s['2column']['left'] = array();
-                    $s['2column']['right'] = array();
-                    if(isset($sec->left) && count($sec->left)) {
-                        foreach($sec->left as $leftItem) {
-                            if($leftItem->_type == 'afbeelding') {
-                                $leftItem->img = $this->generateImageUrl($leftItem->image);
-                                $leftItem->alt = $this->generateImageAlt($leftItem->image);
-                                unset($leftItem->image);
-                            }
-                            if($leftItem->_type == 'bestand') {
-                                $leftItem->file = $this->generateImageUrl($leftItem->file);
-                            }
-                            if($leftItem->_type == 'nieuws-items') {
-                                $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
-                                if(isset($leftItem->news_associations) && count($leftItem->news_associations)) {
-                                    foreach($leftItem->news_associations as $k => $newsItem) {
-                                        $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
-                                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
-                                        $leftItem->news_associations[$k] = $oCustPostType;
-                                    }
-                                }
-                            }
-                            $s['2column']['left'][] = $leftItem;
-                        }
-                    }
-                    if(isset($sec->right) && count($sec->right)) {
-                        foreach($sec->right as $rightItem) {
-                            if($rightItem->_type == 'afbeelding') {
-                                $rightItem->img = $this->generateImageUrl($rightItem->image);
-                                $rightItem->alt = $this->generateImageAlt($rightItem->image);
-                                unset($rightItem->image);
-                            }
-                            if($rightItem->_type == 'bestand') {
-                                $rightItem->file = $this->generateImageUrl($rightItem->file);
-                            }
-                            if($rightItem->_type == 'nieuws-items') {
-                                $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
-                                if(isset($rightItem->news_associations) && count($rightItem->news_associations)) {
-                                    foreach($rightItem->news_associations as $k => $newsItem) {
-                                        $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
-                                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
-                                        $rightItem->news_associations[$k] = $oCustPostType;
-                                    }
-                                }
-                            }
-                            $s['2column']['right'][] = $rightItem;
-                        }
-                    }
-                }
-                if($sec->_type == 'banner') {
+                //             $s['1column'][] =  $fullWidthItem;
+                //         }
+                //     }
+                // }
+                // if($sec->_type == '2column') {
+                //     $s['2column']['left'] = array();
+                //     $s['2column']['right'] = array();
+                //     if(isset($sec->left) && count($sec->left)) {
+                //         foreach($sec->left as $leftItem) {
+                //             if($leftItem->_type == 'afbeelding') {
+                //                 $leftItem->img = $this->generateImageUrl($leftItem->image);
+                //                 $leftItem->alt = $this->generateImageAlt($leftItem->image);
+                //                 unset($leftItem->image);
+                //             }
+                //             if($leftItem->_type == 'bestand') {
+                //                 $leftItem->file = $this->generateImageUrl($leftItem->file);
+                //             }
+                //             if($leftItem->_type == 'nieuws-items') {
+                //                 $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
+                //                 if(isset($leftItem->news_associations) && count($leftItem->news_associations)) {
+                //                     foreach($leftItem->news_associations as $k => $newsItem) {
+                //                         $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
+                //                         if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                //                         $leftItem->news_associations[$k] = $oCustPostType;
+                //                     }
+                //                 }
+                //             }
+                //             $s['2column']['left'][] = $leftItem;
+                //         }
+                //     }
+                //     if(isset($sec->right) && count($sec->right)) {
+                //         foreach($sec->right as $rightItem) {
+                //             if($rightItem->_type == 'afbeelding') {
+                //                 $rightItem->img = $this->generateImageUrl($rightItem->image);
+                //                 $rightItem->alt = $this->generateImageAlt($rightItem->image);
+                //                 unset($rightItem->image);
+                //             }
+                //             if($rightItem->_type == 'bestand') {
+                //                 $rightItem->file = $this->generateImageUrl($rightItem->file);
+                //             }
+                //             if($rightItem->_type == 'nieuws-items') {
+                //                 $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
+                //                 if(isset($rightItem->news_associations) && count($rightItem->news_associations)) {
+                //                     foreach($rightItem->news_associations as $k => $newsItem) {
+                //                         $oCustPostType = $this->getCustomPostTypeViaRestApi($newsItem->subtype, $newsItem->id, $aValuesToRetreive);
+                //                         if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                //                         $rightItem->news_associations[$k] = $oCustPostType;
+                //                     }
+                //                 }
+                //             }
+                //             $s['2column']['right'][] = $rightItem;
+                //         }
+                //     }
+                // }
+                // if($sec->_type == 'hero') {
                     // $s['wl_header'] = $sec->writing_letters_header;
                     // $s['bl_header'] = $sec->block_letters_header;
-                    $s['text_align'] = $sec->text_align;
-                    $s['text_color'] = $sec->text_color;
-                    $s['image_opacity'] = $sec->image_opacity;
-                    // $img = str_replace(array('http://', '_mcfu638b-cms/wp-content/uploads'), array('https://', 'media'), $sec->image);
-                    $s['img']['url'] = $this->generateImageUrl($sec->image);
-                    $s['img']['alt'] = $this->generateImageAlt($sec->image);
-                    $s['checked'] = $sec->extra_padding;
-                    $s['text'] = $sec->text;
-                    $s['links'] = [];
-                    if(isset($sec->links) && count($sec->links)) {
-                        foreach($sec->links as $bnrLink) {
-                            $lnk = [];
-                            $lnk['text'] = $bnrLink->button_text;
-                            $lnk['color'] = $bnrLink->button_color;
-                            $lnk['cust_link'] = $bnrLink->custom_link;
-                            $lnk['url'] = '';
-                            if(isset($bnrLink->links) && count($bnrLink->links)) {
-                                foreach($this->allPagesPerParent[0] as $rootPage) {
-                                    if($rootPage->id == $bnrLink->links[0]->id) {
-                                        $lnk['slug'] = $rootPage->slug;
-                                    }
-                                }
-                            }
-                            $s['links'][] = $lnk;
-                        }
-                    }
-                }
+
+
+                    // $s['big_header'] = $sec->big_header;
+                    // $s['small_header'] = $sec->small_header;
+                    // $s['text'] = $sec->text;
+                    // $s['section_data'] = $sec;
+                    // $s = $sec;
+
+
+                    // $s['image_opacity'] = $sec->image_opacity;
+                    // $s['img']['url'] = $this->generateImageUrl($sec->image);
+                    // $s['img']['alt'] = $this->generateImageAlt($sec->image);
+                    // $s['checked'] = $sec->extra_padding;
+                    // $s['text'] = $sec->text;
+                    // $s['links'] = [];
+                    // if(isset($sec->links) && count($sec->links)) {
+                    //     foreach($sec->links as $bnrLink) {
+                    //         $lnk = [];
+                    //         $lnk['text'] = $bnrLink->button_text;
+                    //         $lnk['color'] = $bnrLink->button_color;
+                    //         $lnk['cust_link'] = $bnrLink->custom_link;
+                    //         $lnk['url'] = '';
+                    //         if(isset($bnrLink->links) && count($bnrLink->links)) {
+                    //             foreach($this->allPagesPerParent[0] as $rootPage) {
+                    //                 if($rootPage->id == $bnrLink->links[0]->id) {
+                    //                     $lnk['slug'] = $rootPage->slug;
+                    //                 }
+                    //             }
+                    //         }
+                    //         $s['links'][] = $lnk;
+                    //     }
+                    // }
+                // }
                 if($sec->_type == 'text_flex') {
                     $s['hdr'] = $sec->header;
                     $s['text_l'] = $sec->text_left;
@@ -461,7 +476,7 @@ class PagesController extends Controller
                         $s['jobOffers'][] = $oCustPostType;
                     }
                 }
-                if($sec->_type == 'text') {
+                // if($sec->_type == 'text') {
                     // $s['color'] = $sec->color;
                     // $s['orientation'] = 'text_left';
                     // if(isset($sec->orientation)) $s['orientation'] = $sec->orientation;
@@ -471,7 +486,7 @@ class PagesController extends Controller
                     // $s['valign_center'] = $sec->vertical_align_center;
                     // $s['orientation'] = $sec->orientation;
                     // $s['background_color'] = $sec->background_color;
-                    $s['text'] = $sec->text;
+                    // $s['text'] = $sec->text;
                     // $img = str_replace('_mcfu638b-cms/wp-content/uploads', 'media', $sec->image);
                     // $s['img']['url'] = $img;
                     // $s['img']['alt'] = str_replace(['-', '_'], ' ', pathinfo($img, PATHINFO_FILENAME));
@@ -487,7 +502,7 @@ class PagesController extends Controller
                     //     //     $s['gallery'][] = $i;
                     //     // }
                     // }
-                }
+                // }
                 if($sec->_type == 'information_blocks_holder') {
                     $s['blocks'] = $sec->information_blocks;
                     foreach($s['blocks'] as $i => $block) {
@@ -641,7 +656,8 @@ class PagesController extends Controller
                 //     }
                 //     $s['testimonials'] = $sec->testimonials;
                 // }
-                $sections[] = $s;
+                // $sections[] = $s;
+                $sections[] = $sec;
             }
         }
 // dd($sections);
@@ -663,11 +679,21 @@ class PagesController extends Controller
     }
     public function getMediaGallery($gall) {
         $res = [];
+
+        if(!$gall) {
+            $i['url'] = '';
+            $i['alt'] = '';
+            $res[] = $i;
+            return $res;
+        }
+
+        if(!is_array($gall)) $gall = array($gall);
+
         foreach($gall as $mediaId) {
             $url = $this->generateImageUrl($mediaId);
             $alt = $this->generateImageAlt($mediaId);
-            if(isset($this->allMediaById[$mediaId]) && isset($this->allMediaById[$mediaId]->alt)) $alt = $this->allMediaById[$mediaId]->alt;
-            $i['img'] = $url;
+            if(isset($this->allMediaById[$mediaId]) && isset($this->allMediaById[$mediaId]->alt) && $this->allMediaById[$mediaId]->alt) $alt = $this->allMediaById[$mediaId]->alt;
+            $i['url'] = $url;
             $i['alt'] = $alt;
             $res[] = $i;
         }

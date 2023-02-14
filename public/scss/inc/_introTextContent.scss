@@ -1,15 +1,15 @@
 .introTextContent {
     background-color: $colorWhite;
     > div {
-        // display: flex;
-        // @media (max-width: $sbp3_tablet) {flex-wrap: wrap;}
-        // gap: 60px;
+        display: flex;
+        @media (max-width: $sbp3_tablet) {flex-wrap: wrap;}
+        gap: 60px;
         
 
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        @media (max-width: $sbp3_tablet) {grid-template-columns: 1fr;}
-        gap: 60px;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;
+        // @media (max-width: $sbp3_tablet) {grid-template-columns: 1fr;}
+        // gap: 60px;
 
         .introTextWrap {
             background-color: $colorWhite;

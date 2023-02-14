@@ -20,13 +20,13 @@ Route::get('/media/{year}/{month}/{file}', [ImageController::class, 'renderImage
 Route::get('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', function () {return redirect(str_replace('/_mcfu638b-cms/wp-json/carbon-fields/v1/attachment', '/_mcfu638b-cms/index.php/wp-json/carbon-fields/v1/attachment', Request::fullUrl()));}); // redirect for Carbon Fields -bug
 Route::get('/admin', function () {return redirect('/_mcfu638b-cms/wp-admin');}); // redirect /admin to wp-cms
 /***************************************************************************************************************************************************/
-Route::get('/', function () {
-    return view('templates.glomaroffshore');
-});
-Route::get('/swipetest', function () {
-    return view('templates.swipetest');
-});
-// Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'homepage')->defaults('page', false)->defaults('subpage', false)->name('home');
+// Route::get('/', function () {
+//     return view('templates.glomaroffshore');
+// });
+// Route::get('/swipetest', function () {
+//     return view('templates.swipetest');
+// });
+Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'homepage')->defaults('page', false)->defaults('subpage', false)->name('home');
 Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm']);
 
 
