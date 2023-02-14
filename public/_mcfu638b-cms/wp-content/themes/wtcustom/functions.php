@@ -852,7 +852,7 @@ function crbRegisterFields($args) {
     Container::make( 'post_meta', __( 'Information' ) )
         ->where( 'post_type', '=', 'news' )
         ->add_fields(array(
-            Field::make( 'text', 'title', __( 'Title' ))->set_visible_in_rest_api($visible = true),
+            // Field::make( 'text', 'title', __( 'Title' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'textarea', 'card_text', __( 'Card text' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'rich_text', 'text', __( 'Text' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'image', 'small_image', __( 'Card image' ) )->set_visible_in_rest_api($visible = true),
