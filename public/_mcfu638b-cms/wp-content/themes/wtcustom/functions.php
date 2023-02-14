@@ -15,7 +15,8 @@ $carbonFieldsArgs = array();
 $websiteOptions = array();
 // $websiteOptions[] = array('text', 'header_big', 'Website kop tekst GROOT');
 // $websiteOptions[] = array('text', 'facebook', 'Facebook link');
-// $websiteOptions[] = array('text', 'linkedin', 'LinkedIn link');
+$websiteOptions[] = array('text', 'linkedin', 'LinkedIn link');
+$websiteOptions[] = array('text', 'twitter', 'Twitter link');
 // $websiteOptions[] = array('text', 'instagram', 'Instagram link');
 $websiteOptions[] = array('text', 'form_success', 'Formulier succes melding');
 $websiteOptions[] = array('text', 'form_error', 'Formulier error melding');
@@ -23,15 +24,19 @@ $websiteOptions[] = array('text', 'form_error', 'Formulier error melding');
 // $websiteOptions[] = array('text', 'apply_error', 'Sollicitatie error melding');
 // $websiteOptions[] = array('rich_text', 'footer_menu', 'Footer menu');
 // $websiteOptions[] = array('rich_text', 'inlog_menu', 'Inlog menu (in header and footer)');
-// $websiteOptions[] = array('text', 'wt_website_text4', 'Website text 4');
+$websiteOptions[] = array('text', 'phone_number', 'Telefoonnummer (algemeen; o.a. gebruikt in "Call us"-box en header)');
+$websiteOptions[] = array('text', 'email_address', 'E-mail adres (algemeen; o.a. gebruikt in contact formulier en header)');
 // $websiteOptions[] = array('textarea', 'wt_website_textarea1', 'Website textarea 1');
-$websiteOptions[] = array('rich_text', 'footer_tekst', 'Footer tekst');
+$websiteOptions[] = array('rich_text', 'footer_tekst_1', 'Footer blok 1 tekst');
+$websiteOptions[] = array('rich_text', 'footer_tekst_2', 'Footer blok 2 tekst');
+$websiteOptions[] = array('rich_text', 'footer_tekst_3', 'Footer blok 3 tekst');
 // $websiteOptions[] = array('rich_text', 'footer_tekst_2', 'Footer tekst rechts');
 // $websiteOptions[] = array('rich_text', 'wt_website_footer2', 'Footer blok 2 tekst');
 // $websiteOptions[] = array('file', 'wt_algemene_voorwaarden', 'Algemene voorwaarden');
-$websiteOptions[] = array('image', 'header_image', 'Header afbeelding');
-$websiteOptions[] = array('text', 'header_title', 'Header Titel');
-$websiteOptions[] = array('text', 'header_sub', 'Header Sub-titel');
+// $websiteOptions[] = array('image', 'header_image', 'Header afbeelding');
+$websiteOptions[] = array('media_gallery', 'Working with', 'Partner logo\'s');
+// $websiteOptions[] = array('text', 'header_title', 'Header Titel');
+// $websiteOptions[] = array('text', 'header_sub', 'Header Sub-titel');
 $carbonFieldsArgs['websiteOptions'] = $websiteOptions;
 
 add_action( 'init', 'create_posttype_news' );
@@ -364,7 +369,7 @@ function crbRegisterFields($args) {
         ->add_fields( array(
             Field::make( 'complex', 'crb_sections', 'Sections' )->set_visible_in_rest_api($visible = true)
                 ->set_layout( 'tabbed-vertical' )
-                ->add_fields( 'hero', 'Banner without text', array(
+                ->add_fields( 'hero', 'Hero (big header)', array(
                     Field::make( 'media_gallery', 'crb_media_gallery', __( 'Media Gallery' ) )
                         ->set_type( array( 'image' ) )->set_duplicates_allowed( false ),
                     Field::make( 'text', 'big_header', __( 'Big header text' ) ),
@@ -514,10 +519,13 @@ function crbRegisterFields($args) {
                     ) )
                 ) )
                 ->add_fields( 'working_with', 'Working With', array(
-                    Field::make( 'checkbox', 'show_working_with', __( 'Show Working with section' ) ),
+                    Field::make( 'checkbox', 'show_working_with', __( 'Show "Working with" section' ) ),
                 ) )
                 ->add_fields( 'vessels', 'Vessels', array(
-                    Field::make( 'checkbox', 'show_vessels', __( 'Show Vessels section' ) ),
+                    Field::make( 'checkbox', 'show_vessels', __( 'Show "Vessels" section' ) ),
+                ) )
+                ->add_fields( 'get_in_touch', 'Get in touch', array(
+                    Field::make( 'checkbox', 'show_get_in_touch', __( 'Show "Get in touch" section' ) ),
                 ) )
                 ->add_fields( 'statistics', 'Statistics', array(
                     Field::make( 'select', 'icon', __( 'Icon' ) )
@@ -984,7 +992,11 @@ function crbRegisterFields($args) {
 
     $fieldsToAdd = array();
     foreach($args['websiteOptions'] as $opt) {
-        $fieldsToAdd[] = Field::make($opt[0], $opt[1], __($opt[2]));
+        if($opt[0] == 'media_gallery') {
+            $fieldsToAdd[] = Field::make($opt[0], $opt[1], __($opt[2]))->set_type( array( 'image' ) )->set_duplicates_allowed( false );
+        } else {
+            $fieldsToAdd[] = Field::make($opt[0], $opt[1], __($opt[2]));
+        }
     }
     Container::make('theme_options', 'Website Options')->add_fields($fieldsToAdd );
 
