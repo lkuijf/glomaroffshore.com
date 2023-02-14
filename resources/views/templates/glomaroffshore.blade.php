@@ -110,7 +110,7 @@
 
 
 
-        {{-- <div class="introTextContent">
+        <div class="introTextContent gridBoxes">
             <div class="inner">
 
                 @for ($x=0;$x<3;$x++)
@@ -127,7 +127,7 @@
                 @endfor
 
             </div>
-        </div> --}}
+        </div>
 
 
         <div class="workingWithContent">

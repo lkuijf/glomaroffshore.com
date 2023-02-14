@@ -242,6 +242,16 @@ class PagesController extends Controller
                     $sec->image = $this->getMediaGallery($sec->image);
                     $sec->image_2 = $this->getMediaGallery($sec->image_2);
                 }
+                if($sec->_type == 'office_boxes') {
+                    // $s['people'] = array();
+                    $aValuesToRetreive = array('title', 'country');
+                    foreach($sec->office_associations as $k => $assoc) {
+                        $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
+                        // if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                        // $s['people'][] = $oCustPostType;
+                        $sec->office_associations[$k] = $oCustPostType;
+                    }
+                }
 
                 // if($sec->_type == 'hero') {
                 //     $img = str_replace('_mcfu638b-cms/wp-content/uploads', 'media', $sec->image);
@@ -660,7 +670,7 @@ class PagesController extends Controller
                 $sections[] = $sec;
             }
         }
-// dd($sections);
+dd($sections);
         $res->pageMetaDescription = $metaDesc;
         $res->pageTitle = $hTitle;
         $res->contentSections = $sections;
