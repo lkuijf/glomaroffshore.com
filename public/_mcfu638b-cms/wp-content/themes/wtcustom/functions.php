@@ -439,7 +439,7 @@ function crbRegisterFields($args) {
                     //     'blue' => __( 'Blue' ),
                     //     'gold' => __( 'Gold' ),
                     // ) ),
-                    Field::make( 'separator', 'crb_separator', __( 'Section 1' ) ),
+                    Field::make( 'separator', 'separator1', __( 'Section 1' ) ),
 
                     Field::make( 'text', 'header', __( 'Header' ) ),
                     Field::make( 'textarea', 'text', __( 'Text' ) ),
@@ -447,7 +447,7 @@ function crbRegisterFields($args) {
                     Field::make( 'text', 'btn_orange_text', __( 'Button text' ) ),
                     Field::make( 'text', 'btn_orange_url', __( 'Button URL' ) ),
 
-                    Field::make( 'separator', 'crb_separator', __( 'Section 2 (optional)' ) ),
+                    Field::make( 'separator', 'separator2', __( 'Section 2 (optional)' ) ),
 
                     Field::make( 'text', 'header_2', __( 'Header (for second section, optional)' ) ),
                     Field::make( 'textarea', 'text_2', __( 'Text (for second section, optional)' ) ),
@@ -486,15 +486,15 @@ function crbRegisterFields($args) {
                     //     ->set_type( array( 'image', ) ),
                     //     ->set_value_type( 'url' ),
                 ) )
-                // ->add_fields( 'office_boxes', 'Offices', array(
-                //     Field::make( 'association', 'office_associations', __( 'Select offices' ))
-                //     ->set_types( array(
-                //         array(
-                //             'type' => 'post',
-                //             'post_type' => 'office',
-                //         ),
-                //     ) )
-                // ) )
+                ->add_fields( 'office_boxes', 'Offices', array(
+                    Field::make( 'association', 'office_associations', __( 'Select offices' ))
+                    ->set_types( array(
+                        array(
+                            'type' => 'post',
+                            'post_type' => 'office',
+                        ),
+                    ) )
+                ) )
                 ->add_fields( 'working_with', 'Working With', array(
                     Field::make( 'checkbox', 'show_working_with', __( 'Show Working with section' ) ),
                 ) )
