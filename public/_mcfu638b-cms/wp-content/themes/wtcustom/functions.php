@@ -364,19 +364,25 @@ function crbRegisterFields($args) {
         ->add_fields( array(
             Field::make( 'complex', 'crb_sections', 'Sections' )->set_visible_in_rest_api($visible = true)
                 ->set_layout( 'tabbed-vertical' )
-                // ->add_fields( 'hero', 'Banner without text', array(
-                //     Field::make( 'image', 'image', 'Afbeelding' )->set_value_type( 'url' ),
-                //     // Field::make( 'text', 'writing_letters_header', __( 'Writing letters header (gold)' ) ),
-                //     // Field::make( 'text', 'block_letters_header', __( 'Block letters header' ) ),
-                //     // Field::make( 'select', 'color', __( 'Choose block letters color' ) )
-                //     // ->set_options( array(
-                //         // 'white' => __( 'White' ),
-                //         // 'black' => __( 'Black' ),
-                //     // ) ),
-                //     // Field::make( 'checkbox', 'show_reserve_button', __( 'Show reserve button' ) ),
-                //     // Field::make( 'image', 'image', 'Afbeelding' ),
-                //     // Field::make( 'rich_text', 'text', 'Tekst' ),
-                // ) )
+                ->add_fields( 'hero', 'Banner without text', array(
+                    Field::make( 'media_gallery', 'crb_media_gallery', __( 'Media Gallery' ) )
+                        ->set_type( array( 'image' ) )->set_duplicates_allowed( false ),
+                    Field::make( 'text', 'big_header', __( 'Big header text' ) ),
+                    Field::make( 'text', 'small_header', __( 'Small header text' ) ),
+                    Field::make( 'textarea', 'text', __( 'Text' ) ),
+
+                        // Field::make( 'image', 'image', 'Afbeelding' )->set_value_type( 'url' ),
+                    // Field::make( 'text', 'writing_letters_header', __( 'Writing letters header (gold)' ) ),
+                    // Field::make( 'text', 'block_letters_header', __( 'Block letters header' ) ),
+                    // Field::make( 'select', 'color', __( 'Choose block letters color' ) )
+                    // ->set_options( array(
+                        // 'white' => __( 'White' ),
+                        // 'black' => __( 'Black' ),
+                    // ) ),
+                    // Field::make( 'checkbox', 'show_reserve_button', __( 'Show reserve button' ) ),
+                    // Field::make( 'image', 'image', 'Afbeelding' ),
+                    // Field::make( 'rich_text', 'text', 'Tekst' ),
+                ) )
                 // ->add_fields( 'banner', 'Banner', array(
                     // Field::make( 'image', 'image', 'Afbeelding' ),
                 //     Field::make( 'select', 'image_opacity', __( 'Choose image transparancy' ) )
@@ -420,7 +426,7 @@ function crbRegisterFields($args) {
                 //         )),
 
                 // ) )
-                // ->add_fields( 'text', 'Tekst', array(
+                ->add_fields( 'text', 'Tekst', array(
                     // Field::make( 'select', 'background_color', __( 'Background color' ) )
                     //     ->set_options( array(
                     //         'white' => __( 'White' ),
@@ -433,8 +439,17 @@ function crbRegisterFields($args) {
                     //     'blue' => __( 'Blue' ),
                     //     'gold' => __( 'Gold' ),
                     // ) ),
-                    // Field::make( 'text', 'writing_letters_header', __( 'Writing letters header (gold)' ) ),
-                    // Field::make( 'text', 'block_letters_header', __( 'Block letters header' ) ),
+                    Field::make( 'text', 'header', __( 'Header' ) ),
+                    Field::make( 'textarea', 'text', __( 'Text' ) ),
+                    Field::make( 'image', 'image', __( 'Image' ) ),
+                    Field::make( 'text', 'btn_orange_text', __( 'Button text' ) ),
+                    Field::make( 'text', 'btn_orange_url', __( 'Button URL' ) ),
+
+                    Field::make( 'text', 'header_2', __( 'Header (for second section, optional)' ) ),
+                    Field::make( 'textarea', 'text_2', __( 'Text (for second section, optional)' ) ),
+                    Field::make( 'image', 'image_2', __( 'Image (for second section, optional)' ) ),
+                    Field::make( 'text', 'btn_orange_text_2', __( 'Button text (for second section, optional)' ) ),
+                    Field::make( 'text', 'btn_orange_url_2', __( 'Button URL (for second section, optional)' ) ),
                     // Field::make( 'select', 'margin', __( 'Choose block letters top-margin' ) )
                     // ->set_options( array(
                     //     '0' => __( '0 pixels' ),
@@ -463,9 +478,9 @@ function crbRegisterFields($args) {
                     //     ),
                     // ) )
                     // Field::make( 'media_gallery', 'crb_media_gallery', __( 'Images' ) . ' (' . __( 'optional' ) . ')' )
-                        // ->set_type( array( 'image', ) ),
-                        // ->set_value_type( 'url' ),
-                // ) )
+                    //     ->set_type( array( 'image', ) ),
+                    //     ->set_value_type( 'url' ),
+                ) )
                 // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
                 //     Field::make( 'text', 'header', __( 'Header' ) ),
                     // Field::make( 'rich_text', 'text_left', 'Text left' ),
@@ -681,71 +696,80 @@ function crbRegisterFields($args) {
                 //     ) )
                 // ) )
 
-                ->add_fields( '1column', 'Content', array(
-                    Field::make( 'complex', 'fullwidth', 'Content' )
-                        ->add_fields('tekst', array(
-                            Field::make( 'rich_text', 'text', 'Tekst' ),
-                        ) )
-                        ->add_fields('afbeelding', array(
-                            Field::make( 'image', 'image', 'Afbeelding' ),
-                        ) )
-                        ->add_fields('bestand', array(
-                            Field::make( 'file', 'file', 'Bestand' ),
-                            Field::make( 'text', 'title', 'Titel' ),
-                        ) )
-                        ->add_fields('nieuws-items', array(
-                            Field::make( 'association', 'news_associations', __( 'Select news items' ))
-                            ->set_types( array(
-                                array(
-                                    'type' => 'post',
-                                    'post_type' => 'news',
-                                ),
-                            ) )
-                        ) ),
-                ) )
 
-                ->add_fields( '2column', 'Content (2 kolommen)', array(
-                    Field::make( 'complex', 'left', 'Linker kolom' )
-                        ->add_fields('tekst', array(
-                            Field::make( 'rich_text', 'text', 'Tekst' ),
-                        ) )
-                        ->add_fields('afbeelding', array(
-                            Field::make( 'image', 'image', 'Afbeelding' ),
-                        ) )
-                        ->add_fields('bestand', array(
-                            Field::make( 'file', 'file', 'Bestand' ),
-                            Field::make( 'text', 'title', 'Titel' ),
-                        ) )
-                        ->add_fields('nieuws-items', array(
-                            Field::make( 'association', 'news_associations', __( 'Select news items' ))
-                            ->set_types( array(
-                                array(
-                                    'type' => 'post',
-                                    'post_type' => 'news',
-                                ),
-                            ) )
-                        ) ),
-                    Field::make( 'complex', 'right', 'Rechter kolom' )
-                        ->add_fields('tekst', array(
-                            Field::make( 'rich_text', 'text', 'Tekst' ),
-                        ) )
-                        ->add_fields('afbeelding', array(
-                            Field::make( 'image', 'image', 'Afbeelding' ),
-                        ) )
-                        ->add_fields('bestand', array(
-                            Field::make( 'file', 'file', 'Bestand' ),
-                            Field::make( 'text', 'title', 'Titel' ),
-                        ) )
-                        ->add_fields('nieuws-items', array(
-                            Field::make( 'association', 'news_associations', __( 'Select news items' ))
-                            ->set_types( array(
-                                array(
-                                    'type' => 'post',
-                                    'post_type' => 'news',
-                                ),
-                            ) )
-                        ) )
-                ) )
+
+
+
+
+                // ->add_fields( '1column', 'Content', array(
+                //     Field::make( 'complex', 'fullwidth', 'Content' )
+                //         ->add_fields('tekst', array(
+                //             Field::make( 'rich_text', 'text', 'Tekst' ),
+                //         ) )
+                //         ->add_fields('afbeelding', array(
+                //             Field::make( 'image', 'image', 'Afbeelding' ),
+                //         ) )
+                //         ->add_fields('bestand', array(
+                //             Field::make( 'file', 'file', 'Bestand' ),
+                //             Field::make( 'text', 'title', 'Titel' ),
+                //         ) )
+                //         ->add_fields('nieuws-items', array(
+                //             Field::make( 'association', 'news_associations', __( 'Select news items' ))
+                //             ->set_types( array(
+                //                 array(
+                //                     'type' => 'post',
+                //                     'post_type' => 'news',
+                //                 ),
+                //             ) )
+                //         ) ),
+                // ) )
+
+                // ->add_fields( '2column', 'Content (2 kolommen)', array(
+                //     Field::make( 'complex', 'left', 'Linker kolom' )
+                //         ->add_fields('tekst', array(
+                //             Field::make( 'rich_text', 'text', 'Tekst' ),
+                //         ) )
+                //         ->add_fields('afbeelding', array(
+                //             Field::make( 'image', 'image', 'Afbeelding' ),
+                //         ) )
+                //         ->add_fields('bestand', array(
+                //             Field::make( 'file', 'file', 'Bestand' ),
+                //             Field::make( 'text', 'title', 'Titel' ),
+                //         ) )
+                //         ->add_fields('nieuws-items', array(
+                //             Field::make( 'association', 'news_associations', __( 'Select news items' ))
+                //             ->set_types( array(
+                //                 array(
+                //                     'type' => 'post',
+                //                     'post_type' => 'news',
+                //                 ),
+                //             ) )
+                //         ) ),
+                //     Field::make( 'complex', 'right', 'Rechter kolom' )
+                //         ->add_fields('tekst', array(
+                //             Field::make( 'rich_text', 'text', 'Tekst' ),
+                //         ) )
+                //         ->add_fields('afbeelding', array(
+                //             Field::make( 'image', 'image', 'Afbeelding' ),
+                //         ) )
+                //         ->add_fields('bestand', array(
+                //             Field::make( 'file', 'file', 'Bestand' ),
+                //             Field::make( 'text', 'title', 'Titel' ),
+                //         ) )
+                //         ->add_fields('nieuws-items', array(
+                //             Field::make( 'association', 'news_associations', __( 'Select news items' ))
+                //             ->set_types( array(
+                //                 array(
+                //                     'type' => 'post',
+                //                     'post_type' => 'news',
+                //                 ),
+                //             ) )
+                //         ) )
+                // ) )
+
+
+
+
 
                 // // Third group will be a list of manually selected posts
                 // // used as a simple curated "Related posts" listing
