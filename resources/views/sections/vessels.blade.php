@@ -5,28 +5,30 @@
         <div class="outerSwiperBox">
             <div class="swiper ourVesselsSwiper">
                 <div class="swiper-wrapper">
-                    @for ($x=0;$x<15;$x++)
+                    {{-- @for ($x=0;$x<15;$x++) --}}
+                    @foreach ($vessels as $vess)
                     <div class="swiper-slide">
                         <article>
                             <img src="{{ asset('statics/slideshow/Glomar-Avior.jpg') }}" alt="">
                             <div>
-                                <h3>GLOMAR SUPPORTER</h3>
+                                <h3>{{ $vess->title }}</h3>
                                 <p>DYNAMICALLY POSITIONED - SUBSEA/DIVING/ROV - SURVEY - WALK TO WORK</p>
                                 <dl>
                                     <dt>Type</dt>
-                                    <dd>DSV/ROV/W2W VESSEL</dd>
+                                    <dd>{{ $vess->type_text }}</dd>
                                     <dt>Class</dt>
-                                    <dd>RINA</dd>
+                                    <dd>{{ $vess->class }}</dd>
                                     <dt>Length</dt>
-                                    <dd>60.00 m</dd>
-                                    <dt>Breath</dt>
-                                    <dd>15.60 m</dd>
+                                    <dd>{{ $vess->length }}</dd>
+                                    <dt>Breadth</dt>
+                                    <dd>{{ $vess->breadth }}</dd>
                                 </dl>
                                 <p><a href="">View all specs</a></p>
                             </div>
                         </article>
                     </div>
-                    @endfor
+                    @endforeach
+                    {{-- @endfor --}}
                 </div>
             </div>
             <div class="swiperBtn sb-next swiper-button-next-vessels"></div>

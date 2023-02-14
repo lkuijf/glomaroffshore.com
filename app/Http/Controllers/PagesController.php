@@ -260,10 +260,10 @@ class PagesController extends Controller
                     }
                 }
                 if($sec->_type == 'vessel_boxes') {
-                    $aValuesToRetreive = array('title', 'small_image', 'class', 'xxxx', 'xxxx', 'xxxx', 'xxxx', 'xxxx', 'xxxx', 'xxxx', 'xxxx');
+                    $aValuesToRetreive = array('title', 'small_image', 'type_text', 'class', 'length', 'breadth');
                     foreach($sec->vessels_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
-                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery($oCustPostType->image);
+                        if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
                         $sec->vessels_associations[$k] = $oCustPostType;
                     }
                 }
@@ -685,7 +685,7 @@ class PagesController extends Controller
                 $sections[] = $sec;
             }
         }
-dd($sections);
+// dd($sections);
         $res->pageMetaDescription = $metaDesc;
         $res->pageTitle = $hTitle;
         $res->contentSections = $sections;
