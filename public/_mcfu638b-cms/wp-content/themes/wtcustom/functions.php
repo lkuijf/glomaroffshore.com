@@ -905,7 +905,7 @@ function crbRegisterFields($args) {
         ->add_fields(array(
             Field::make( 'image', 'small_image', __( 'Card image' ) )->set_visible_in_rest_api($visible = true),
             Field::make( 'image', 'large_image', __( 'Hero image' ) )->set_visible_in_rest_api($visible = true),
-            // Field::make( 'text', 'name', __( 'Name' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'type_text', __( 'Type' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'text', 'class', __( 'Class' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'text', 'flag', __( 'Flag' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'text', 'built', __( 'Built' ))->set_visible_in_rest_api($visible = true),
