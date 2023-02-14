@@ -495,8 +495,44 @@ function crbRegisterFields($args) {
                         ),
                     ) )
                 ) )
+                ->add_fields( 'professional_boxes', 'Professionals', array(
+                    Field::make( 'association', 'professional_associations', __( 'Select professionals' ))
+                    ->set_types( array(
+                        array(
+                            'type' => 'post',
+                            'post_type' => 'professional',
+                        ),
+                    ) )
+                ) )
+                ->add_fields( 'news_boxes', 'News', array(
+                    Field::make( 'association', 'news_associations', __( 'Select news (max 3)' ))
+                    ->set_types( array(
+                        array(
+                            'type' => 'post',
+                            'post_type' => 'news',
+                        ),
+                    ) )
+                ) )
                 ->add_fields( 'working_with', 'Working With', array(
                     Field::make( 'checkbox', 'show_working_with', __( 'Show Working with section' ) ),
+                ) )
+                ->add_fields( 'vessels', 'Vessels', array(
+                    Field::make( 'checkbox', 'show_vessels', __( 'Show Vessels section' ) ),
+                ) )
+                ->add_fields( 'statistics', 'Statistics', array(
+                    Field::make( 'select', 'icon', __( 'Icon' ) )
+                        ->set_options( array(
+                            'icon_world' => __( 'World' ),
+                            'icon_crew' => __( 'Crew' ),
+                            'icon_calendar' => __( 'Calendar' ),
+                            'icon_thumb' => __( 'Thumb' ),
+                            'icon_recycle' => __( 'Recycle' ),
+                            'icon_wind' => __( 'Wind' ),
+                            'icon_building' => __( 'Building' ),
+                        ) ),
+                    Field::make( 'text', 'number', __( 'Number' ) ),
+                    Field::make( 'text', 'headline', __( 'Headline' ) ),
+                    Field::make( 'text', 'subline', __( 'Subline' ) ),
                 ) )
                 // ->add_fields( 'text_flex', 'Tekst (2-column)', array(
                 //     Field::make( 'text', 'header', __( 'Header' ) ),
