@@ -1018,7 +1018,7 @@ function crbRegisterFields($args) {
         if($opt[0] == 'media_gallery') {
             $fieldsToAdd[] = Field::make($opt[0], $opt[1], __($opt[2]))->set_type( array( 'image' ) )->set_duplicates_allowed( false );
         } elseif($opt[0] == 'office_assoc') {
-            $fieldsToAdd[] = Field::make( 'association', 'office_associations', __( 'Select 1 office' ))
+            $fieldsToAdd[] = Field::make( 'association', $opt[1], __($opt[2]))
                                 ->set_types( array(
                                     array(
                                         'type' => 'post',
