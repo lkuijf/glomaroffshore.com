@@ -267,6 +267,14 @@ class PagesController extends Controller
                         $sec->vessels_associations[$k] = $oCustPostType;
                     }
                 }
+                if($sec->_type == 'news_boxes') {
+                    $aValuesToRetreive = array('title', 'card_text', 'small_image');
+                    foreach($sec->news_associations as $k => $assoc) {
+                        $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
+                        if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
+                        $sec->news_associations[$k] = $oCustPostType;
+                    }
+                }
 
                 // if($sec->_type == 'hero') {
                 //     $img = str_replace('_mcfu638b-cms/wp-content/uploads', 'media', $sec->image);

@@ -158,6 +158,9 @@
 }
 .introTextContent > div .introTextWrap > img {
   width: 100%;
+  aspect-ratio: 16/10;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .introTextContent > div .introTextWrap > div {
   padding: 40px;
@@ -399,7 +402,13 @@
   }
 }
 .newsContent .newsContainer article {
+  flex: 1 1 33%;
   background-color: #F2F2F2;
+}
+@media (max-width: 768px) {
+  .newsContent .newsContainer article {
+    flex: 1 1 auto;
+  }
 }
 .newsContent .newsContainer article > div {
   text-align: left;
@@ -896,13 +905,18 @@ header .logoNavWrap > div > img {
 }
 
 footer {
-  color: #CCC;
+  color: #FFF;
 }
 footer a {
   color: #CCC;
 }
 footer a:hover {
   color: #FFF;
+}
+footer h4 {
+  font-size: 1.5em;
+  line-height: 1em;
+  font-weight: normal;
 }
 footer .footer {
   background-color: #54595F;
@@ -919,10 +933,33 @@ footer .footer > div > div {
   padding: 20px 0;
   gap: 20px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   footer .footer > div > div {
     flex-wrap: wrap;
   }
+}
+footer .footer > div > div > div {
+  padding: 0 20px;
+  flex-basis: 0;
+  border-left: 1px solid #333;
+}
+footer .footer > div > div > div > :first-child {
+  margin-top: 0;
+}
+footer .footer > div > div > div:nth-child(1) {
+  flex-grow: 1;
+}
+footer .footer > div > div > div:nth-child(2) {
+  flex-grow: 2;
+}
+footer .footer > div > div > div:nth-child(3) {
+  flex-grow: 2;
+}
+footer .footer > div > div > div:nth-child(4) {
+  flex-grow: 3;
+}
+footer .footer > div > div > div:nth-child(5) {
+  flex-grow: 2;
 }
 footer .bottomBar {
   background-color: #43464C;

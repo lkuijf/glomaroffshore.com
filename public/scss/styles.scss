@@ -335,12 +335,17 @@ header {
 }
 
 footer {
-    color: $colorGreyLight;
+    color: $colorWhite;
     a {
         color: $colorGreyLight;
         &:hover {
             color: $colorWhite;
         }
+    }
+    h4 {
+        font-size: 1.5em;
+        line-height: 1em;
+        font-weight: normal;
     }
     .footer {
         background-color: $colorGrey;
@@ -354,11 +359,34 @@ footer {
             }
             > div {
                 display: flex;
-                @media (max-width: $sbp3_tablet) {
+                @media (max-width: $sbp1_desktop) {
                     flex-wrap: wrap;
                 }
                 padding: 20px 0;
                 gap: 20px;
+                > div {
+                    > :first-child {
+                        margin-top: 0;
+                    }
+                    padding: 0 20px;
+                    flex-basis: 0;
+                    border-left: 1px solid $colorBlack;
+                    &:nth-child(1) {
+                        flex-grow: 1;
+                    }
+                    &:nth-child(2) {
+                        flex-grow: 2;
+                    }
+                    &:nth-child(3) {
+                        flex-grow: 2;
+                    }
+                    &:nth-child(4) {
+                        flex-grow: 3;
+                    }
+                    &:nth-child(5) {
+                        flex-grow: 2;
+                    }
+                }
             }
         }
     }

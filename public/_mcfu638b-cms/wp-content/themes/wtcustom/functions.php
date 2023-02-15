@@ -27,9 +27,9 @@ $websiteOptions[] = array('text', 'form_error', 'Formulier error melding');
 $websiteOptions[] = array('text', 'phone_number', 'Telefoonnummer (algemeen, o.a. gebruikt in "Call us"-box en header)');
 $websiteOptions[] = array('text', 'email_address', 'E-mail adres (algemeen, o.a. gebruikt in contact formulier en header)');
 // $websiteOptions[] = array('textarea', 'wt_website_textarea1', 'Website textarea 1');
-$websiteOptions[] = array('rich_text', 'footer_tekst_1', 'Footer blok 1 tekst');
-$websiteOptions[] = array('rich_text', 'footer_tekst_2', 'Footer blok 2 tekst');
-$websiteOptions[] = array('rich_text', 'footer_tekst_3', 'Footer blok 3 tekst');
+$websiteOptions[] = array('office_assoc', 'footer_office_1', 'Footer office 1');
+$websiteOptions[] = array('office_assoc', 'footer_office_2', 'Footer office 2');
+// $websiteOptions[] = array('rich_text', 'footer_tekst_3', 'Footer blok 3 tekst');
 // $websiteOptions[] = array('rich_text', 'footer_tekst_2', 'Footer tekst rechts');
 // $websiteOptions[] = array('rich_text', 'wt_website_footer2', 'Footer blok 2 tekst');
 // $websiteOptions[] = array('file', 'wt_algemene_voorwaarden', 'Algemene voorwaarden');
@@ -1017,7 +1017,14 @@ function crbRegisterFields($args) {
     foreach($args['websiteOptions'] as $opt) {
         if($opt[0] == 'media_gallery') {
             $fieldsToAdd[] = Field::make($opt[0], $opt[1], __($opt[2]))->set_type( array( 'image' ) )->set_duplicates_allowed( false );
-            // $fieldsToAdd[] = Field::make($opt[0], $opt[1], __($opt[2]));
+        } elseif($opt[0] == 'office_assoc') {
+            $fieldsToAdd[] = Field::make( 'association', 'office_associations', __( 'Select 1 office' ))
+                                ->set_types( array(
+                                    array(
+                                        'type' => 'post',
+                                        'post_type' => 'office',
+                                    ),
+                                ) );
         } else {
             $fieldsToAdd[] = Field::make($opt[0], $opt[1], __($opt[2]));
         }

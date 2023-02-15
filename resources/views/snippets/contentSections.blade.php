@@ -60,6 +60,9 @@
     @if($section->_type == 'vessel_boxes')
         @include('sections.vessels', ['vessels' => $section->vessels_associations])
     @endif
+    @if($section->_type == 'news_boxes')
+        @include('sections.news', ['news' => $section->news_associations])
+    @endif
 
         {{-- @if ($section['type'] == '1column')
             @foreach ($section['1column'] as $secData)

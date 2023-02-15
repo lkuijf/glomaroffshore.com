@@ -280,7 +280,7 @@
         </div> --}}
       
 
-        <div class="newsContent">
+        {{-- <div class="newsContent">
             <div class="inner">
                 <h2>LATEST <strong>NEWS</strong></h2>
 
@@ -301,7 +301,7 @@
 
                 <p><a href="" class="btnWhiteBorder">ALL NEWS</a></p>
             </div>
-        </div>
+        </div> --}}
       
 
         
@@ -313,19 +313,23 @@
                 <img src="{{ asset('statics/glomar-offshore-logo-white.png') }}" alt="">
                 <div>
                     <div>
-                        <p>GLOMAR <strong>NETHERLANDS</strong></p>
+                        <h4><strong>MENU</strong></h4>
+                        {!! $data['html_menu'] !!}
+                    </div>
+                    <div>
+                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                     <div>
-                        <p>GLOMAR <strong>NETHERLANDS</strong></p>
+                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                     <div>
-                        <p>GLOMAR <strong>NETHERLANDS</strong></p>
+                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                     <div>
-                        <p>GLOMAR <strong>NETHERLANDS</strong></p>
+                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div>
