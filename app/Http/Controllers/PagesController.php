@@ -58,39 +58,35 @@ class PagesController extends Controller
         $options = $this->getWebsiteOptions();
 // dd($options);
 
-        // if(isset($options['header_image'])) $options['header_image'] = $this->generateImageUrl($options['header_image']);
+        // if(isset($options['header_image'])) $options['header_image'] = $this->generateMediaUrl($options['header_image']);
         if(isset($options->working_with)) $options->working_with = $this->getMediaGallery($options->working_with);
         $vessels = array();
         $news = array();
         $vessel = false;
         $newsItem = false;
-        if($section == 'vessels' && !$page) {
-            $customPost = new CustomPostApi('vessel');
-            $vessels = $customPost->get();
-            foreach($vessels as $k => $item) {
-                $vessels[$k]->small_image = $this->getMediaGallery($item->small_image);
+        if($section == 'vessels' || $section == 'news') {
+            if(!$page) {
+                if($section == 'vessels') $customPost = new CustomPostApi('vessel');
+                if($section == 'news') $customPost = new CustomPostApi('news');
+                $items = $customPost->get();
+                foreach($items as $k => $item) {
+                    $items[$k]->small_image = $this->getMediaGallery($item->small_image);
+                }
+                if($section == 'vessels') $vessels = $items;
+                if($section == 'news') $news = $items;
             }
-        }
-        if($section == 'news' && !$page) {
-            $customPost = new CustomPostApi('news');
-            $news = $customPost->get();
-            foreach($news as $k => $item) {
-                $news[$k]->small_image = $this->getMediaGallery($item->small_image);
+            if($page) {
+                if($section == 'vessels') $customPost = new CustomPostApi('vessel', false, $page);
+                if($section == 'news') $customPost = new CustomPostApi('news', false, $page);
+                $item = $customPost->get();
+                if(!$item) return abort(404);
+                $item = $item[0];
+                $item->large_image = $this->getMediaGallery($item->large_image);
+                $item->small_image = $this->getMediaGallery($item->small_image);
+                if($item->{'pdf-sheet'}) $item->{'pdf-sheet'} = $this->generateMediaUrl($item->{'pdf-sheet'});
+                if($section == 'vessels') $vessel = $item;
+                if($section == 'news') $newsItem = $item;
             }
-        }
-        if($section == 'vessels' && $page) {
-            $customPost = new CustomPostApi('vessel', false, $page);
-            $vessel = $customPost->get();
-            if(!$vessel) return abort(404);
-            $vessel = $vessel[0];
-            $vessel->large_image = $this->getMediaGallery($vessel->large_image);
-        }
-        if($section == 'news' && $page) {
-            $customPost = new CustomPostApi('news', false, $page);
-            $newsItem = $customPost->get();
-            if(!$newsItem) return abort(404);
-            $newsItem = $newsItem[0];
-            $newsItem->large_image = $this->getMediaGallery($newsItem->large_image);
         }
 // dd($vessel);
 
@@ -130,8 +126,8 @@ class PagesController extends Controller
             $allIns = $interviews->get();
             $allInterviews = $allIns;
             foreach($allInterviews as $i => $inter) {
-                $url = $this->generateImageUrl($inter->image);
-                $alt = $this->generateImageAlt($inter->image);
+                $url = $this->generateMediaUrl($inter->image);
+                $alt = $this->generateMediaAlt($inter->image);
                 $allInterviews[$i]->image = array('url' => $url, 'alt' => $alt);
             }
             $data['interviews'] = $allInterviews;
@@ -174,8 +170,8 @@ class PagesController extends Controller
 
         foreach($sidebarJobs as $k => $job) {
             if($job->image) {
-                $url = $this->generateImageUrl($job->image);
-                $alt = $this->generateImageAlt($job->image);
+                $url = $this->generateMediaUrl($job->image);
+                $alt = $this->generateMediaAlt($job->image);
                 $sidebarJobs[$k]->image = [];
                 $sidebarJobs[$k]->image['url'] = $url;
                 $sidebarJobs[$k]->image['alt'] = $alt;
@@ -194,8 +190,8 @@ class PagesController extends Controller
             'apply_for_job' => $apply,
             'job_offer_title' => $jo[0]->title->rendered,
             'job_offer_content' => $jo[0]->text,
-            'job_offer_img_url' => ($jo[0]->image?$this->generateImageUrl((int)$jo[0]->image):''),
-            'job_offer_img_alt' => ($jo[0]->image?$this->generateImageAlt((int)$jo[0]->image):''),
+            'job_offer_img_url' => ($jo[0]->image?$this->generateMediaUrl((int)$jo[0]->image):''),
+            'job_offer_img_alt' => ($jo[0]->image?$this->generateMediaAlt((int)$jo[0]->image):''),
             'job_offer_job_cat' => $this->getTerms($jo[0]->job_cat),
             'job_offer_uren_per_week' => $this->getTerms($jo[0]->uren_per_week),
             'job_offer_type_job' => $this->getTerms($jo[0]->type_job),
@@ -233,8 +229,8 @@ class PagesController extends Controller
             'interview_title' => $in[0]->title->rendered,
             'interview_text' => $in[0]->text,
             // 'job_offer_content' => $jo[0]->text,
-            // 'job_offer_img_url' => ($jo[0]->image?$this->generateImageUrl((int)$jo[0]->image):''),
-            // 'job_offer_img_alt' => ($jo[0]->image?$this->generateImageAlt((int)$jo[0]->image):''),
+            // 'job_offer_img_url' => ($jo[0]->image?$this->generateMediaUrl((int)$jo[0]->image):''),
+            // 'job_offer_img_alt' => ($jo[0]->image?$this->generateMediaAlt((int)$jo[0]->image):''),
             // 'job_offer_job_cat' => $this->getTerms($jo[0]->job_cat),
             // 'job_offer_uren_per_week' => $this->getTerms($jo[0]->uren_per_week),
             // 'job_offer_type_job' => $this->getTerms($jo[0]->type_job),
@@ -335,12 +331,12 @@ class PagesController extends Controller
                 //         $s['1column'] = array();
                 //         foreach($sec->fullwidth as $fullWidthItem) {
                 //             if($fullWidthItem->_type == 'afbeelding') {
-                //                 $fullWidthItem->img = $this->generateImageUrl($fullWidthItem->image);
-                //                 $fullWidthItem->alt = $this->generateImageAlt($fullWidthItem->image);
+                //                 $fullWidthItem->img = $this->generateMediaUrl($fullWidthItem->image);
+                //                 $fullWidthItem->alt = $this->generateMediaAlt($fullWidthItem->image);
                 //                 unset($fullWidthItem->image);
                 //             }
                 //             if($fullWidthItem->_type == 'bestand') {
-                //                 $fullWidthItem->file = $this->generateImageUrl($fullWidthItem->file);
+                //                 $fullWidthItem->file = $this->generateMediaUrl($fullWidthItem->file);
                 //             }
 
                 //             if($fullWidthItem->_type == 'nieuws-items') {
@@ -364,12 +360,12 @@ class PagesController extends Controller
                 //     if(isset($sec->left) && count($sec->left)) {
                 //         foreach($sec->left as $leftItem) {
                 //             if($leftItem->_type == 'afbeelding') {
-                //                 $leftItem->img = $this->generateImageUrl($leftItem->image);
-                //                 $leftItem->alt = $this->generateImageAlt($leftItem->image);
+                //                 $leftItem->img = $this->generateMediaUrl($leftItem->image);
+                //                 $leftItem->alt = $this->generateMediaAlt($leftItem->image);
                 //                 unset($leftItem->image);
                 //             }
                 //             if($leftItem->_type == 'bestand') {
-                //                 $leftItem->file = $this->generateImageUrl($leftItem->file);
+                //                 $leftItem->file = $this->generateMediaUrl($leftItem->file);
                 //             }
                 //             if($leftItem->_type == 'nieuws-items') {
                 //                 $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
@@ -387,12 +383,12 @@ class PagesController extends Controller
                 //     if(isset($sec->right) && count($sec->right)) {
                 //         foreach($sec->right as $rightItem) {
                 //             if($rightItem->_type == 'afbeelding') {
-                //                 $rightItem->img = $this->generateImageUrl($rightItem->image);
-                //                 $rightItem->alt = $this->generateImageAlt($rightItem->image);
+                //                 $rightItem->img = $this->generateMediaUrl($rightItem->image);
+                //                 $rightItem->alt = $this->generateMediaAlt($rightItem->image);
                 //                 unset($rightItem->image);
                 //             }
                 //             if($rightItem->_type == 'bestand') {
-                //                 $rightItem->file = $this->generateImageUrl($rightItem->file);
+                //                 $rightItem->file = $this->generateMediaUrl($rightItem->file);
                 //             }
                 //             if($rightItem->_type == 'nieuws-items') {
                 //                 $aValuesToRetreive = array('title', 'site_title', 'news_url', 'text', 'image');
@@ -421,8 +417,8 @@ class PagesController extends Controller
 
 
                     // $s['image_opacity'] = $sec->image_opacity;
-                    // $s['img']['url'] = $this->generateImageUrl($sec->image);
-                    // $s['img']['alt'] = $this->generateImageAlt($sec->image);
+                    // $s['img']['url'] = $this->generateMediaUrl($sec->image);
+                    // $s['img']['alt'] = $this->generateMediaAlt($sec->image);
                     // $s['checked'] = $sec->extra_padding;
                     // $s['text'] = $sec->text;
                     // $s['links'] = [];
@@ -491,8 +487,8 @@ class PagesController extends Controller
                     $s['grid_items'] = [];
                     foreach($sec->crb_media_item as $crbItem) {
                         if(isset($crbItem->image) && $crbItem->image) {
-                            $crbItem->image_url = $this->generateImageUrl($crbItem->image);
-                            $crbItem->image_alt = $this->generateImageAlt($crbItem->image);
+                            $crbItem->image_url = $this->generateMediaUrl($crbItem->image);
+                            $crbItem->image_alt = $this->generateMediaAlt($crbItem->image);
                             unset($crbItem->image);
                         }
                         $s['grid_items'][] = $crbItem;
@@ -502,8 +498,8 @@ class PagesController extends Controller
                     $s['info_icons'] = [];
                     foreach($sec->info_icons as $iItem) {
                         if(isset($iItem->image) && $iItem->image) {
-                            $iItem->image_url = $this->generateImageUrl($iItem->image);
-                            $iItem->image_alt = $this->generateImageAlt($iItem->image);
+                            $iItem->image_url = $this->generateMediaUrl($iItem->image);
+                            $iItem->image_alt = $this->generateMediaAlt($iItem->image);
                             unset($iItem->image);
                         }
                         $s['info_icons'][] = $iItem;
@@ -528,8 +524,8 @@ class PagesController extends Controller
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($jobOfferAssoc->subtype, $jobOfferAssoc->id, $aValuesToRetreive);
                         if($oCustPostType->image) {
                             $aI = array();
-                            $aI['url'] = $this->generateImageUrl($oCustPostType->image);
-                            $aI['alt'] = $this->generateImageAlt($oCustPostType->image);
+                            $aI['url'] = $this->generateMediaUrl($oCustPostType->image);
+                            $aI['alt'] = $this->generateMediaAlt($oCustPostType->image);
                             $oCustPostType->image = $aI;
                         }
 
@@ -656,8 +652,8 @@ class PagesController extends Controller
                 //             $b['icon'] = $box->icon;
                 //             $b['image']['url'] = '';
                 //             $b['image']['alt'] = '';
-                //             if($box->image) $b['image']['url'] = $this->generateImageUrl($box->image);
-                //             if($box->image) $b['image']['alt'] = $this->generateImageAlt($box->image);
+                //             if($box->image) $b['image']['url'] = $this->generateMediaUrl($box->image);
+                //             if($box->image) $b['image']['alt'] = $this->generateMediaAlt($box->image);
                 //             $b['text'] = $box->text;
                 //             $s['icon_boxes'][] = $b;
                 //         }
@@ -728,8 +724,8 @@ class PagesController extends Controller
                 //     foreach($sec->testimonials as $i => $tes) {
                 //         $imgUrl = '';
                 //         $imgAlt = '';
-                //         if($tes->image) $imgUrl = $this->generateImageUrl($tes->image);
-                //         if($tes->image) $imgAlt = $this->generateImageAlt($tes->image);
+                //         if($tes->image) $imgUrl = $this->generateMediaUrl($tes->image);
+                //         if($tes->image) $imgAlt = $this->generateMediaAlt($tes->image);
                 //         $sec->testimonials[$i]->image = new \stdClass();
                 //         $sec->testimonials[$i]->image->url = $imgUrl;
                 //         $sec->testimonials[$i]->image->alt = $imgAlt;
@@ -770,8 +766,8 @@ class PagesController extends Controller
         if(!is_array($gall)) $gall = array($gall);
 
         foreach($gall as $mediaId) {
-            $url = $this->generateImageUrl($mediaId);
-            $alt = $this->generateImageAlt($mediaId);
+            $url = $this->generateMediaUrl($mediaId);
+            $alt = $this->generateMediaAlt($mediaId);
             if(isset($this->allMediaById[$mediaId]) && isset($this->allMediaById[$mediaId]->alt) && $this->allMediaById[$mediaId]->alt) $alt = $this->allMediaById[$mediaId]->alt;
             $i['url'] = $url;
             $i['alt'] = $alt;
@@ -779,13 +775,13 @@ class PagesController extends Controller
         }
         return $res;
     }
-    public function generateImageUrl($mediaId) {
+    public function generateMediaUrl($mediaId) {
         if(isset($this->allMediaById[$mediaId]))
             return str_replace(array('http://', '_mcfu638b-cms/wp-content/uploads'), array('https://', 'media'), $this->allMediaById[$mediaId]->url);
         else
             return 'https://via.placeholder.com/800x600?text=Geen+afbeelding+gevonden';
     }
-    public function generateImageAlt($mediaId) {
+    public function generateMediaAlt($mediaId) {
         if(isset($this->allMediaById[$mediaId]))
             return str_replace(['-', '_'], ' ', pathinfo($this->allMediaById[$mediaId]->url, PATHINFO_FILENAME));
         else

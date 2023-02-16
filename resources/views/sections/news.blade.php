@@ -17,6 +17,6 @@
         @endforeach
         </div>
 
-        <p><a href="{{ url('news') }}" class="btnWhiteBorder">ALL NEWS</a></p>
+        <p><a href="{{ url('news') }}" class="ctaBtn btnWhiteBorder">ALL NEWS</a></p>
     </div>
 </div>

@@ -39,8 +39,8 @@
     <header>
         <div class="topBar">
             <div class="inner">
-                <div><a href="tel:+31223525030" class="topBarBtn_phone"><span>+31 223 525 030</span></a><a href="mailto:info@glomaroffshore.com" class="topBarBtn_email"><span>info@glomaroffshore.com</span></a></div>
-                <div><a href="" class="topBarBtn_linkedin"><span>LinkedIn</span></a><a href="" class="topBarBtn_twitter"><span>Twitter</span></a></div>
+                <div><a href="tel:{{ $data['website_options']->phone_number }}" class="topBarBtn_phone"><span>{{ $data['website_options']->phone_number }}</span></a><a href="mailto:{{ $data['website_options']->email_address }}" class="topBarBtn_email"><span>{{ $data['website_options']->email_address }}</span></a></div>
+                <div><a href="{{ $data['website_options']->linkedin }}" class="topBarBtn_linkedin"><span>LinkedIn</span></a><a href="{{ $data['website_options']->twitter }}" class="topBarBtn_twitter"><span>Twitter</span></a></div>
             </div>
         </div>
         <div class="logoNavWrap">

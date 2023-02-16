@@ -9,12 +9,12 @@
             </div>
             @if($btn_orange_url && $btn_orange_text)
             <div>
-                <a href="{!! $btn_orange_url !!}" class="btnOrange">{{ $btn_orange_text }}</a>
+                <a href="{!! $btn_orange_url !!}" class="ctaBtn btnOrange">{{ $btn_orange_text }}</a>
             </div>
             @endif
             @if($btn_transparent_url && $btn_transparent_text)
             <div>
-                <a href="{!! $btn_transparent_url !!}" class="btnTransparent">{{ $btn_transparent_text }}</a>
+                <a href="{!! $btn_transparent_url !!}" class="ctaBtn btnTransparent">{{ $btn_transparent_text }}</a>
             </div>
             @endif
         </div>
@@ -28,12 +28,12 @@
             </div>
             @if($btn_orange_url_2 && $btn_orange_text_2)
             <div>
-                <a href="{!! $btn_orange_url_2 !!}" class="btnOrange">{{ $btn_orange_text_2 }}</a>
+                <a href="{!! $btn_orange_url_2 !!}" class="ctaBtn btnOrange">{{ $btn_orange_text_2 }}</a>
             </div>
             @endif
             @if($btn_transparent_url_2 && $btn_transparent_text_2)
             <div>
-                <a href="{!! $btn_transparent_url_2 !!}" class="btnTransparent">{{ $btn_transparent_text_2 }}</a>
+                <a href="{!! $btn_transparent_url_2 !!}" class="ctaBtn btnTransparent">{{ $btn_transparent_text_2 }}</a>
             </div>
             @endif
         </div>

@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'glomaroffshore';
-  src: url('../font/glomaroffshore.eot?39558522');
-  src: url('../font/glomaroffshore.eot?39558522#iefix') format('embedded-opentype'),
-       url('../font/glomaroffshore.woff2?39558522') format('woff2'),
-       url('../font/glomaroffshore.woff?39558522') format('woff'),
-       url('../font/glomaroffshore.ttf?39558522') format('truetype'),
-       url('../font/glomaroffshore.svg?39558522#glomaroffshore') format('svg');
+  src: url('../font/glomaroffshore.eot?20586197');
+  src: url('../font/glomaroffshore.eot?20586197#iefix') format('embedded-opentype'),
+       url('../font/glomaroffshore.woff2?20586197') format('woff2'),
+       url('../font/glomaroffshore.woff?20586197') format('woff'),
+       url('../font/glomaroffshore.ttf?20586197') format('truetype'),
+       url('../font/glomaroffshore.svg?20586197#glomaroffshore') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'glomaroffshore';
-    src: url('../font/glomaroffshore.svg?39558522#glomaroffshore') format('svg');
+    src: url('../font/glomaroffshore.svg?20586197#glomaroffshore') format('svg');
   }
 }
 */
@@ -67,5 +67,6 @@
 .icon-thumbs-down:before { content: '\e80a'; } /* '' */
 .icon-arrows-cw:before { content: '\e80b'; } /* '' */
 .icon-wind:before { content: '\e80c'; } /* '' */
+.icon-download:before { content: '\e80d'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */
 .icon-building:before { content: '\f0f7'; } /* '' */

@@ -26,7 +26,7 @@
             <div class="swiperBtn sb-prev swiper-button-prev-prof"></div>
         </div>
 
-        <p><a href="" class="btnWhiteBorder">JOIN OUR TEAM</a></p>
+        <p><a href="" class="ctaBtn btnWhiteBorder">JOIN OUR TEAM</a></p>
 
     </div>
 </div>

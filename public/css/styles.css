@@ -174,11 +174,11 @@
 .introTextContent > div .introTextWrap > div:first-of-type {
   text-align: left;
 }
-.introTextContent > div .introTextWrap > div a {
+.introTextContent > div .introTextWrap > div a:not(.ctaBtn) {
   color: #333;
   text-decoration: none;
 }
-.introTextContent > div .introTextWrap > div a:hover {
+.introTextContent > div .introTextWrap > div a:not(.ctaBtn):hover {
   text-decoration: underline;
 }
 
@@ -520,6 +520,99 @@
   }
 }
 
+.vesselDetailPageTextWrap {
+  background-color: #F2F2F2;
+}
+.vesselDetailPageTextWrap h2 {
+  text-align: center;
+}
+.vesselDetailPageTextWrap .startInfo {
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .vesselDetailPageTextWrap .startInfo {
+    display: block;
+  }
+}
+.vesselDetailPageTextWrap .startInfo div {
+  flex: 1 1 50%;
+}
+.vesselDetailPageTextWrap .startInfo div img {
+  width: 100%;
+}
+.vesselDetailPageTextWrap .startInfo div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 40px;
+  font-size: 1.2em;
+}
+@media (max-width: 768px) {
+  .vesselDetailPageTextWrap .startInfo div:last-child {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+}
+.vesselDetailPageTextWrap .startInfo div dl {
+  margin: 0;
+}
+.vesselDetailPageTextWrap .startInfo div dl dt, .vesselDetailPageTextWrap .startInfo div dl dd {
+  margin: 10px 0;
+}
+.vesselDetailPageTextWrap .startInfo div dl dt:first-child, .vesselDetailPageTextWrap .startInfo div dl dd:first-child {
+  margin: 0;
+}
+.vesselDetailPageTextWrap .startInfo div dl dt {
+  font-weight: bold;
+}
+.vesselDetailPageTextWrap .specsWrap {
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .vesselDetailPageTextWrap .specsWrap {
+    display: block;
+  }
+}
+.vesselDetailPageTextWrap .specsWrap .specBoxes {
+  flex: 1 1 50%;
+}
+.vesselDetailPageTextWrap .specsWrap .specBoxes div {
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: #FFF;
+}
+.vesselDetailPageTextWrap .specsWrap .specBoxes div h4 {
+  font-size: 1.5em;
+  margin: 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid #3A3E43;
+}
+.vesselDetailPageTextWrap .specsWrap .specBoxes div ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.vesselDetailPageTextWrap .specsWrap .specBoxes div ul li {
+  padding: 10px 20px;
+}
+.vesselDetailPageTextWrap .specsWrap .specBoxes div ul li:nth-child(odd) {
+  background-color: #F2F2F2;
+}
+.vesselDetailPageTextWrap .specsWrap .specBoxes div ul li span {
+  display: inline-block;
+  width: 50%;
+}
+.vesselDetailPageTextWrap .vesselButtons {
+  padding: 40px 0;
+  text-align: center;
+}
+.vesselDetailPageTextWrap .vesselButtons .btnWhiteBorder:after {
+  font-family: "glomaroffshore";
+  content: "  \e80d";
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -553,7 +646,7 @@ img {
   vertical-align: middle;
 }
 
-ul {
+nav ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -625,31 +718,49 @@ img.alignleft {
   clear: both;
 }
 
-.btnOrange {
+.ctaBtn {
+  transition: transform 0.2s ease-out;
+}
+.ctaBtn:hover {
+  transform: translateY(-5px);
+}
+.ctaBtn.btnOrange {
   background-color: #FF5303;
+  color: #FFF;
   display: inline-block;
   padding: 20px 40px;
-  color: #FFF;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.2em;
 }
-.btnOrange:hover {
+.ctaBtn.btnOrange:hover {
   text-decoration: underline;
 }
-
-.btnTransparent {
+.ctaBtn.btnTransparent {
   display: inline-block;
   padding: 20px 40px;
   color: #54595F;
   text-decoration: none;
   font-size: 1.2em;
 }
-.btnTransparent:hover {
+.ctaBtn.btnTransparent:hover {
   color: #333;
 }
-
-.btnWhiteBorder {
+.ctaBtn.btnTransparentPhone {
+  display: inline-block;
+  padding: 20px 40px;
+  color: #54595F;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+.ctaBtn.btnTransparentPhone:hover {
+  color: #333;
+}
+.ctaBtn.btnTransparentPhone:before {
+  font-family: "glomaroffshore";
+  content: "\e801  ";
+}
+.ctaBtn.btnWhiteBorder {
   display: inline-block;
   padding: 20px 40px;
   color: #54595F;
@@ -658,7 +769,7 @@ img.alignleft {
   background-color: #FFF;
   border: 1px solid #FF5303;
 }
-.btnWhiteBorder:hover {
+.ctaBtn.btnWhiteBorder:hover {
   color: #FFF;
   background-color: #FF5303;
 }

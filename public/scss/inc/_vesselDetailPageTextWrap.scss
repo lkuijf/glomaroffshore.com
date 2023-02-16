@@ -1,0 +1,84 @@
+.vesselDetailPageTextWrap {
+    background-color: $colorGreyLighter;
+    h2 {
+        text-align: center;
+    }
+    .startInfo {
+        display: flex;
+        @media (max-width: $sbp3_tablet) {display:block}
+        gap: 20px;
+        div {
+            flex: 1 1 50%;
+            img {
+                width: 100%;
+            }
+            &:last-child {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding-left: 40px;
+                @media (max-width: $sbp3_tablet) {padding-left: 0;padding-top: 20px;}
+                font-size: 1.2em;
+            }
+            dl {
+                margin: 0;
+                dt, dd {
+                    margin: 10px 0;
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
+                dt {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .specsWrap {
+        display: flex;
+        // @media (max-width: $sbp3_tablet) {flex-wrap: wrap;}
+        @media (max-width: $sbp3_tablet) {display:block}
+        gap: 20px;
+        .specBoxes {
+            // outline: 1px solid red;
+            flex: 1 1 50%;
+            div {
+                margin-top: 20px;
+                -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+                box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+                background-color: $colorWhite;
+                h4 {
+                    font-size: 1.5em;
+                    margin: 0;
+                    padding: 10px 20px;
+                    border-bottom: 1px solid $colorGreyDark;
+                }
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    li {
+                        padding: 10px 20px;
+                        &:nth-child(odd) {
+                            background-color: $colorGreyLighter;
+                        }
+                        span {
+                            display: inline-block;
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .vesselButtons {
+        padding: 40px 0;
+        text-align: center;
+        .btnWhiteBorder {
+            &:after {
+                font-family: "glomaroffshore";
+                content: '\00a0\00a0\e80d'
+            }
+        }
+    }
+}

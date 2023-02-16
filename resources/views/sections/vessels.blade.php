@@ -28,6 +28,6 @@
             <div class="swiper-pagination"></div>
         </div>
 
-        <p><a href="{{ url('vessels') }}" class="btnWhiteBorder">BROWSE ALL OUR VESSELS</a></p>
+        <p><a href="{{ url('vessels') }}" class="ctaBtn btnWhiteBorder">BROWSE ALL OUR VESSELS</a></p>
     </div>
 </div>

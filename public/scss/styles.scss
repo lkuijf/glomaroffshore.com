@@ -37,6 +37,7 @@ $fontSize: 16px;
 @import 'inc/newsContent';
 @import 'inc/hero';
 @import 'inc/newsDetailPageTextWrap';
+@import 'inc/vesselDetailPageTextWrap';
 
 html, body {
     margin: 0;
@@ -65,7 +66,7 @@ html {
 img {
     vertical-align: middle; // removes bottom 3px margin.
 }
-ul {
+nav ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -121,39 +122,59 @@ img.alignright {float:right;margin:5px 0 5px 20px;} // wp alignment
 img.alignleft {float:left;margin:5px 20px 5px 0;} // wp alignment
 .clearer{clear:both;} // clear all
 
-.btnOrange {
-    background-color: $colorOrange;
-    display: inline-block;
-    padding: 20px 40px;
-    color: $colorWhite;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2em;
+.ctaBtn {
+    transition: transform 0.2s ease-out;
     &:hover {
-        text-decoration: underline;
+        transform: translateY(-5px);
     }
-}
-.btnTransparent {
-    display: inline-block;
-    padding: 20px 40px;
-    color: $colorGrey;
-    text-decoration: none;
-    font-size: 1.2em;
-    &:hover {
-        color: $colorBlack;
-    }
-}
-.btnWhiteBorder {
-    display: inline-block;
-    padding: 20px 40px;
-    color: $colorGrey;
-    text-decoration: none;
-    font-size: 1.2em;
-    background-color: $colorWhite;
-    border: 1px solid $colorOrange;
-    &:hover {
-        color: $colorWhite;
+    &.btnOrange {
         background-color: $colorOrange;
+        color: $colorWhite;
+        display: inline-block;
+        padding: 20px 40px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2em;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &.btnTransparent {
+        display: inline-block;
+        padding: 20px 40px;
+        color: $colorGrey;
+        text-decoration: none;
+        font-size: 1.2em;
+        &:hover {
+            color: $colorBlack;
+        }
+    }
+    &.btnTransparentPhone {
+        display: inline-block;
+        padding: 20px 40px;
+        color: $colorGrey;
+        text-decoration: none;
+        font-size: 1.2em;
+        &:hover {
+            color: $colorBlack;
+        }
+        &:before {
+            font-family: "glomaroffshore";
+            content: '\e801\00a0\00a0'
+    }
+    }
+    &.btnWhiteBorder {
+        display: inline-block;
+        padding: 20px 40px;
+        color: $colorGrey;
+        text-decoration: none;
+        font-size: 1.2em;
+        background-color: $colorWhite;
+        border: 1px solid $colorOrange;
+        &:hover {
+            color: $colorWhite;
+            background-color: $colorOrange;
+        }
     }
 }
 .contactIcon {

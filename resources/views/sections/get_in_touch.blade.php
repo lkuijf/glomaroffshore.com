@@ -6,6 +6,6 @@
             <a href="{!! $data['website_options']->linkedin !!}" class="linkedIn"><span>LinkedIn</span></a>
             <a href="{!! $data['website_options']->twitter !!}" class="twitter"><span>Twitter</span></a>
         </div>
-        <p><a href="{{ url('contact') }}" class="btnWhiteBorder">CONTACT</a></p>
+        <p><a href="{{ url('contact') }}" class="ctaBtn btnWhiteBorder">CONTACT</a></p>
     </div>
 </div>

@@ -33,7 +33,7 @@
                 &:first-of-type {
                     text-align: left;
                 }
-                a {
+                a:not(.ctaBtn) {
                     color: $colorBlack;
                     text-decoration: none;
                     &:hover {
