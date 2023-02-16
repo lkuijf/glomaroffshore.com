@@ -452,18 +452,18 @@ function crbRegisterFields($args) {
                     Field::make( 'image', 'image', __( 'Image' ) ),
                     Field::make( 'complex', 'cta_button', __( 'Add Button' ) )
                         ->add_fields( array(
-                            // Field::make( 'select', 'color', __( 'Color' ) )
-                            // ->set_options( array(
-                            //     'full_orange' => __( 'Full orange' ),
-                            //     'orange_border' => __( 'White with orange border' ),
-                            //     'transparent' => __( 'Transparent' ),
-                            // ) ),
-                            // Field::make( 'select', 'icon', __( 'Icon' ) )
-                            // ->set_options( array(
-                            //     'no_icon' => __( 'No icon' ),
-                            //     'icon_phone' => __( 'Phone' ),
-                            //     'icon_external_link' => __( 'External link' ),
-                            // ) ),
+                            Field::make( 'select', 'color', __( 'Color' ) )
+                            ->set_options( array(
+                                'full_orange' => __( 'Full orange' ),
+                                'orange_border' => __( 'White with orange border' ),
+                                'transparent' => __( 'Transparent' ),
+                            ) ),
+                            Field::make( 'select', 'icon', __( 'Icon' ) )
+                            ->set_options( array(
+                                'no_icon' => __( 'No icon' ),
+                                'icon_phone' => __( 'Phone' ),
+                                'icon_external_link' => __( 'External link' ),
+                            ) ),
                             Field::make( 'text', 'text', __( 'Button Text (can use html-tags)' ) ),
                             Field::make( 'text', 'url', __( 'Button URL' ) ),
                             // Field::make( 'select', 'target', __( 'Target' ) )
