@@ -533,6 +533,19 @@
   opacity: 1;
 }
 
+.smallerHero {
+  height: 400px;
+}
+.smallerHero .heroOverlay {
+  height: 400px;
+}
+.smallerHero .heroImages > div {
+  height: 400px;
+}
+.smallerHero .heroImages img {
+  height: 400px;
+}
+
 .newsDetailPageTextWrap {
   background-color: #F2F2F2;
 }

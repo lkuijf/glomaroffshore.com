@@ -1,11 +1,15 @@
 @foreach ($data['content_sections'] as $section)
 
     @if($section->_type == 'hero')
+        @php
+            if(!isset($section->show_logo)) $section->show_logo = false;
+        @endphp
         @include('sections.hero', [
             'images' => $section->crb_media_gallery,
             'bigHeader' => $section->big_header,
             'smallHeader' => $section->small_header,
             'text' => $section->text,
+            'display_logo' => $section->show_logo,
             ])
     @endif
     @if($section->_type == 'text')

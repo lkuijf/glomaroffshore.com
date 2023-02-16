@@ -281,6 +281,7 @@ class PagesController extends Controller
                 // $s['type'] = $sec->_type;
 
                 if($sec->_type == 'hero') {
+// dd($sec->crb_media_gallery);
                     $sec->crb_media_gallery = $this->getMediaGallery($sec->crb_media_gallery);
                 }
                 if($sec->_type == 'text') {
