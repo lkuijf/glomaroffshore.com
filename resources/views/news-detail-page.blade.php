@@ -3,6 +3,7 @@
 @include('sections.hero', [
     'images' => $data['newsItem']->large_image,
     'bigHeader' => $data['newsItem']->title->rendered,
+    'display_logo' => false,
     ])
 @if ($data['newsItem']->text)
 <div class="newsDetailPageTextWrap">

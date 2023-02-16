@@ -3,6 +3,7 @@
 @include('sections.hero', [
     'images' => $data['vessel']->large_image,
     'bigHeader' => $data['vessel']->title->rendered,
+    'display_logo' => false,
     ])
 {{-- @if ($data['vessel']->type_text) --}}
 <div class="vesselDetailPageTextWrap">
