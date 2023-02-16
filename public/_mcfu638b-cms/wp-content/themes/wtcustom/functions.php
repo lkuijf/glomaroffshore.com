@@ -376,6 +376,7 @@ function crbRegisterFields($args) {
                     Field::make( 'text', 'big_header', __( 'Big header text (can use html-tags)' ) ),
                     Field::make( 'text', 'small_header', __( 'Small header text (can use html-tags)' ) ),
                     Field::make( 'textarea', 'text', __( 'Text' ) ),
+                    Field::make( 'checkbox', 'show_logo', __('Show Glomar Offshore logo') ),
 
                         // Field::make( 'image', 'image', 'Afbeelding' )->set_value_type( 'url' ),
                     // Field::make( 'text', 'writing_letters_header', __( 'Writing letters header (gold)' ) ),

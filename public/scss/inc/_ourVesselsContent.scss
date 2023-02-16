@@ -1,6 +1,8 @@
 .vesselsPageWrap {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    @media (max-width: $sbp3_tablet) {grid-template-columns: 1fr;}
+    gap: 20px;
 }
 .ourVesselsContent {
     text-align: center;
