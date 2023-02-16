@@ -466,11 +466,11 @@ function crbRegisterFields($args) {
                             ) ),
                             Field::make( 'text', 'text', __( 'Button Text (can use html-tags)' ) ),
                             Field::make( 'text', 'url', __( 'Button URL' ) ),
-                            // Field::make( 'select', 'target', __( 'Target' ) )
-                            // ->set_options( array(
-                            //     'same_tab' => __( 'Same tab' ),
-                            //     'new_tab' => __( 'New tab' ),
-                            // ) ),
+                            Field::make( 'select', 'target', __( 'Target' ) )
+                            ->set_options( array(
+                                'same_tab' => __( 'Same tab' ),
+                                'new_tab' => __( 'New tab' ),
+                            ) ),
                     ) ),
 
                     // Field::make( 'text', 'btn_orange_text', __( 'Orange button text' ) ),
@@ -483,7 +483,7 @@ function crbRegisterFields($args) {
                     Field::make( 'text', 'header_2', __( 'Header (can use html-tags)' ) ),
                     Field::make( 'rich_text', 'text_2', __( 'Text' ) ),
                     Field::make( 'image', 'image_2', __( 'Image' ) ),
-
+                    
                     // Field::make( 'complex', 'cta_button', __( 'Add Button' ) )
                     //     ->add_fields( array(
                     //         Field::make( 'select', 'color', __( 'Color' ) )
