@@ -483,30 +483,28 @@ function crbRegisterFields($args) {
                     Field::make( 'text', 'header_2', __( 'Header (can use html-tags)' ) ),
                     Field::make( 'rich_text', 'text_2', __( 'Text' ) ),
                     Field::make( 'image', 'image_2', __( 'Image' ) ),
-                    
-                    // Field::make( 'complex', 'cta_button', __( 'Add Button' ) )
-                    //     ->add_fields( array(
-                    //         Field::make( 'select', 'color', __( 'Color' ) )
-                    //         ->set_options( array(
-                    //             'full_orange' => __( 'Full orange' ),
-                    //             'orange_border' => __( 'White with orange border' ),
-                    //             'transparent' => __( 'Transparent' ),
-                    //         ) ),
-                    //         Field::make( 'select', 'icon', __( 'Icon' ) )
-                    //         ->set_options( array(
-                    //             'no_icon' => __( 'No icon' ),
-                    //             'icon_phone' => __( 'Phone' ),
-                    //             'icon_external_link' => __( 'External link' ),
-                    //         ) ),
-                    //         Field::make( 'text', 'text', __( 'Button Text (can use html-tags)' ) ),
-                    //         Field::make( 'text', 'url', __( 'Button URL' ) ),
-                    //         Field::make( 'select', 'target', __( 'Target' ) )
-                    //         ->set_options( array(
-                    //             'same_tab' => __( 'Same tab' ),
-                    //             'new_tab' => __( 'New tab' ),
-                    //         ) ),
-                    // ) ),
-
+                    Field::make( 'complex', 'cta_button_2', __( 'Add Button' ) )
+                        ->add_fields( array(
+                            Field::make( 'select', 'color', __( 'Color' ) )
+                            ->set_options( array(
+                                'full_orange' => __( 'Full orange' ),
+                                'orange_border' => __( 'White with orange border' ),
+                                'transparent' => __( 'Transparent' ),
+                            ) ),
+                            Field::make( 'select', 'icon', __( 'Icon' ) )
+                            ->set_options( array(
+                                'no_icon' => __( 'No icon' ),
+                                'icon_phone' => __( 'Phone' ),
+                                'icon_external_link' => __( 'External link' ),
+                            ) ),
+                            Field::make( 'text', 'text', __( 'Button Text (can use html-tags)' ) ),
+                            Field::make( 'text', 'url', __( 'Button URL' ) ),
+                            Field::make( 'select', 'target', __( 'Target' ) )
+                            ->set_options( array(
+                                'same_tab' => __( 'Same tab' ),
+                                'new_tab' => __( 'New tab' ),
+                            ) ),
+                    ) ),
                     // Field::make( 'text', 'btn_orange_text_2', __( 'Orange button text' ) ),
                     // Field::make( 'text', 'btn_orange_url_2', __( 'Orange button URL' ) ),
                     // Field::make( 'text', 'btn_transparent_text_2', __( 'Transparent button text' ) ),
