@@ -13,12 +13,14 @@ class SubmitController extends Controller
             'Naam' => 'required',
             'E-mail_adres' => 'required|email',
             'Bericht' => 'required',
+            'Accept_conditions' => 'required',
         );
         $validationMessages = array(
             'Naam.required'=> 'Please provide a name',
             'E-mail_adres.required'=> 'Please provide an e-mail address',
             'E-mail_adres.email'=> 'The e-mail address is not correctly formed',
             'Bericht.required'=> 'Please fill in a message',
+            'Accept_conditions.required'=> 'Please read and accept the general conditions',
         );
         /***********************************************************************************
             Gebruik maken van manually created validator ($validated = $request->validate($toValidate,$validationMessages)

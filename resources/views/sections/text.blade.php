@@ -7,14 +7,20 @@
                 <h2>{!! $header !!}</h2>
                 <p>{!! $text !!}</p>
             </div>
-            @if($btn_orange_url && $btn_orange_text)
-            <div>
-                <a href="{!! $btn_orange_url !!}" class="ctaBtn btnOrange">{{ $btn_orange_text }}</a>
-            </div>
-            @endif
-            @if($btn_transparent_url && $btn_transparent_text)
-            <div>
-                <a href="{!! $btn_transparent_url !!}" class="ctaBtn btnTransparent">{{ $btn_transparent_text }}</a>
+            @if (isset($buttons) && count($buttons))
+            <div class="textBtnsWrap">
+                @foreach ($buttons as $btn)
+                    <a href="{!! $btn->url !!}"
+                        class="ctaBtn
+                        @if($btn->color == 'full_orange'){{ ' btnOrange' }}@endif
+                        @if($btn->color == 'orange_border'){{ ' btnWhiteBorder' }}@endif
+                        @if($btn->color == 'transparent'){{ ' btnTransparent' }}@endif
+                        @if($btn->icon == 'icon_phone'){{ ' btnIconPhone' }}@endif
+                        @if($btn->icon == 'icon_external_link'){{ ' btnIconExternal' }}@endif
+                        "
+                        @if($btn->target == 'new_tab'){!! ' target="_blank"' !!}@endif
+                    >{!! $btn->text !!}</a>
+                @endforeach
             </div>
             @endif
         </div>
@@ -26,14 +32,20 @@
                 <h2>{!! $header_2 !!}</h2>
                 <p>{!! $text_2 !!}</p>
             </div>
-            @if($btn_orange_url_2 && $btn_orange_text_2)
-            <div>
-                <a href="{!! $btn_orange_url_2 !!}" class="ctaBtn btnOrange">{{ $btn_orange_text_2 }}</a>
-            </div>
-            @endif
-            @if($btn_transparent_url_2 && $btn_transparent_text_2)
-            <div>
-                <a href="{!! $btn_transparent_url_2 !!}" class="ctaBtn btnTransparent">{{ $btn_transparent_text_2 }}</a>
+            @if (isset($buttons_2) && count($buttons_2))
+            <div class="textBtnsWrap">
+                @foreach ($buttons_2 as $btn)
+                    <a href="{!! $btn->url !!}"
+                        class="ctaBtn
+                        @if($btn->color == 'full_orange'){{ ' btnOrange' }}@endif
+                        @if($btn->color == 'orange_border'){{ ' btnWhiteBorder' }}@endif
+                        @if($btn->color == 'transparent'){{ ' btnTransparent' }}@endif
+                        @if($btn->icon == 'icon_phone'){{ ' btnIconPhone' }}@endif
+                        @if($btn->icon == 'icon_external_link'){{ ' btnIconExternal' }}@endif
+                        "
+                        @if($btn->target == 'new_tab'){!! ' target="_blank"' !!}@endif
+                    >{!! $btn->text !!}</a>
+                @endforeach
             </div>
             @endif
         </div>

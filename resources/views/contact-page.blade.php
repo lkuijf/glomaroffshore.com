@@ -1,21 +1,25 @@
-@extends('templates.rsmarine')
+@extends('templates.glomaroffshore')
 @section('content')
     @include('snippets.contentSections')
-    <div class="inner">@include('snippets.contact-form')</div>
+    <div class="formContent">
+        <div class="inner">
+            @include('snippets.contact-form')
+        </div>
+    </div>
     @include('snippets.route')
 @endsection
 @section('after_body_tag')
     @if(session('success'))
         <div class="alert alert-success">
-            {{-- <div><p class="thumbsUpIcon"></p></div> --}}
-            <div><p>{{ $data['website_options']['form_success'] }}</p></div>
+            <div><p class="thumbsUpIcon"></p></div>
+            <div><p>{{ $data['website_options']->form_success }}</p></div>
             {{-- <div><p>Gelukt</p></div> --}}
         </div>
     @endif
     @if($errors->any())
         <div class="alert alert-danger">
-            {{-- <div><p class="exclamationTriangleIcon"></i></div> --}}
-            <div></p><p>{{ $data['website_options']['form_error'] }}</p></div>
+            <div><p class="exclamationTriangleIcon"></p></div>
+            <div><p>{{ $data['website_options']->form_error }}</p></div>
             {{-- <div><p>MISlukt</p></div> --}}
         </div>
     @endif

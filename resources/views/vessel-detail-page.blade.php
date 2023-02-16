@@ -130,7 +130,7 @@
         @if ($data['vessel']->{'pdf-sheet'})
         <div class="vesselButtons">
             <p><a href="{{ $data['vessel']->{'pdf-sheet'} }}" target="_blank" class="ctaBtn btnWhiteBorder">DOWNLOAD <strong>PDF SHEET</strong></a></p>
-            <p><a href="tel:{{ $data['website_options']->phone_number }}" target="_blank" class="ctaBtn btnTransparentPhone">{{ $data['website_options']->phone_number }}</a></p>
+            <p><a href="tel:{{ $data['website_options']->phone_number }}" target="_blank" class="ctaBtn btnTransparent btnIconPhone">{{ $data['website_options']->phone_number }}</a></p>
         </div>
         @endif
     </div>

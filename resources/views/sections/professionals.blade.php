@@ -5,7 +5,6 @@
         <div class="outerSwiperBox">
             <div class="swiper professionalsSwiper">
                 <div class="swiper-wrapper">
-                    {{-- @for ($x=0;$x<5;$x++) --}}
                     @foreach ($professionals as $prof)
                     <div class="swiper-slide">
                         <article>
@@ -19,14 +18,13 @@
                         </article>
                     </div>
                     @endforeach
-                    {{-- @endfor --}}
                 </div>
             </div>
             <div class="swiperBtn sb-next swiper-button-next-prof"></div>
             <div class="swiperBtn sb-prev swiper-button-prev-prof"></div>
         </div>
 
-        <p><a href="" class="ctaBtn btnWhiteBorder">JOIN OUR TEAM</a></p>
+        <p><a href="mailto:{{ $data['website_options']->email_address }}" class="ctaBtn btnWhiteBorder">JOIN OUR TEAM</a></p>
 
     </div>
 </div>

@@ -9,27 +9,26 @@
             ])
     @endif
     @if($section->_type == 'text')
+        @php
+            if(!isset($section->cta_button)) $section->cta_button = [];
+            if(!isset($section->cta_button_2)) $section->cta_button_2 = [];
+        @endphp
         @include('sections.text', [
             'header' => $section->header,
             'text' => $section->text,
-            'btn_orange_text' => $section->btn_orange_text,
-            'btn_orange_url' => $section->btn_orange_url,
-            'btn_transparent_text' => $section->btn_transparent_text,
-            'btn_transparent_url' => $section->btn_transparent_url,
             'imageUrl' => $section->image[0]['url'],
             'imageAlt' => $section->image[0]['alt'],
+            'buttons' => $section->cta_button,
             'header_2' => $section->header_2,
             'text_2' => $section->text_2,
-            'btn_orange_text_2' => $section->btn_orange_text_2,
-            'btn_orange_url_2' => $section->btn_orange_url_2,
-            'btn_transparent_text_2' => $section->btn_transparent_text_2,
-            'btn_transparent_url_2' => $section->btn_transparent_url_2,
             'imageUrl_2' => $section->image_2[0]['url'],
             'imageAlt_2' => $section->image_2[0]['alt'],
+            'buttons_2' => $section->cta_button_2,
             ])
     @endif
     @if($section->_type == 'office_boxes')
     <div class="introTextContent gridBoxes">
+        <h2>GLOMAR <strong>OFFICES</strong></h2>
         <div class="inner">
             @foreach ($section->office_associations as $office)
                 @include('sections.text_office_boxes', [

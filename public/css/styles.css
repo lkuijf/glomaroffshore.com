@@ -3,11 +3,15 @@
     Burger-menu
     DO NOT ALTER THIS MIXIN
 */
+.formContent {
+  background-color: #F2F2F2;
+}
+
+#route {
+  background-color: #FFF;
+}
+
 .contactForm {
-  max-width: 1400px;
-  padding: 0px 40px 40px 40px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
 }
 .contactForm#applyForm {
@@ -15,7 +19,11 @@
   padding-right: 0;
 }
 .contactForm > div {
+  text-align: left;
   padding-top: 20px;
+}
+.contactForm > div:last-child {
+  text-align: center;
 }
 .contactForm div.fieldlist {
   display: flex;
@@ -50,11 +58,11 @@
 .contactForm button {
   cursor: pointer;
   padding: 10px 40px;
-  background-color: #54595F;
-  color: #000;
+  background-color: #FFF;
+  color: #333;
   font-weight: bold;
-  border: 2px solid #3A3E43;
-  box-shadow: 1px 1px 0px 0px #666, 2px 2px 0px 0px #666;
+  border: 1px solid #FF5303;
+  box-shadow: 1px 1px 0px 0px #AAA, 2px 2px 0px 0px #AAA;
 }
 .contactForm button:active {
   box-shadow: none;
@@ -75,6 +83,7 @@
   align-items: center;
   gap: 20px;
   justify-content: center;
+  font-size: 1.2em;
 }
 .alert.alert-success {
   background-color: rgb(111, 219, 111);
@@ -88,16 +97,14 @@
   align-items: center;
 }
 .alert .thumbsUpIcon:before {
-  font-family: bestflex;
+  font-family: "glomaroffshore";
   font-size: 60px;
-  content: "\e800";
-  color: #3A3E43;
+  content: "\e809";
 }
-.alert .thumbsDownIcon:before {
-  font-family: bestflex;
+.alert .exclamationTriangleIcon:before {
+  font-family: "glomaroffshore";
   font-size: 60px;
-  content: "\e806";
-  color: #3A3E43;
+  content: "\e80e";
 }
 
 #toTop {
@@ -131,6 +138,13 @@
 
 .introTextContent {
   background-color: #FFF;
+}
+.introTextContent.gridBoxes {
+  padding-top: 40px;
+  text-align: center;
+}
+.introTextContent.gridBoxes h2 {
+  margin: 0;
 }
 .introTextContent.gridBoxes > div {
   display: grid;
@@ -167,6 +181,9 @@
   width: 100%;
   text-align: center;
   overflow-wrap: break-word;
+}
+.introTextContent > div .introTextWrap > div.textBtnsWrap {
+  padding-top: 0;
 }
 .introTextContent > div .introTextWrap > div > :first-child {
   margin-top: 0;
@@ -719,6 +736,7 @@ img.alignleft {
 }
 
 .ctaBtn {
+  margin: 10px 0;
   transition: transform 0.2s ease-out;
 }
 .ctaBtn:hover {
@@ -733,9 +751,6 @@ img.alignleft {
   font-weight: bold;
   font-size: 1.2em;
 }
-.ctaBtn.btnOrange:hover {
-  text-decoration: underline;
-}
 .ctaBtn.btnTransparent {
   display: inline-block;
   padding: 20px 40px;
@@ -745,20 +760,6 @@ img.alignleft {
 }
 .ctaBtn.btnTransparent:hover {
   color: #333;
-}
-.ctaBtn.btnTransparentPhone {
-  display: inline-block;
-  padding: 20px 40px;
-  color: #54595F;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-.ctaBtn.btnTransparentPhone:hover {
-  color: #333;
-}
-.ctaBtn.btnTransparentPhone:before {
-  font-family: "glomaroffshore";
-  content: "\e801  ";
 }
 .ctaBtn.btnWhiteBorder {
   display: inline-block;
@@ -772,6 +773,14 @@ img.alignleft {
 .ctaBtn.btnWhiteBorder:hover {
   color: #FFF;
   background-color: #FF5303;
+}
+.ctaBtn.btnIconPhone:before {
+  font-family: "glomaroffshore";
+  content: "\e801  ";
+}
+.ctaBtn.btnIconExternal:after {
+  font-family: "glomaroffshore";
+  content: "  \f08e";
 }
 
 .contactIcon {

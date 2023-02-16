@@ -1,10 +1,17 @@
 .introTextContent {
     background-color: $colorWhite;
-    &.gridBoxes > div {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        @media (max-width: $sbp3_tablet) {grid-template-columns: 1fr;}
-        gap: 60px;
+    &.gridBoxes {
+        padding-top: 40px;
+        text-align: center;
+        h2 {
+            margin: 0;
+        }
+        > div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            @media (max-width: $sbp3_tablet) {grid-template-columns: 1fr;}
+            gap: 60px;
+        }
     }
     > div {
         display: flex;
@@ -23,6 +30,9 @@
             }
             > div {
                 padding: 40px;
+                &.textBtnsWrap {
+                    padding-top: 0;
+                }
                 width: 100%;
                 text-align: center;
                 // word-break: break-all;

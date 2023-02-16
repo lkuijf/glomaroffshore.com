@@ -123,6 +123,7 @@ img.alignleft {float:left;margin:5px 20px 5px 0;} // wp alignment
 .clearer{clear:both;} // clear all
 
 .ctaBtn {
+    margin: 10px 0;
     transition: transform 0.2s ease-out;
     &:hover {
         transform: translateY(-5px);
@@ -135,9 +136,6 @@ img.alignleft {float:left;margin:5px 20px 5px 0;} // wp alignment
         text-decoration: none;
         font-weight: bold;
         font-size: 1.2em;
-        &:hover {
-            text-decoration: underline;
-        }
     }
     &.btnTransparent {
         display: inline-block;
@@ -148,20 +146,6 @@ img.alignleft {float:left;margin:5px 20px 5px 0;} // wp alignment
         &:hover {
             color: $colorBlack;
         }
-    }
-    &.btnTransparentPhone {
-        display: inline-block;
-        padding: 20px 40px;
-        color: $colorGrey;
-        text-decoration: none;
-        font-size: 1.2em;
-        &:hover {
-            color: $colorBlack;
-        }
-        &:before {
-            font-family: "glomaroffshore";
-            content: '\e801\00a0\00a0'
-    }
     }
     &.btnWhiteBorder {
         display: inline-block;
@@ -174,6 +158,18 @@ img.alignleft {float:left;margin:5px 20px 5px 0;} // wp alignment
         &:hover {
             color: $colorWhite;
             background-color: $colorOrange;
+        }
+    }
+    &.btnIconPhone {
+        &:before {
+            font-family: "glomaroffshore";
+            content: '\e801\00a0\00a0'
+        }
+    }
+    &.btnIconExternal {
+        &:after {
+            font-family: "glomaroffshore";
+            content: '\00a0\00a0\f08e'
         }
     }
 }

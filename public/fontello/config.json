@@ -101,6 +101,18 @@
       "css": "download",
       "code": 59405,
       "src": "fontawesome"
+    },
+    {
+      "uid": "e15f0d620a7897e2035c18c80142f6d9",
+      "css": "link-ext",
+      "code": 61582,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "189edfc41118cccbeb25788fcbb403da",
+      "css": "attention",
+      "code": 59406,
+      "src": "mfglabs"
     }
   ]
 }
