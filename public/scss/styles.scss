@@ -88,6 +88,14 @@ nav ul {
     font-display: swap;
 }
 
+article {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
 .inner {
     max-width: $contentWidth;
     margin-left: auto;

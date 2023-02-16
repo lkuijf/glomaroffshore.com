@@ -7,6 +7,8 @@
 .ourVesselsContent {
     text-align: center;
     article {
+        display: flex;
+        flex-direction: column;
         text-transform: uppercase;
         margin: 20px;
         background-color: $colorWhite;
@@ -18,8 +20,14 @@
             object-fit: cover;
         }
         > div {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             text-align: left;
             padding: 30px;
+            @media (max-width: $sbp3_tablet) {padding: 20px;}
+            @media (max-width: $sbp4_mobile) {padding: 10px;}
             > :first-child {
                 margin-top: 0;
             }

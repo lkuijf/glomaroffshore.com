@@ -1,5 +1,12 @@
-/***** To Top Button *************************/
+const statNumbers = document.querySelectorAll('.statNumber');
+const articles = document.querySelectorAll('article');
 const toTopBtn = document.querySelector('#toTop');
+const heroSlideshowImages = document.querySelectorAll('.heroImages img');
+
+setArticlesClickable();
+upCountNumbers();
+
+/***** To Top Button *************************/
 toTopBtn.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo(0, 0);
@@ -14,7 +21,6 @@ window.addEventListener('scroll', (e) => {
 });
 /*********************************************/
 /***** Hero slideshow ************************/
-const heroSlideshowImages = document.querySelectorAll('.heroImages img');
 let curIndex = 0;
 let imgDuration = 4000;
 
@@ -31,28 +37,56 @@ function slideShow() {
 }
 if(heroSlideshowImages && heroSlideshowImages.length > 1) setTimeout("slideShow()", imgDuration);
 /*********************************************/
+/***** Fade in elements when in viewport *****/
+// Beware of user has disabled JS; do not hide elements using CSS
+const ctaBtnElms = document.querySelectorAll('.ctaBtn');
+const introTexts = document.querySelectorAll('.introTextWrap');
+const observerOptions = {
+    root: null,
+    threshold: 0.2
+};
+function observerCallback(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // entry.target.classList.replace('fadeOut', 'fadeIn');
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0px)";
+        } else {
+            // entry.target.classList.replace('fadeIn', 'fadeOut');
+        }
+    });
+}
+ctaBtnElms.forEach(el => {
+    el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
+    el.style.transform = "translateY(50px)";
+});
+articles.forEach(el => {
+    el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
+    el.style.transform = "translateY(50px)";
+});
+introTexts.forEach(el => {
+    el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
+    el.style.transform = "translateY(50px)";
+});
+setTimeout(() => { // using setTimeout for elements that are directly in viewport, so they show the effect
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    ctaBtnElms.forEach(el => {
+        el.style.transition = "opacity 0.7s ease-in, transform 0.7s ease-out";
+        observer.observe(el);
+    });
+    articles.forEach(el => {
+        el.style.transition = "opacity 0.7s ease-in, transform 0.7s ease-out";
+        observer.observe(el);
+    });
+    introTexts.forEach(el => {
+        el.style.transition = "opacity 0.7s ease-in, transform 0.7s ease-out";
+        observer.observe(el);
+    });
+}, 1);
+/*************************************************/
 
-// window.addEventListener('load', function(){
-//     let partners = document.querySelector('.partnerGlider');
-//     if(partners) {
-//         new Glider(partners, {
-//             slidesToShow: 2,
-//             slidesToScroll: 1,
-//             draggable: true,
-//             scrollLock: true,
-//             // dots: '.testimonialDots',
-//             responsive: [
-//                 {
-//                     breakpoint: 768,
-//                     settings: {
-//                         slidesToShow: 5,
-//                         slidesToScroll: 1,
-//                     }
-//                 }
-//             ]
-//         });
-//     }
-// });
+
+
 var swiperPartner = new Swiper(".partnerSwiper", {
     slidesPerView: 2,
     spaceBetween: 0,
@@ -76,7 +110,6 @@ var swiperStats = new Swiper(".statsSwiper", {
     slidesPerView: 1,
     spaceBetween: 0,
     speed: 1000,
-    // loop: true, // not compatible with slidesPerView
     autoplay: {
         delay: 2500,
         disableOnInteraction: false,
@@ -86,23 +119,19 @@ var swiperStats = new Swiper(".statsSwiper", {
         prevEl: ".swiper-button-prev-stats",
     },
     breakpoints: {
-        // 480: {
-        //     slidesPerView: 2,
-        //   },
         768: {
             slidesPerView: 2,
           },
           1024: {
             slidesPerView: 3,
           },
-          }
+        }
 });
 
 var swiperProfessionals = new Swiper(".professionalsSwiper", {
     slidesPerView: 1,
     spaceBetween: 0,
     speed: 1000,
-    // loop: true, // not compatible with slidesPerView
     autoplay: {
         delay: 2500,
         disableOnInteraction: false,
@@ -125,11 +154,6 @@ var swiperOurVessels = new Swiper(".ourVesselsSwiper", {
     slidesPerView: 1,
     spaceBetween: 0,
     speed: 1000,
-    // loop: true, // not compatible with slidesPerView
-    // autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    // },
     navigation: {
         nextEl: ".swiper-button-next-vessels",
         prevEl: ".swiper-button-prev-vessels",
@@ -149,34 +173,31 @@ var swiperOurVessels = new Swiper(".ourVesselsSwiper", {
           1024: {
             slidesPerView: 3,
           },
-          }
+    }
 });
 
-const statNumbers = document.querySelectorAll('.statNumber');
 function upCountNumbers() {
     if(statNumbers && statNumbers.length) {
         statNumbers.forEach(element => {
             let number = parseInt(element.innerHTML.replace('.', ''));
-            // console.log(number);
-            // for(let x = 0; x <= number; x++) {
-                // console.log(x);
-                // setTimeout(() => {
-                    // console.log(x);
-                    // element.innerHTML = x;
-                // }, 1000);
-            // }
-            // startUpCount()
-
             for (let i = 0; i <= number; i+=1) {
                 setTimeout(() => {
-                    // console.log("hello world");
                     element.innerHTML = i;
                 }, i * 1);
             }
-
-
         });
     }
 }
 
-upCountNumbers();
+function setArticlesClickable() {
+    if(articles.length) {
+        articles.forEach(item => {
+            let link = item.querySelector('a');
+            if(link) {
+                item.addEventListener('click', () => {
+                    window.location = link.getAttribute("href");
+                });
+            }
+        });
+    }
+}

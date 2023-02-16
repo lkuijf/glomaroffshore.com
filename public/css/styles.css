@@ -359,6 +359,8 @@
   text-align: center;
 }
 .ourVesselsContent article {
+  display: flex;
+  flex-direction: column;
   text-transform: uppercase;
   margin: 20px;
   background-color: #FFF;
@@ -371,8 +373,22 @@
      object-fit: cover;
 }
 .ourVesselsContent article > div {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: left;
   padding: 30px;
+}
+@media (max-width: 768px) {
+  .ourVesselsContent article > div {
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .ourVesselsContent article > div {
+    padding: 10px;
+  }
 }
 .ourVesselsContent article > div > :first-child {
   margin-top: 0;
@@ -412,6 +428,8 @@
 .newsContent .newsContainer article {
   flex: 1 1 33%;
   background-color: #F2F2F2;
+  display: flex;
+  flex-direction: column;
 }
 @media (max-width: 768px) {
   .newsContent .newsContainer article {
@@ -419,16 +437,20 @@
   }
 }
 .newsContent .newsContainer article > div {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: left;
   padding: 30px;
 }
-.newsContent .newsContainer article > div > :first-child {
+.newsContent .newsContainer article > div > div:first-child > :first-child {
   margin-top: 0;
 }
-.newsContent .newsContainer article > div > :last-child {
+.newsContent .newsContainer article > div > div:last-child > :last-child {
   margin-bottom: 0;
 }
-.newsContent .newsContainer article > div h3 {
+.newsContent .newsContainer article > div > div h3 {
   margin: 0;
 }
 .newsContent .newsContainer article img {
@@ -696,6 +718,14 @@ nav ul {
   font-style: normal;
   font-display: swap;
 }
+article {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+article:hover {
+  transform: scale(1.03);
+}
+
 .inner, .innerFooter {
   max-width: 1200px;
   margin-left: auto;
