@@ -41,11 +41,11 @@ class PagesController extends Controller
         $this->allPagesPerParent = $simplePages->pagesPerParent;
         $allSlugsNested = $simplePages->getAllSlugs();
 // dd($allSlugsNested);
-        if(!isset($allSlugsNested[$section]) || ($page && !isset($allSlugsNested[$section]['children'][$page])) || ($subpage && !isset($allSlugsNested[$section]['children'][$page]['children'][$subpage]))) {
+        if(!isset($allSlugsNested[$section]) || ($page && !in_array($section, ['news','vessels']) && !isset($allSlugsNested[$section]['children'][$page])) || ($subpage && !isset($allSlugsNested[$section]['children'][$page]['children'][$subpage]))) {
             return abort(404);
         } else {
             $pageId = $allSlugsNested[$section];
-            if($page) $pageId = $allSlugsNested[$section]['children'][$page];
+            if($page && !in_array($section, ['news','vessels'])) $pageId = $allSlugsNested[$section]['children'][$page];
             if($subpage) $pageId = $allSlugsNested[$section]['children'][$page]['children'][$subpage];
             if(is_array($pageId)) $pageId = $pageId['id'];
         }
@@ -56,9 +56,44 @@ class PagesController extends Controller
 
         $content = $this->getContent($pageId);
         $options = $this->getWebsiteOptions();
+// dd($options);
 
         // if(isset($options['header_image'])) $options['header_image'] = $this->generateImageUrl($options['header_image']);
-        if(isset($options['working_with'])) $options['working_with'] = $this->getMediaGallery($options['working_with']);
+        if(isset($options->working_with)) $options->working_with = $this->getMediaGallery($options->working_with);
+        $vessels = array();
+        $news = array();
+        $vessel = false;
+        $newsItem = false;
+        if($section == 'vessels' && !$page) {
+            $customPost = new CustomPostApi('vessel');
+            $vessels = $customPost->get();
+            foreach($vessels as $k => $item) {
+                $vessels[$k]->small_image = $this->getMediaGallery($item->small_image);
+            }
+        }
+        if($section == 'news' && !$page) {
+            $customPost = new CustomPostApi('news');
+            $news = $customPost->get();
+            foreach($news as $k => $item) {
+                $news[$k]->small_image = $this->getMediaGallery($item->small_image);
+            }
+        }
+        if($section == 'vessels' && $page) {
+            $customPost = new CustomPostApi('vessel', false, $page);
+            $vessel = $customPost->get();
+            if(!$vessel) return abort(404);
+            $vessel = $vessel[0];
+            $vessel->large_image = $this->getMediaGallery($vessel->large_image);
+        }
+        if($section == 'news' && $page) {
+            $customPost = new CustomPostApi('news', false, $page);
+            $newsItem = $customPost->get();
+            if(!$newsItem) return abort(404);
+            $newsItem = $newsItem[0];
+            $newsItem->large_image = $this->getMediaGallery($newsItem->large_image);
+        }
+// dd($vessel);
+
         
         
 // dd($options);
@@ -73,7 +108,19 @@ class PagesController extends Controller
             // 'cart_total' => $cartTotalItems,
             // 'user_logged_in' => $loggedInUserId,
             'content_sections' => $content->contentSections,
+            'vessels' => $vessels,
+            'news' => $news,
+            'vessel' => $vessel,
+            'newsItem' => $newsItem,
         ];
+        if($vessel) {
+// dd($vessel);
+            return view('vessel-detail-page')->with('data', $data);
+        }
+        if($newsItem) {
+// dd($newsItem);
+            return view('news-detail-page')->with('data', $data);
+        }
         if($section == 'contact')
             return view('contact-page')->with('data', $data);
         if($section == 'vacatures')
@@ -260,7 +307,7 @@ class PagesController extends Controller
                     }
                 }
                 if($sec->_type == 'vessel_boxes') {
-                    $aValuesToRetreive = array('title', 'small_image', 'type_text', 'class', 'length', 'breadth');
+                    $aValuesToRetreive = array('title', 'small_image', 'type_text', 'class', 'length', 'breadth', 'slug');
                     foreach($sec->vessels_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
                         if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
@@ -268,7 +315,7 @@ class PagesController extends Controller
                     }
                 }
                 if($sec->_type == 'news_boxes') {
-                    $aValuesToRetreive = array('title', 'card_text', 'small_image');
+                    $aValuesToRetreive = array('title', 'card_text', 'small_image', 'date', 'slug');
                     foreach($sec->news_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
                         if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
@@ -744,10 +791,23 @@ class PagesController extends Controller
         else
             return 'Placeholder image';
     }
-    public static function getWebsiteOptions() {
+    // public static function getWebsiteOptions() {
+    public function getWebsiteOptions() {
         $allWebsiteOptions = new WebsiteOptionsApi();
         $websiteOptions = $allWebsiteOptions->get();
-        return (array)$websiteOptions;
+
+        $footerOffice1Assoc = $websiteOptions->footer_office_1[0];
+        $footerOffice2Assoc = $websiteOptions->footer_office_2[0];
+        
+        $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4');
+        $oCustPostType1 = $this->getCustomPostTypeViaRestApi($footerOffice1Assoc->subtype, $footerOffice1Assoc->id, $aValuesToRetreive);
+        $oCustPostType2 = $this->getCustomPostTypeViaRestApi($footerOffice2Assoc->subtype, $footerOffice2Assoc->id, $aValuesToRetreive);
+        $websiteOptions->footer_office_1[0] = $oCustPostType1;
+        $websiteOptions->footer_office_2[0] = $oCustPostType2;
+
+// dd($websiteOptions);
+        // return (array)$websiteOptions;
+        return $websiteOptions;
     }
     public function getMainMenuItems() {
         $cats = array();

@@ -174,33 +174,12 @@
 .introTextContent > div .introTextWrap > div:first-of-type {
   text-align: left;
 }
-.introTextContent > div .introTextWrap > div .contactIcon {
-  position: relative;
-  padding-left: 34px;
-}
-.introTextContent > div .introTextWrap > div .contactIcon a {
-  text-decoration: none;
+.introTextContent > div .introTextWrap > div a {
   color: #333;
+  text-decoration: none;
 }
-.introTextContent > div .introTextWrap > div .contactIcon a:hover {
+.introTextContent > div .introTextWrap > div a:hover {
   text-decoration: underline;
-}
-.introTextContent > div .introTextWrap > div .contactIcon:before {
-  position: absolute;
-  left: 0;
-  top: -2px;
-  font-family: "glomaroffshore";
-  font-size: 1.5em;
-  color: #54595F;
-}
-.introTextContent > div .introTextWrap > div .contactIcon.naw:before {
-  content: "\e806";
-}
-.introTextContent > div .introTextWrap > div .contactIcon.phone:before {
-  content: "\e801";
-}
-.introTextContent > div .introTextWrap > div .contactIcon.email:before {
-  content: "\e802";
 }
 
 .workingWithContent {
@@ -348,6 +327,11 @@
   display: none;
 }
 
+.vesselsPageWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .ourVesselsContent {
   text-align: center;
 }
@@ -393,12 +377,13 @@
   text-align: center;
 }
 .newsContent .newsContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
 @media (max-width: 768px) {
   .newsContent .newsContainer {
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
   }
 }
 .newsContent .newsContainer article {
@@ -469,6 +454,7 @@
   line-height: 1em;
 }
 .hero .heroOverlay h1.h1Big {
+  font-weight: normal;
   font-size: 6em;
 }
 @media (max-width: 768px) {
@@ -477,6 +463,7 @@
   }
 }
 .hero .heroOverlay h1.h1Small {
+  font-weight: normal;
   font-size: 4em;
 }
 @media (max-width: 768px) {
@@ -521,6 +508,16 @@
 }
 .hero .heroImages img:first-child {
   opacity: 1;
+}
+
+.newsDetailPageTextWrap {
+  background-color: #F2F2F2;
+}
+@media (max-width: 768px) {
+  .newsDetailPageTextWrap img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 html, body {
@@ -614,6 +611,20 @@ ul {
     transform: scale(1.2);
   }
 }
+img.alignright {
+  float: right;
+  margin: 5px 0 5px 20px;
+}
+
+img.alignleft {
+  float: left;
+  margin: 5px 20px 5px 0;
+}
+
+.clearer {
+  clear: both;
+}
+
 .btnOrange {
   background-color: #FF5303;
   display: inline-block;
@@ -650,6 +661,27 @@ ul {
 .btnWhiteBorder:hover {
   color: #FFF;
   background-color: #FF5303;
+}
+
+.contactIcon {
+  position: relative;
+  padding-left: 34px;
+}
+.contactIcon:before {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  font-family: "glomaroffshore";
+  font-size: 1.5em;
+}
+.contactIcon.naw:before {
+  content: "\e806";
+}
+.contactIcon.phone:before {
+  content: "\e801";
+}
+.contactIcon.email:before {
+  content: "\e802";
 }
 
 .swiperBtn {
@@ -905,18 +937,21 @@ header .logoNavWrap > div > img {
 }
 
 footer {
-  color: #FFF;
-}
-footer a {
   color: #CCC;
-}
-footer a:hover {
-  color: #FFF;
 }
 footer h4 {
   font-size: 1.5em;
   line-height: 1em;
   font-weight: normal;
+  color: #FFF;
+}
+footer a {
+  color: #CCC;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+  color: #FFF;
 }
 footer .footer {
   background-color: #54595F;
@@ -938,10 +973,20 @@ footer .footer > div > div {
     flex-wrap: wrap;
   }
 }
+@media (max-width: 480px) {
+  footer .footer > div > div {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
 footer .footer > div > div > div {
   padding: 0 20px;
   flex-basis: 0;
   border-left: 1px solid #333;
+}
+footer .footer > div > div > div > img {
+  width: 100%;
+  max-width: 300px;
 }
 footer .footer > div > div > div > :first-child {
   margin-top: 0;
@@ -960,6 +1005,27 @@ footer .footer > div > div > div:nth-child(4) {
 }
 footer .footer > div > div > div:nth-child(5) {
   flex-grow: 2;
+}
+footer .footer > div > div > div form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+footer .footer > div > div > div form input {
+  background-color: #CCC;
+  border: 1px solid #333;
+  font-size: 1em;
+  padding: 10px 8px;
+  outline: none;
+}
+footer .footer > div > div > div form button {
+  background-color: #3A3E43;
+  font-size: 1em;
+  padding: 10px 8px;
+  border: 1px solid #CCC;
+  color: #CCC;
+  cursor: pointer;
+  font-weight: bold;
 }
 footer .bottomBar {
   background-color: #43464C;

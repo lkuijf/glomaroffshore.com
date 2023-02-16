@@ -33,6 +33,8 @@
     @yield('after_body_tag')
     {{-- <div class="top @if(Route::currentRouteName() == 'home'){{ 'homepage' }}@endif">
     </div> --}}
+    
+
 
     <header>
         <div class="topBar">
@@ -69,6 +71,10 @@
 
     <div class="contentWrapper">
         @yield('content')
+        @yield('vessels')
+        @yield('news')
+
+
 
         {{-- <div class="hero">
             <div class="heroOverlay">
@@ -317,20 +323,36 @@
                         {!! $data['html_menu'] !!}
                     </div>
                     <div>
-                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h4>{!! $data['website_options']->footer_office_1[0]->country !!}</h4>
+                        <p class="contactIcon naw">{{ $data['website_options']->footer_office_1[0]->address1 }}<br />
+                            {{ $data['website_options']->footer_office_1[0]->address2 }}<br />
+                            {{ $data['website_options']->footer_office_1[0]->address3 }}<br />
+                            {{ $data['website_options']->footer_office_1[0]->address4 }}</p>
+                        <p class="contactIcon phone"><a href="tel:{{ $data['website_options']->footer_office_1[0]->phone }}">{{ $data['website_options']->footer_office_1[0]->phone }}</a></p>
+                        <p class="contactIcon email"><a href="mailto:{{ $data['website_options']->footer_office_1[0]->email }}">{{ $data['website_options']->footer_office_1[0]->email }}</a></p>
                     </div>
                     <div>
-                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h4>{!! $data['website_options']->footer_office_2[0]->country !!}</h4>
+                        <p class="contactIcon naw">{{ $data['website_options']->footer_office_2[0]->address1 }}<br />
+                            {{ $data['website_options']->footer_office_2[0]->address2 }}<br />
+                            {{ $data['website_options']->footer_office_2[0]->address3 }}<br />
+                            {{ $data['website_options']->footer_office_2[0]->address4 }}</p>
+                        <p class="contactIcon phone"><a href="tel:{{ $data['website_options']->footer_office_2[0]->phone }}">{{ $data['website_options']->footer_office_2[0]->phone }}</a></p>
+                        <p class="contactIcon email"><a href="mailto:{{ $data['website_options']->footer_office_2[0]->email }}">{{ $data['website_options']->footer_office_2[0]->email }}</a></p>
                     </div>
                     <div>
-                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h4>STAY <strong>UP-TO-DATE</strong><br />Subscribe to our newsletter</h4>
+                        <form action="">
+                            @csrf
+                            <input type="text" name="first_name">
+                            <input type="text" name="last_name">
+                            <input type="text" name="email">
+                            <button type="submit">SUBSCRIBE</button>
+                        </form>
                     </div>
                     <div>
-                        <h4>GLOMAR<br /><strong>NETHERLANDS</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h4>ACCREDITATIONS</strong></h4>
+                        <img src="{{ asset('statics/glomar-accreditations.png') }}" alt="Accreditations Glomar Offshore">
                     </div>
                 </div>
             </div>

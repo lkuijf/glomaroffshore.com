@@ -1,0 +1,9 @@
+.newsDetailPageTextWrap {
+    background-color: $colorGreyLighter;
+    img {
+        @media (max-width: $sbp3_tablet) {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

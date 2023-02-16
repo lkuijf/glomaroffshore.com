@@ -33,29 +33,13 @@
                 &:first-of-type {
                     text-align: left;
                 }
-                .contactIcon {
-                    position: relative;
-                    padding-left: 34px;
-                    a {
-                        text-decoration: none;
-                        color: $colorBlack;
-                        &:hover {
-                            text-decoration: underline;
-                        }
+                a {
+                    color: $colorBlack;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
                     }
-                    &:before {
-                        position: absolute;
-                        left: 0;
-                        top: -2px;
-                        font-family: "glomaroffshore";
-                        font-size: 1.5em;
-                        color: $colorGrey;
-                    }
-                    &.naw:before {content:'\e806'};
-                    &.phone:before {content:'\e801'};
-                    &.email:before {content:'\e802'};
-                }
-                
+                }                
             }
         }
     }

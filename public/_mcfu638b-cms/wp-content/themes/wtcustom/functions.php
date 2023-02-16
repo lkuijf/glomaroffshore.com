@@ -373,8 +373,8 @@ function crbRegisterFields($args) {
                     Field::make( 'separator', 'separator1', __( 'Hero (big header)' ) ),
                     Field::make( 'media_gallery', 'crb_media_gallery', __( 'Media Gallery' ) )
                         ->set_type( array( 'image' ) )->set_duplicates_allowed( false ),
-                    Field::make( 'text', 'big_header', __( 'Big header text' ) ),
-                    Field::make( 'text', 'small_header', __( 'Small header text' ) ),
+                    Field::make( 'text', 'big_header', __( 'Big header text (can use html-tags)' ) ),
+                    Field::make( 'text', 'small_header', __( 'Small header text (can use html-tags)' ) ),
                     Field::make( 'textarea', 'text', __( 'Text' ) ),
 
                         // Field::make( 'image', 'image', 'Afbeelding' )->set_value_type( 'url' ),
@@ -445,25 +445,25 @@ function crbRegisterFields($args) {
                     //     'blue' => __( 'Blue' ),
                     //     'gold' => __( 'Gold' ),
                     // ) ),
-                    Field::make( 'separator', 'separator1', __( 'Section 1' ) ),
+                    Field::make( 'separator', 'separator1', __( 'Text section 1' ) ),
 
-                    Field::make( 'text', 'header', __( 'Header' ) ),
-                    Field::make( 'textarea', 'text', __( 'Text' ) ),
+                    Field::make( 'text', 'header', __( 'Header (can use html-tags)' ) ),
+                    Field::make( 'rich_text', 'text', __( 'Text' ) ),
                     Field::make( 'image', 'image', __( 'Image' ) ),
                     Field::make( 'text', 'btn_orange_text', __( 'Orange button text' ) ),
                     Field::make( 'text', 'btn_orange_url', __( 'Orange button URL' ) ),
                     Field::make( 'text', 'btn_transparent_text', __( 'Transparent button text' ) ),
                     Field::make( 'text', 'btn_transparent_url', __( 'Transparent button URL' ) ),
 
-                    Field::make( 'separator', 'separator2', __( 'Section 2 (optional)' ) ),
+                    Field::make( 'separator', 'separator2', __( 'Text Section 2 (optional)' ) ),
 
-                    Field::make( 'text', 'header_2', __( 'Header (for second section, optional)' ) ),
-                    Field::make( 'textarea', 'text_2', __( 'Text (for second section, optional)' ) ),
-                    Field::make( 'image', 'image_2', __( 'Image (for second section, optional)' ) ),
-                    Field::make( 'text', 'btn_orange_text_2', __( 'Orange button text (for second section, optional)' ) ),
-                    Field::make( 'text', 'btn_orange_url_2', __( 'Orange button URL (for second section, optional)' ) ),
-                    Field::make( 'text', 'btn_transparent_text_2', __( 'Transparent button text (for second section, optional)' ) ),
-                    Field::make( 'text', 'btn_transparent_url_2', __( 'Transparent button URL (for second section, optional)' ) ),
+                    Field::make( 'text', 'header_2', __( 'Header (can use html-tags)' ) ),
+                    Field::make( 'rich_text', 'text_2', __( 'Text' ) ),
+                    Field::make( 'image', 'image_2', __( 'Image' ) ),
+                    Field::make( 'text', 'btn_orange_text_2', __( 'Orange button text' ) ),
+                    Field::make( 'text', 'btn_orange_url_2', __( 'Orange button URL' ) ),
+                    Field::make( 'text', 'btn_transparent_text_2', __( 'Transparent button text' ) ),
+                    Field::make( 'text', 'btn_transparent_url_2', __( 'Transparent button URL' ) ),
 
                     // Field::make( 'select', 'margin', __( 'Choose block letters top-margin' ) )
                     // ->set_options( array(

@@ -1,3 +1,7 @@
+.vesselsPageWrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
 .ourVesselsContent {
     text-align: center;
     article {

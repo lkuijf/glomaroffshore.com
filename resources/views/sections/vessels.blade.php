@@ -8,24 +8,15 @@
                     {{-- @for ($x=0;$x<15;$x++) --}}
                     @foreach ($vessels as $vess)
                     <div class="swiper-slide">
-                        <article>
-                            <img src="{{ asset('statics/slideshow/Glomar-Avior.jpg') }}" alt="">
-                            <div>
-                                <h3>{{ $vess->title }}</h3>
-                                <p>DYNAMICALLY POSITIONED - SUBSEA/DIVING/ROV - SURVEY - WALK TO WORK</p>
-                                <dl>
-                                    <dt>Type</dt>
-                                    <dd>{{ $vess->type_text }}</dd>
-                                    <dt>Class</dt>
-                                    <dd>{{ $vess->class }}</dd>
-                                    <dt>Length</dt>
-                                    <dd>{{ $vess->length }}</dd>
-                                    <dt>Breadth</dt>
-                                    <dd>{{ $vess->breadth }}</dd>
-                                </dl>
-                                <p><a href="">View all specs</a></p>
-                            </div>
-                        </article>
+                        @include('sections.vessel_card', [
+                            'small_image' => $vess->small_image,
+                            'title' => $vess->title,
+                            'type_text' => $vess->type_text,
+                            'class' => $vess->class,
+                            'length' => $vess->length,
+                            'breadth' => $vess->breadth,
+                            'slug' => $vess->slug,
+                            ])
                     </div>
                     @endforeach
                     {{-- @endfor --}}
