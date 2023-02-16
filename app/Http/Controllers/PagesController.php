@@ -83,7 +83,7 @@ class PagesController extends Controller
                 $item = $item[0];
                 $item->large_image = $this->getMediaGallery($item->large_image);
                 $item->small_image = $this->getMediaGallery($item->small_image);
-                if($item->{'pdf-sheet'}) $item->{'pdf-sheet'} = $this->generateMediaUrl($item->{'pdf-sheet'});
+                if(isset($item->{'pdf-sheet'})) $item->{'pdf-sheet'} = $this->generateMediaUrl($item->{'pdf-sheet'});
                 if($section == 'vessels') $vessel = $item;
                 if($section == 'news') $newsItem = $item;
             }
@@ -288,7 +288,7 @@ class PagesController extends Controller
                     $sec->image_2 = $this->getMediaGallery($sec->image_2);
                 }
                 if($sec->_type == 'office_boxes') {
-                    $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4');
+                    $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4', 'google_maps_address');
                     foreach($sec->office_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
                         $sec->office_associations[$k] = $oCustPostType;
@@ -795,7 +795,7 @@ class PagesController extends Controller
         $footerOffice1Assoc = $websiteOptions->footer_office_1[0];
         $footerOffice2Assoc = $websiteOptions->footer_office_2[0];
         
-        $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4');
+        $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4', 'google_maps_address');
         $oCustPostType1 = $this->getCustomPostTypeViaRestApi($footerOffice1Assoc->subtype, $footerOffice1Assoc->id, $aValuesToRetreive);
         $oCustPostType2 = $this->getCustomPostTypeViaRestApi($footerOffice2Assoc->subtype, $footerOffice2Assoc->id, $aValuesToRetreive);
         $websiteOptions->footer_office_1[0] = $oCustPostType1;

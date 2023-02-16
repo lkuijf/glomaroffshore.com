@@ -39,6 +39,7 @@
                     'address_line_2' => $office->address2,
                     'address_line_3' => $office->address3,
                     'address_line_4' => $office->address4,
+                    'gm_address' => $office->google_maps_address,
                     ])
             @endforeach
         </div>

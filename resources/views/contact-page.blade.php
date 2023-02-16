@@ -6,7 +6,7 @@
             @include('snippets.contact-form')
         </div>
     </div>
-    @include('snippets.route')
+    {{-- @include('snippets.route') --}}
 @endsection
 @section('after_body_tag')
     @if(session('success'))
