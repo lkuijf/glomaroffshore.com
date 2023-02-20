@@ -84,6 +84,7 @@ class PagesController extends Controller
                 $item->large_image = $this->getMediaGallery($item->large_image);
                 $item->small_image = $this->getMediaGallery($item->small_image);
                 if(isset($item->{'pdf-sheet'})) $item->{'pdf-sheet'} = $this->generateMediaUrl($item->{'pdf-sheet'});
+                if(isset($item->vessel_type)) $item->vessel_type = $this->getTerms($item->vessel_type);
                 if($section == 'vessels') $vessel = $item;
                 if($section == 'news') $newsItem = $item;
             }

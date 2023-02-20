@@ -21,6 +21,9 @@ function deleteSimpleMediaRestCache() {
 function deleteSimpleTaxonomiesRestCache() {
     \WP_Rest_Cache_Plugin\Includes\Caching\Caching::get_instance()->delete_cache_by_endpoint( '/_mcfu638b-cms/index.php/wp-json/wtcustom/simple-taxonomies' );
 }
+function deleteSimplePagesRestCache() {
+    \WP_Rest_Cache_Plugin\Includes\Caching\Caching::get_instance()->delete_cache_by_endpoint( '/_mcfu638b-cms/index.php/wp-json/wtcustom/simple-pages' );
+}
 /* Remove bulk actions for type: page */
 function remove_from_bulk_actions($actions) {
     return array();

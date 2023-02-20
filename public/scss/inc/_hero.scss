@@ -30,12 +30,12 @@ $smallerHeroHeight: 400px;
             margin: 0;
             line-height: 1em;
             &.h1Big {
-                font-weight: normal;
+                // font-weight: normal;
                 font-size: 6em;
                 @media (max-width: $sbp3_tablet) {font-size: 4em;}
             }
             &.h1Small {
-                font-weight: normal;
+                // font-weight: normal;
                 font-size: 4em;
                 @media (max-width: $sbp3_tablet) {font-size: 3em;}
             }
