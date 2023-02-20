@@ -1,0 +1,638 @@
+# Copyright (C) 2023 Leon Kuijf
+# This file is distributed under the .
+msgid ""
+msgstr ""
+"Project-Id-Version: WTM custom theme\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wtcustom\n"
+"POT-Creation-Date: 2023-02-20T16:41:41+01:00\n"
+"PO-Revision-Date: 2023-02-20 16:46+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Theme Name of the theme
+msgid "WTM custom theme"
+msgstr ""
+
+#. Description of the theme
+msgid "Empty frontend and custom backend configurations"
+msgstr ""
+
+#. Author of the theme
+msgid "Leon Kuijf"
+msgstr ""
+
+#: functions.php:18 functions.php:59 functions.php:60 functions.php:569
+msgid "News"
+msgstr ""
+
+#: functions.php:18
+msgid "Page"
+msgstr ""
+
+#: functions.php:18
+msgid "Something we dont know"
+msgstr "geen iddeee"
+
+#: functions.php:18
+msgid "Some other meaningless string"
+msgstr "ook keine ahnung"
+
+#: functions.php:61 functions.php:62
+msgid "Add New News-item"
+msgstr ""
+
+#: functions.php:63
+msgid "Edit News-item"
+msgstr ""
+
+#: functions.php:64
+msgid "Update News-item"
+msgstr ""
+
+#: functions.php:79 functions.php:549
+msgid "Offices"
+msgstr ""
+
+#: functions.php:80
+msgid "Office"
+msgstr ""
+
+#: functions.php:81 functions.php:82
+msgid "Add New Office"
+msgstr ""
+
+#: functions.php:83
+msgid "Edit Office"
+msgstr ""
+
+#: functions.php:84
+msgid "Update Office"
+msgstr ""
+
+#: functions.php:99 functions.php:559
+msgid "Professionals"
+msgstr ""
+
+#: functions.php:100
+msgid "Professional"
+msgstr ""
+
+#: functions.php:101 functions.php:102
+msgid "Add New Professional"
+msgstr ""
+
+#: functions.php:103
+msgid "Edit Professional"
+msgstr ""
+
+#: functions.php:104
+msgid "Update Professional"
+msgstr ""
+
+#: functions.php:119 functions.php:579
+msgid "Vessels"
+msgstr ""
+
+#: functions.php:120
+msgid "Vessel"
+msgstr ""
+
+#: functions.php:121 functions.php:122
+msgid "Add New Vessel"
+msgstr ""
+
+#: functions.php:123
+msgid "Edit Vessel"
+msgstr ""
+
+#: functions.php:124
+msgid "Update Vessel"
+msgstr ""
+
+#: functions.php:177
+msgctxt "taxonomy general name"
+msgid "Types"
+msgstr ""
+
+#: functions.php:178
+msgctxt "taxonomy singular name"
+msgid "Type"
+msgstr ""
+
+#: functions.php:179
+msgid "Search Types"
+msgstr ""
+
+#: functions.php:180
+msgid "All Types"
+msgstr ""
+
+#: functions.php:181
+msgid "Parent Type"
+msgstr ""
+
+#: functions.php:182
+msgid "Parent Type:"
+msgstr ""
+
+#: functions.php:183
+msgid "Edit Type"
+msgstr ""
+
+#: functions.php:184
+msgid "Update Type"
+msgstr ""
+
+#: functions.php:185
+msgid "Add New Type"
+msgstr ""
+
+#: functions.php:186
+msgid "New Type Name"
+msgstr ""
+
+#: functions.php:187 functions.php:958
+msgid "Type"
+msgstr ""
+
+#: functions.php:369
+msgid "Section Options"
+msgstr ""
+
+#: functions.php:376
+msgid "Hero (big header)"
+msgstr ""
+
+#: functions.php:377
+msgid "Media Gallery"
+msgstr ""
+
+#: functions.php:379
+msgid "Big header text (can use html-tags)"
+msgstr ""
+
+#: functions.php:380
+msgid "Small header text (can use html-tags)"
+msgstr ""
+
+#: functions.php:381 functions.php:455 functions.php:488 functions.php:927
+msgid "Text"
+msgstr ""
+
+#: functions.php:382
+msgid "Show Glomar Offshore logo"
+msgstr ""
+
+#: functions.php:452
+msgid "Text section 1"
+msgstr ""
+
+#: functions.php:454 functions.php:487
+msgid "Header (can use html-tags)"
+msgstr ""
+
+#: functions.php:456 functions.php:489 functions.php:950
+msgid "Image"
+msgstr ""
+
+#: functions.php:457 functions.php:490
+msgid "Add Button"
+msgstr ""
+
+#: functions.php:459 functions.php:492
+msgid "Color"
+msgstr ""
+
+#: functions.php:461 functions.php:494
+msgid "Full orange"
+msgstr ""
+
+#: functions.php:462 functions.php:495
+msgid "White with orange border"
+msgstr ""
+
+#: functions.php:463 functions.php:496
+msgid "Transparent"
+msgstr ""
+
+#: functions.php:465 functions.php:498 functions.php:600
+msgid "Icon"
+msgstr ""
+
+#: functions.php:467 functions.php:500
+msgid "No icon"
+msgstr ""
+
+#: functions.php:468 functions.php:501
+msgid "Phone"
+msgstr ""
+
+#: functions.php:469 functions.php:502
+msgid "External link"
+msgstr ""
+
+#: functions.php:471 functions.php:504
+msgid "Button Text (can use html-tags)"
+msgstr ""
+
+#: functions.php:472 functions.php:505
+msgid "Button URL"
+msgstr ""
+
+#: functions.php:473 functions.php:506
+msgid "Target"
+msgstr ""
+
+#: functions.php:475 functions.php:508
+msgid "Same tab"
+msgstr ""
+
+#: functions.php:476 functions.php:509
+msgid "New tab"
+msgstr ""
+
+#: functions.php:485
+msgid "Text Section 2 (optional)"
+msgstr ""
+
+#: functions.php:550
+msgid "Select offices"
+msgstr ""
+
+#: functions.php:560
+msgid "Select professionals"
+msgstr ""
+
+#: functions.php:570
+msgid "Select news (max 3)"
+msgstr ""
+
+#: functions.php:580
+msgid "Select vessels"
+msgstr ""
+
+#: functions.php:589
+msgid "Working with"
+msgstr ""
+
+#: functions.php:590
+msgid "Show \"Working with\" section"
+msgstr ""
+
+#: functions.php:593
+msgid "Get in touch"
+msgstr ""
+
+#: functions.php:594
+msgid "Show \"Get in touch\" section"
+msgstr ""
+
+#: functions.php:597
+msgid "Statistics"
+msgstr ""
+
+#: functions.php:598
+msgid "Add statistic"
+msgstr ""
+
+#: functions.php:602
+msgid "World"
+msgstr ""
+
+#: functions.php:603
+msgid "Crew"
+msgstr ""
+
+#: functions.php:604
+msgid "Calendar"
+msgstr ""
+
+#: functions.php:605
+msgid "Thumb"
+msgstr ""
+
+#: functions.php:606
+msgid "Recycle"
+msgstr ""
+
+#: functions.php:607
+msgid "Wind"
+msgstr ""
+
+#: functions.php:608
+msgid "Building"
+msgstr ""
+
+#: functions.php:610
+msgid "Number"
+msgstr ""
+
+#: functions.php:611
+msgid "Headline"
+msgstr ""
+
+#: functions.php:612
+msgid "Subline"
+msgstr ""
+
+#: functions.php:922 functions.php:932 functions.php:945 functions.php:953
+msgid "Information"
+msgstr ""
+
+#: functions.php:926
+msgid "Card text"
+msgstr ""
+
+#: functions.php:928 functions.php:956
+msgid "Card image"
+msgstr ""
+
+#: functions.php:929 functions.php:957
+msgid "Hero image"
+msgstr ""
+
+#: functions.php:935
+msgid "Country"
+msgstr ""
+
+#: functions.php:936
+msgid "Phone number"
+msgstr ""
+
+#: functions.php:937
+msgid "E-mail address"
+msgstr ""
+
+#: functions.php:938
+msgid "Address line 1"
+msgstr ""
+
+#: functions.php:939
+msgid "Address line 2"
+msgstr ""
+
+#: functions.php:940
+msgid "Address line 3"
+msgstr ""
+
+#: functions.php:941
+msgid "Address line 4"
+msgstr ""
+
+#: functions.php:942
+msgid "Address for Google Maps Marker"
+msgstr ""
+
+#: functions.php:949
+msgid "Function"
+msgstr ""
+
+#: functions.php:959
+msgid "General"
+msgstr ""
+
+#: functions.php:960
+msgid "Class"
+msgstr ""
+
+#: functions.php:961
+msgid "Flag"
+msgstr ""
+
+#: functions.php:962
+msgid "Built"
+msgstr ""
+
+#: functions.php:963
+msgid "Rebuilt"
+msgstr ""
+
+#: functions.php:964
+msgid "Call Sign"
+msgstr ""
+
+#: functions.php:965
+msgid "Dimensions"
+msgstr ""
+
+#: functions.php:966
+msgid "Length"
+msgstr ""
+
+#: functions.php:967
+msgid "Breadth"
+msgstr ""
+
+#: functions.php:968
+msgid "Draft"
+msgstr ""
+
+#: functions.php:969
+msgid "Depth"
+msgstr ""
+
+#: functions.php:970
+msgid "GT"
+msgstr ""
+
+#: functions.php:971
+msgid "NT"
+msgstr ""
+
+#: functions.php:972
+msgid "Performance"
+msgstr ""
+
+#: functions.php:973
+msgid "Bollard Pull"
+msgstr ""
+
+#: functions.php:974
+msgid "Max Speed + Fuel Consumption"
+msgstr ""
+
+#: functions.php:975
+msgid "Cruise/Economic Speed + Fuel Consumption"
+msgstr ""
+
+#: functions.php:976
+msgid "Standby Fuel Consumption"
+msgstr ""
+
+#: functions.php:977
+msgid "Machinery and Propulsion"
+msgstr ""
+
+#: functions.php:978
+msgid "Main Engine"
+msgstr ""
+
+#: functions.php:979
+msgid "Gearbox"
+msgstr ""
+
+#: functions.php:980
+msgid "Propellor & shafts"
+msgstr ""
+
+#: functions.php:981
+msgid "Auxiliary Engines"
+msgstr ""
+
+#: functions.php:982
+msgid "Harbor generator"
+msgstr ""
+
+#: functions.php:983
+msgid "Azimuth Thruster"
+msgstr ""
+
+#: functions.php:984
+msgid "Sewage plant"
+msgstr ""
+
+#: functions.php:985
+msgid "Engine room fire protection"
+msgstr ""
+
+#: functions.php:986
+msgid "Bilge water separator"
+msgstr ""
+
+#: functions.php:987
+msgid "Fuel oil separator"
+msgstr ""
+
+#: functions.php:988
+msgid "Electrical installation"
+msgstr ""
+
+#: functions.php:989
+msgid "Tank capacities and deck area"
+msgstr ""
+
+#: functions.php:990
+msgid "Total Fresh Water Tank"
+msgstr ""
+
+#: functions.php:991
+msgid "Total Ballast Water Tank"
+msgstr ""
+
+#: functions.php:992
+msgid "Total Fuel Tank"
+msgstr ""
+
+#: functions.php:993
+msgid "Deck Area"
+msgstr ""
+
+#: functions.php:994
+msgid "Deck equipment"
+msgstr ""
+
+#: functions.php:995
+msgid "Deckcrane PS"
+msgstr ""
+
+#: functions.php:996
+msgid "Safe Working Load"
+msgstr ""
+
+#: functions.php:997 functions.php:1001
+msgid "Steel Wire"
+msgstr ""
+
+#: functions.php:998
+msgid "Rescue equipment"
+msgstr ""
+
+#: functions.php:999
+msgid "Davit SB"
+msgstr ""
+
+#: functions.php:1000
+msgid "Working Load Limit"
+msgstr ""
+
+#: functions.php:1002
+msgid "Fast Rescue Craft"
+msgstr ""
+
+#: functions.php:1003
+msgid "Radio and navigation equipment"
+msgstr ""
+
+#: functions.php:1004
+msgid "Compass"
+msgstr ""
+
+#: functions.php:1005
+msgid "Radar"
+msgstr ""
+
+#: functions.php:1006
+msgid "GMDSS"
+msgstr ""
+
+#: functions.php:1007
+msgid "EPIRB"
+msgstr ""
+
+#: functions.php:1008
+msgid "SART"
+msgstr ""
+
+#: functions.php:1009
+msgid "AIS"
+msgstr ""
+
+#: functions.php:1010
+msgid "LRIT"
+msgstr ""
+
+#: functions.php:1011
+msgid "Accommodation"
+msgstr ""
+
+#: functions.php:1012
+msgid "Total Accommodation (Berths)"
+msgstr ""
+
+#: functions.php:1013
+msgid "Cabins"
+msgstr ""
+
+#: functions.php:1014
+msgid "Single Cabins"
+msgstr ""
+
+#: functions.php:1015
+msgid "Double Cabins"
+msgstr ""
+
+#: functions.php:1016
+msgid "Three Bed Cabins"
+msgstr ""
+
+#: functions.php:1017
+msgid "Six Bed Cabins"
+msgstr ""
+
+#: functions.php:1018
+msgid "Downloads"
+msgstr ""
+
+#: functions.php:1019
+msgid "PDF Sheet"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Section-based"
+msgstr ""
