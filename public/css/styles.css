@@ -170,6 +170,8 @@ form .error span {
   flex: 1 1 50%;
   background-color: #FFF;
   box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.3);
+}
+.introTextContent > div .introTextWrap.contactBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

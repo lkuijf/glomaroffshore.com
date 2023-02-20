@@ -1,4 +1,4 @@
-        <div class="introTextWrap">
+        <div class="introTextWrap contactBox">
             <div>
                 <h2>{!! $header !!}</h2>
                 <p class="contactIcon naw">{{ $address_line_1 }}<br />
