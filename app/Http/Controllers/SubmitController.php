@@ -47,7 +47,7 @@ class SubmitController extends Controller
         $headers = array(
             "MIME-Version: 1.0",
             "Content-Type: text/html; charset=ISO-8859-1",
-            "From: RS Marine <contactform@glomaroffshore.com>",
+            "From: Glomar Offshore <contactform@glomaroffshore.com>",
             "Reply-To: info@glomaroffshore.com",
             // "X-Priority: 1",
         );
