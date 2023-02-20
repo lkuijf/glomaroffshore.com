@@ -53,7 +53,7 @@ add_action( 'init', 'register_taxonomy_vessel_type' );
 
 add_action('after_setup_theme', 'wpdocs_theme_setup');
 function wpdocs_theme_setup() {
-    load_theme_textdomain('wtcustom', get_template_directory() . '/languages');
+    load_theme_textdomain('wt_locale', get_template_directory() . '/languages');
 }
 
 // Our custom post type function
