@@ -68,10 +68,11 @@
   box-shadow: none;
   transform: translate(2px, 2px);
 }
-.contactForm .error input, .contactForm .error textarea {
-  border-color: red;
+
+form .error input, form .error textarea {
+  border-color: red !important;
 }
-.contactForm .error span {
+form .error span {
   color: red;
   display: block;
 }

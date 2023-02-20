@@ -64,9 +64,11 @@
             transform: translate(2px, 2px);
         }
     }
+}
+form {
     .error {
         input, textarea {
-            border-color: red;
+            border-color: red !important;
         }
         span {
             color: red;

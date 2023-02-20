@@ -77,13 +77,7 @@
                     </div>
                     <div>
                         <h4>STAY <strong>UP-TO-DATE</strong><br />Subscribe to our newsletter</h4>
-                        <form action="/submit-subscription-form" method="post" class="subscriptionForm">
-                            @csrf
-                            <div @error('First name')class="error" data-err-msg="{{ $message }}"@enderror><input type="text" name="First name" placeholder="First name" value="{{ old('First name') }}"></div>
-                            <div @error('Last name')class="error" data-err-msg="{{ $message }}"@enderror><input type="text" name="Last name" placeholder="Last name" value="{{ old('Last name') }}"></div>
-                            <div @error('Email')class="error" data-err-msg="{{ $message }}"@enderror><input type="text" name="Email" placeholder="E-mail address" value="{{ old('Email') }}"></div>
-                            <button type="submit">SUBSCRIBE</button>
-                        </form>
+                        @include('snippets.subscription-form')
                     </div>
                     <div>
                         <h4>ACCREDITATIONS</strong></h4>
@@ -102,7 +96,7 @@
 
     <a href="" id="toTop"></a>
     
-    @yield('before_closing_body_tag')
     <script src="{{ asset('js/script.js') }}"></script>
+    @yield('before_closing_body_tag')
 </body>
 </html>

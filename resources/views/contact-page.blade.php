@@ -12,7 +12,8 @@
     @if(session('success'))
         <div class="alert alert-success">
             <div><p class="thumbsUpIcon"></p></div>
-            <div><p>{{ $data['website_options']->form_success }}</p></div>
+            @if(session('success') == 'contact')<div><p>{{ $data['website_options']->form_success }}</p></div>@endif
+            @if(session('success') == 'subscription')<div><p>{{ $data['website_options']->form_subscription_success }}</p></div>@endif
             {{-- <div><p>Gelukt</p></div> --}}
         </div>
     @endif

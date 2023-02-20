@@ -57,7 +57,7 @@ class SubmitController extends Controller
         // mail($to_email, $subject, $message, $headers);
         // mail($to_email, $subject, $message);
         // return back()->with('success', 'Bedankt dat u contact met ons heeft opgenomen, we zullen uw bericht zo snel mogelijk in behandeling nemen!');
-        return redirect('/contact')->with('success', 'Bedankt dat u contact met ons heeft opgenomen, we zullen uw bericht zo snel mogelijk in behandeling nemen!');
+        return redirect('/contact')->with('success', 'contact');
     }
     public function submitSubscriptionForm(Request $request) {
         $toValidate = array(
@@ -80,7 +80,7 @@ class SubmitController extends Controller
         // $validated = $request->validate($toValidate,$validationMessages);
         $validator = Validator::make($request->all(), $toValidate, $validationMessages);
         if($validator->fails()) {
-            return redirect('/')->withErrors($validator)->withInput();
+            return redirect('/contact')->withErrors($validator)->withInput();
         }
 
         $to_email = 'leon@wtmedia-events.nl';
@@ -103,7 +103,7 @@ class SubmitController extends Controller
         // mail($to_email, $subject, $message, $headers);
         // mail($to_email, $subject, $message);
         // return back()->with('success', 'Bedankt dat u contact met ons heeft opgenomen, we zullen uw bericht zo snel mogelijk in behandeling nemen!');
-        return redirect('/')->with('success', 'Bedankt dat u contact met ons heeft opgenomen, we zullen uw bericht zo snel mogelijk in behandeling nemen!');
+        return redirect('/contact')->with('success', 'subscription');
     }
     public function submitApplyForm(Request $request) {
         $toValidate = array(
