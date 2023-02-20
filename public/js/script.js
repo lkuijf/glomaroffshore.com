@@ -60,10 +60,10 @@ ctaBtnElms.forEach(el => {
     el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
     el.style.transform = "translateY(50px)";
 });
-articles.forEach(el => {
-    el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
-    el.style.transform = "translateY(50px)";
-});
+// articles.forEach(el => {
+//     el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
+//     el.style.transform = "translateY(50px)";
+// });
 introTexts.forEach(el => {
     el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
     el.style.transform = "translateY(50px)";
@@ -74,10 +74,10 @@ setTimeout(() => { // using setTimeout for elements that are directly in viewpor
         el.style.transition = "opacity 0.7s ease-in, transform 0.7s ease-out";
         observer.observe(el);
     });
-    articles.forEach(el => {
-        el.style.transition = "opacity 0.7s ease-in, transform 0.7s ease-out";
-        observer.observe(el);
-    });
+    // articles.forEach(el => {
+    //     el.style.transition = "opacity 0.7s ease-in, transform 0.7s ease-out";
+    //     observer.observe(el);
+    // });
     introTexts.forEach(el => {
         el.style.transition = "opacity 0.7s ease-in, transform 0.7s ease-out";
         observer.observe(el);
