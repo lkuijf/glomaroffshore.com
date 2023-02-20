@@ -8,5 +8,5 @@
                 <p class="contactIcon phone"><a href="tel:{{ $phone }}">{{ $phone }}</a></p>
                 <p class="contactIcon email"><a href="mailto:{{ $email }}">{{ $email }}</a></p>
             </div>
-            <iframe width="100%" height="400" src="https://maps.google.com/maps?q={{ urlencode($gm_address) }}&t=&z=10&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <div class="iframeWrap"><iframe width="100%" height="400" src="https://maps.google.com/maps?q={{ urlencode($gm_address) }}&t=&z=10&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
         </div>

@@ -29,6 +29,7 @@ Route::get('/admin', function () {return redirect('/_mcfu638b-cms/wp-admin');});
 // });
 Route::get('/', [PagesController::class, 'showPage'])->defaults('section', 'homepage')->defaults('page', false)->defaults('subpage', false)->name('home');
 Route::post('/submit-contact-form', [SubmitController::class, 'submitContactForm']);
+Route::post('/submit-subscription-form', [SubmitController::class, 'submitContactForm']);
 
 
 /* Check for a page request */
