@@ -2,7 +2,7 @@
 @section('content')
 @include('sections.hero', [
     'images' => $data['vessel']->large_image,
-    'smallHeader' => $data['vessel']->title->rendered,
+    'smallHeader' => '<strong>' . $data['vessel']->title->rendered . '</strong>',
     'text' => implode(' / ', $data['vessel']->vessel_type),
     'display_logo' => false,
     ])

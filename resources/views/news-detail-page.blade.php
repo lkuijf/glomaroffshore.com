@@ -2,7 +2,7 @@
 @section('content')
 @include('sections.hero', [
     'images' => $data['newsItem']->large_image,
-    'bigHeader' => $data['newsItem']->title->rendered,
+    'smallHeader' => '<strong>' . $data['newsItem']->title->rendered . '</strong>',
     'display_logo' => false,
     ])
 @if ($data['newsItem']->text)

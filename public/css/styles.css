@@ -509,6 +509,7 @@ form .error span {
   line-height: 1em;
 }
 .hero .heroOverlay h1.h1Big {
+  font-weight: normal;
   font-size: 6em;
 }
 @media (max-width: 768px) {
@@ -517,6 +518,7 @@ form .error span {
   }
 }
 .hero .heroOverlay h1.h1Small {
+  font-weight: normal;
   font-size: 4em;
 }
 @media (max-width: 768px) {
