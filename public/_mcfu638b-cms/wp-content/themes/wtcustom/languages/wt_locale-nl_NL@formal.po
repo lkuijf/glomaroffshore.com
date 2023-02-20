@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WTM custom theme\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wtcustom\n"
 "POT-Creation-Date: 2023-02-20T16:52:03+01:00\n"
-"PO-Revision-Date: 2023-02-20 16:55+0100\n"
+"PO-Revision-Date: 2023-02-20 17:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL@formal\n"
@@ -37,11 +37,11 @@ msgstr ""
 
 #: functions.php:18
 msgid "Something we dont know"
-msgstr ""
+msgstr "bbbbb"
 
 #: functions.php:18
 msgid "Some other meaningless string"
-msgstr ""
+msgstr "aaaaaa"
 
 #: functions.php:19
 msgid "Twitter somehow"
