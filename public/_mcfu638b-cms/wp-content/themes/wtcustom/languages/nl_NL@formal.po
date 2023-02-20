@@ -4,14 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WTM custom theme\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wtcustom\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2023-02-20T16:52:03+01:00\n"
+"PO-Revision-Date: 2023-02-20 16:55+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL@formal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-20T16:52:03+01:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. Theme Name of the theme
 msgid "WTM custom theme"
@@ -25,10 +27,7 @@ msgstr ""
 msgid "Leon Kuijf"
 msgstr ""
 
-#: functions.php:18
-#: functions.php:59
-#: functions.php:60
-#: functions.php:569
+#: functions.php:18 functions.php:59 functions.php:60 functions.php:569
 msgid "News"
 msgstr ""
 
@@ -46,10 +45,9 @@ msgstr ""
 
 #: functions.php:19
 msgid "Twitter somehow"
-msgstr ""
+msgstr "Formele Twitter vertaling"
 
-#: functions.php:61
-#: functions.php:62
+#: functions.php:61 functions.php:62
 msgid "Add New News-item"
 msgstr ""
 
@@ -61,8 +59,7 @@ msgstr ""
 msgid "Update News-item"
 msgstr ""
 
-#: functions.php:79
-#: functions.php:549
+#: functions.php:79 functions.php:549
 msgid "Offices"
 msgstr ""
 
@@ -70,8 +67,7 @@ msgstr ""
 msgid "Office"
 msgstr ""
 
-#: functions.php:81
-#: functions.php:82
+#: functions.php:81 functions.php:82
 msgid "Add New Office"
 msgstr ""
 
@@ -83,8 +79,7 @@ msgstr ""
 msgid "Update Office"
 msgstr ""
 
-#: functions.php:99
-#: functions.php:559
+#: functions.php:99 functions.php:559
 msgid "Professionals"
 msgstr ""
 
@@ -92,8 +87,7 @@ msgstr ""
 msgid "Professional"
 msgstr ""
 
-#: functions.php:101
-#: functions.php:102
+#: functions.php:101 functions.php:102
 msgid "Add New Professional"
 msgstr ""
 
@@ -105,8 +99,7 @@ msgstr ""
 msgid "Update Professional"
 msgstr ""
 
-#: functions.php:119
-#: functions.php:579
+#: functions.php:119 functions.php:579
 msgid "Vessels"
 msgstr ""
 
@@ -114,8 +107,7 @@ msgstr ""
 msgid "Vessel"
 msgstr ""
 
-#: functions.php:121
-#: functions.php:122
+#: functions.php:121 functions.php:122
 msgid "Add New Vessel"
 msgstr ""
 
@@ -169,8 +161,7 @@ msgstr ""
 msgid "New Type Name"
 msgstr ""
 
-#: functions.php:187
-#: functions.php:958
+#: functions.php:187 functions.php:958
 msgid "Type"
 msgstr ""
 
@@ -194,10 +185,7 @@ msgstr ""
 msgid "Small header text (can use html-tags)"
 msgstr ""
 
-#: functions.php:381
-#: functions.php:455
-#: functions.php:488
-#: functions.php:927
+#: functions.php:381 functions.php:455 functions.php:488 functions.php:927
 msgid "Text"
 msgstr ""
 
@@ -209,85 +197,67 @@ msgstr ""
 msgid "Text section 1"
 msgstr ""
 
-#: functions.php:454
-#: functions.php:487
+#: functions.php:454 functions.php:487
 msgid "Header (can use html-tags)"
 msgstr ""
 
-#: functions.php:456
-#: functions.php:489
-#: functions.php:950
+#: functions.php:456 functions.php:489 functions.php:950
 msgid "Image"
 msgstr ""
 
-#: functions.php:457
-#: functions.php:490
+#: functions.php:457 functions.php:490
 msgid "Add Button"
 msgstr ""
 
-#: functions.php:459
-#: functions.php:492
+#: functions.php:459 functions.php:492
 msgid "Color"
 msgstr ""
 
-#: functions.php:461
-#: functions.php:494
+#: functions.php:461 functions.php:494
 msgid "Full orange"
 msgstr ""
 
-#: functions.php:462
-#: functions.php:495
+#: functions.php:462 functions.php:495
 msgid "White with orange border"
 msgstr ""
 
-#: functions.php:463
-#: functions.php:496
+#: functions.php:463 functions.php:496
 msgid "Transparent"
 msgstr ""
 
-#: functions.php:465
-#: functions.php:498
-#: functions.php:600
+#: functions.php:465 functions.php:498 functions.php:600
 msgid "Icon"
 msgstr ""
 
-#: functions.php:467
-#: functions.php:500
+#: functions.php:467 functions.php:500
 msgid "No icon"
 msgstr ""
 
-#: functions.php:468
-#: functions.php:501
+#: functions.php:468 functions.php:501
 msgid "Phone"
 msgstr ""
 
-#: functions.php:469
-#: functions.php:502
+#: functions.php:469 functions.php:502
 msgid "External link"
 msgstr ""
 
-#: functions.php:471
-#: functions.php:504
+#: functions.php:471 functions.php:504
 msgid "Button Text (can use html-tags)"
 msgstr ""
 
-#: functions.php:472
-#: functions.php:505
+#: functions.php:472 functions.php:505
 msgid "Button URL"
 msgstr ""
 
-#: functions.php:473
-#: functions.php:506
+#: functions.php:473 functions.php:506
 msgid "Target"
 msgstr ""
 
-#: functions.php:475
-#: functions.php:508
+#: functions.php:475 functions.php:508
 msgid "Same tab"
 msgstr ""
 
-#: functions.php:476
-#: functions.php:509
+#: functions.php:476 functions.php:509
 msgid "New tab"
 msgstr ""
 
@@ -375,10 +345,7 @@ msgstr ""
 msgid "Subline"
 msgstr ""
 
-#: functions.php:922
-#: functions.php:932
-#: functions.php:945
-#: functions.php:953
+#: functions.php:922 functions.php:932 functions.php:945 functions.php:953
 msgid "Information"
 msgstr ""
 
@@ -386,13 +353,11 @@ msgstr ""
 msgid "Card text"
 msgstr ""
 
-#: functions.php:928
-#: functions.php:956
+#: functions.php:928 functions.php:956
 msgid "Card image"
 msgstr ""
 
-#: functions.php:929
-#: functions.php:957
+#: functions.php:929 functions.php:957
 msgid "Hero image"
 msgstr ""
 
@@ -584,8 +549,7 @@ msgstr ""
 msgid "Safe Working Load"
 msgstr ""
 
-#: functions.php:997
-#: functions.php:1001
+#: functions.php:997 functions.php:1001
 msgid "Steel Wire"
 msgstr ""
 
