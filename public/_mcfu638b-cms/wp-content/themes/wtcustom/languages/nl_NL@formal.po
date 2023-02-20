@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WTM custom theme\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wtcustom\n"
-"POT-Creation-Date: 2023-02-20T17:29:46+01:00\n"
-"PO-Revision-Date: 2023-02-20 17:32+0100\n"
+"POT-Creation-Date: 2023-02-20T17:33:08+01:00\n"
+"PO-Revision-Date: 2023-02-20 17:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL@formal\n"
@@ -37,15 +37,19 @@ msgstr ""
 
 #: functions.php:18
 msgid "Something we dont know"
-msgstr "1"
+msgstr "asdf"
 
 #: functions.php:18
 msgid "Some other meaningless string"
-msgstr "2"
+msgstr "zxcv"
 
 #: functions.php:19
-msgid "Twitter somehow"
-msgstr "3"
+msgid "Twitter somehow 1"
+msgstr "cvbn"
+
+#: functions.php:19
+msgid "Twitter somehow 2"
+msgstr "fghj"
 
 #: functions.php:68 functions.php:69
 msgid "Add New News-item"
