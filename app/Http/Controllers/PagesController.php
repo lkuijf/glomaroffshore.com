@@ -295,31 +295,41 @@ class PagesController extends Controller
                     $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4', 'google_maps_address');
                     foreach($sec->office_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
-                        $sec->office_associations[$k] = $oCustPostType;
+                        if(!$oCustPostType) unset($sec->office_associations[$k]);
+                        else $sec->office_associations[$k] = $oCustPostType;
                     }
                 }
                 if($sec->_type == 'professional_boxes') {
                     $aValuesToRetreive = array('title', 'function', 'image');
                     foreach($sec->professional_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
-                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery($oCustPostType->image);
-                        $sec->professional_associations[$k] = $oCustPostType;
+                        if(!$oCustPostType) unset($sec->professional_associations[$k]);
+                        else {
+                            if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery($oCustPostType->image);
+                            $sec->professional_associations[$k] = $oCustPostType;
+                        }
                     }
                 }
                 if($sec->_type == 'vessel_boxes') {
                     $aValuesToRetreive = array('title', 'small_image', 'type_text', 'class', 'length', 'breadth', 'slug');
                     foreach($sec->vessels_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
-                        if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
-                        $sec->vessels_associations[$k] = $oCustPostType;
+                        if(!$oCustPostType) unset($sec->vessels_associations[$k]);
+                        else {
+                            if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
+                            $sec->vessels_associations[$k] = $oCustPostType;
+                        }
                     }
                 }
                 if($sec->_type == 'news_boxes') {
                     $aValuesToRetreive = array('title', 'card_text', 'small_image', 'date', 'slug');
                     foreach($sec->news_associations as $k => $assoc) {
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
-                        if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
-                        $sec->news_associations[$k] = $oCustPostType;
+                        if(!$oCustPostType) unset($sec->news_associations[$k]);
+                        else {
+                            if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
+                            $sec->news_associations[$k] = $oCustPostType;
+                        }
                     }
                 }
 
@@ -512,50 +522,50 @@ class PagesController extends Controller
                 if($sec->_type == 'testimonials') {
                     $s['testimonials'] = $sec->testimonials;
                 }
-                if($sec->_type == 'colleagues') {
-                    $s['people'] = array();
-                    $aValuesToRetreive = array('title', 'function', 'text', 'image');
-                    foreach($sec->colleague_associations as $personAssoc) {
-                        $oCustPostType = $this->getCustomPostTypeViaRestApi($personAssoc->subtype, $personAssoc->id, $aValuesToRetreive);
-                        if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
-                        $s['people'][] = $oCustPostType;
-                    }
-                }
-                if($sec->_type == 'joboffers') {
-                    $s['jobOffers'] = array();
-                    $aValuesToRetreive = array('title', 'slug', 'intro', 'job_cat', 'uren_per_week', 'type_job', 'locatie', 'image');
-                    foreach($sec->job_offer_associations3 as $jobOfferAssoc) {
-                        $oCustPostType = $this->getCustomPostTypeViaRestApi($jobOfferAssoc->subtype, $jobOfferAssoc->id, $aValuesToRetreive);
-                        if($oCustPostType->image) {
-                            $aI = array();
-                            $aI['url'] = $this->generateMediaUrl($oCustPostType->image);
-                            $aI['alt'] = $this->generateMediaAlt($oCustPostType->image);
-                            $oCustPostType->image = $aI;
-                        }
+                // if($sec->_type == 'colleagues') {
+                //     $s['people'] = array();
+                //     $aValuesToRetreive = array('title', 'function', 'text', 'image');
+                //     foreach($sec->colleague_associations as $personAssoc) {
+                //         $oCustPostType = $this->getCustomPostTypeViaRestApi($personAssoc->subtype, $personAssoc->id, $aValuesToRetreive);
+                //         if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery(array($oCustPostType->image));
+                //         $s['people'][] = $oCustPostType;
+                //     }
+                // }
+                // if($sec->_type == 'joboffers') {
+                //     $s['jobOffers'] = array();
+                //     $aValuesToRetreive = array('title', 'slug', 'intro', 'job_cat', 'uren_per_week', 'type_job', 'locatie', 'image');
+                //     foreach($sec->job_offer_associations3 as $jobOfferAssoc) {
+                //         $oCustPostType = $this->getCustomPostTypeViaRestApi($jobOfferAssoc->subtype, $jobOfferAssoc->id, $aValuesToRetreive);
+                //         if($oCustPostType->image) {
+                //             $aI = array();
+                //             $aI['url'] = $this->generateMediaUrl($oCustPostType->image);
+                //             $aI['alt'] = $this->generateMediaAlt($oCustPostType->image);
+                //             $oCustPostType->image = $aI;
+                //         }
 
-                        if($oCustPostType->job_cat) $oCustPostType->job_cat = $this->getTerms($oCustPostType->job_cat);
-                        if($oCustPostType->uren_per_week) $oCustPostType->uren_per_week = $this->getTerms($oCustPostType->uren_per_week);
-                        if($oCustPostType->type_job) $oCustPostType->type_job = $this->getTerms($oCustPostType->type_job);
-                        if($oCustPostType->locatie) $oCustPostType->locatie = $this->getTerms($oCustPostType->locatie);
+                //         if($oCustPostType->job_cat) $oCustPostType->job_cat = $this->getTerms($oCustPostType->job_cat);
+                //         if($oCustPostType->uren_per_week) $oCustPostType->uren_per_week = $this->getTerms($oCustPostType->uren_per_week);
+                //         if($oCustPostType->type_job) $oCustPostType->type_job = $this->getTerms($oCustPostType->type_job);
+                //         if($oCustPostType->locatie) $oCustPostType->locatie = $this->getTerms($oCustPostType->locatie);
                         
-                        $oCustPostType->taxonomyTerms = new \stdClass();
-                        $oCustPostType->taxonomyTerms->job_cat = $oCustPostType->job_cat;
-                        $oCustPostType->taxonomyTerms->uren_per_week = $oCustPostType->uren_per_week;
-                        $oCustPostType->taxonomyTerms->type_job = $oCustPostType->type_job;
-                        $oCustPostType->taxonomyTerms->locatie = $oCustPostType->locatie;
-                        unset($oCustPostType->job_cat);
-                        unset($oCustPostType->uren_per_week);
-                        unset($oCustPostType->type_job);
-                        unset($oCustPostType->locatie);
+                //         $oCustPostType->taxonomyTerms = new \stdClass();
+                //         $oCustPostType->taxonomyTerms->job_cat = $oCustPostType->job_cat;
+                //         $oCustPostType->taxonomyTerms->uren_per_week = $oCustPostType->uren_per_week;
+                //         $oCustPostType->taxonomyTerms->type_job = $oCustPostType->type_job;
+                //         $oCustPostType->taxonomyTerms->locatie = $oCustPostType->locatie;
+                //         unset($oCustPostType->job_cat);
+                //         unset($oCustPostType->uren_per_week);
+                //         unset($oCustPostType->type_job);
+                //         unset($oCustPostType->locatie);
 
-                        // if($oCustPostType->slug) {
-                        //     $oCustPostType->url = '/vacatures/' . $oCustPostType->slug;
-                        //     unset($oCustPostType->slug);
-                        // }
+                //         // if($oCustPostType->slug) {
+                //         //     $oCustPostType->url = '/vacatures/' . $oCustPostType->slug;
+                //         //     unset($oCustPostType->slug);
+                //         // }
                         
-                        $s['jobOffers'][] = $oCustPostType;
-                    }
-                }
+                //         $s['jobOffers'][] = $oCustPostType;
+                //     }
+                // }
                 // if($sec->_type == 'text') {
                     // $s['color'] = $sec->color;
                     // $s['orientation'] = 'text_left';
@@ -751,6 +761,7 @@ class PagesController extends Controller
         $call = new ApiCall();
         $call->endpoint = '/index.php/wp-json/wp/v2/' . $customPostType . '/' . $id;
         $oReturned = $call->get();
+        if(isset($oReturned->data->status) && ($oReturned->data->status == 401 || $oReturned->data->status == 404)) return false; // item deleted or non existend
         foreach($valsToReturn as $val) {
             if($val == 'title') $res->{$val} = $oReturned->{$val}->rendered;
             else $res->{$val} = $oReturned->{$val};

@@ -2,7 +2,7 @@
     @if($small_image[0]['url'])<img src="{!! $small_image[0]['url'] !!}" alt="{{ $small_image[0]['alt'] }}">@endif
     <div>
         <div>
-            <h3>{{ $title }}</h3>
+            <h3>{!! $title !!}</h3>
             <p>{{ $card_text }}</p>
         </div>
         <div>
