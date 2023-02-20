@@ -50,9 +50,6 @@ class PagesController extends Controller
             if(is_array($pageId)) $pageId = $pageId['id'];
         }
 
-        $simpleTaxonomies = new SimpleTaxonomiesApi();
-        $simpleTaxonomies->get();
-        $this->allTaxonomiesById = $simpleTaxonomies->makeListById();
 
         $content = $this->getContent($pageId);
         $options = $this->getWebsiteOptions();
@@ -76,7 +73,12 @@ class PagesController extends Controller
                 if($section == 'news') $news = $items;
             }
             if($page) {
-                if($section == 'vessels') $customPost = new CustomPostApi('vessel', false, $page);
+                if($section == 'vessels') {
+                    $customPost = new CustomPostApi('vessel', false, $page);
+                    $simpleTaxonomies = new SimpleTaxonomiesApi();
+                    $simpleTaxonomies->get();
+                    $this->allTaxonomiesById = $simpleTaxonomies->makeListById();
+                }
                 if($section == 'news') $customPost = new CustomPostApi('news', false, $page);
                 $item = $customPost->get();
                 if(!$item) return abort(404);
