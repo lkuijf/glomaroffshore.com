@@ -51,14 +51,6 @@ add_action( 'init', 'register_taxonomy_vessel_type' );
 // add_action( 'init', 'register_taxonomy_type_job' );
 // add_action( 'init', 'register_taxonomy_locatie' );
 
-
-function wpdocs_theme_setup() {
-    // load_theme_textdomain('wtlocale', get_template_directory() . '/languages');
-    load_theme_textdomain('wtlocale');
-}
-
-add_action('after_setup_theme', 'wpdocs_theme_setup');
-
 // Our custom post type function
 function create_posttype_news() {
     register_post_type( 'news',
