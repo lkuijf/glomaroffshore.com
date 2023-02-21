@@ -5,7 +5,7 @@
             @if($imageUrl)<img src="{!! $imageUrl !!}" alt="{{ $imageAlt }}">@endif
             <div>
                 <h2>{!! $header !!}</h2>
-                <p>{!! $text !!}</p>
+                {!! $text !!}
             </div>
             @if (isset($buttons) && count($buttons))
             <div class="textBtnsWrap">
@@ -30,7 +30,7 @@
             @if($imageUrl_2)<img src="{!! $imageUrl_2 !!}" alt="{{ $imageAlt_2 }}">@endif
             <div>
                 <h2>{!! $header_2 !!}</h2>
-                <p>{!! $text_2 !!}</p>
+                {!! $text_2 !!}
             </div>
             @if (isset($buttons_2) && count($buttons_2))
             <div class="textBtnsWrap">
