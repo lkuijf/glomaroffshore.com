@@ -53,7 +53,8 @@ add_action( 'init', 'register_taxonomy_vessel_type' );
 
 
 function wpdocs_theme_setup() {
-    load_theme_textdomain('wtlocale', get_template_directory() . '/languages');
+    // load_theme_textdomain('wtlocale', get_template_directory() . '/languages');
+    load_theme_textdomain('wtlocale');
 }
 
 add_action('after_setup_theme', 'wpdocs_theme_setup');

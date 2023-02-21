@@ -4,14 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WTM custom theme\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wtcustom\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2023-02-21T08:51:08+01:00\n"
+"PO-Revision-Date: 2023-02-21 08:53+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-21T08:51:08+01:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Domain: wtlocale\n"
 
 #. Theme Name of the theme
@@ -28,19 +30,19 @@ msgstr ""
 
 #: functions.php:18
 msgid "Something we dont know"
-msgstr ""
+msgstr "zxcv"
 
 #: functions.php:18
 msgid "Some other meaningless string"
-msgstr ""
+msgstr "cvbn"
 
 #: functions.php:19
 msgid "Twitter somehow 1"
-msgstr ""
+msgstr "vbnm"
 
 #: functions.php:19
 msgid "Twitter somehow 2"
-msgstr ""
+msgstr "weqr"
 
 #. Template Name of the theme
 msgid "Section-based"
