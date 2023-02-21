@@ -25,7 +25,7 @@
         </div>
         <div class="logoNavWrap">
             <div class="inner">
-                <img src="{{ asset('statics/glomar-offshore-logo.png') }}" alt="">
+                <a href="{{ route('home') }}"><img src="{{ asset('statics/glomar-offshore-logo.png') }}" alt=""></a>
                 <nav class="mainNav">
                     <input type="checkbox" id="burger-check">
                     <label for="burger-check" class="burger-label">

@@ -973,7 +973,7 @@ header .logoNavWrap > div {
   justify-content: space-between;
   align-items: center;
 }
-header .logoNavWrap > div > img {
+header .logoNavWrap > div > a img {
   height: 30px;
 }
 
