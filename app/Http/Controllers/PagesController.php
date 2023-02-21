@@ -260,8 +260,8 @@ class PagesController extends Controller
         foreach($pageData->head_tags as $htag) {
             if(isset($htag->attributes->name) && $htag->attributes->name == 'description') $metaDesc = $htag->attributes->content;
         }
-        if($pageData->title->rendered == '[HOMEPAGE]') $hTitle = 'RS Marine Shipmanagement Ltd - Connecting seafarers, vessel and Shipowner';
-        else $hTitle = $pageData->title->rendered . ' - RS Marine';
+        if($pageData->title->rendered == '[HOMEPAGE]') $hTitle = 'Glomar // Offshore - A Fleet of Offshore Support Vessels';
+        else $hTitle = $pageData->title->rendered . ' - Glomar // Offshore';
 
         $simpleMedia = new SimpleMediaApi();
         $simpleMedia->get();
