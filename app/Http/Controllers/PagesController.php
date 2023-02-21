@@ -92,7 +92,6 @@ class PagesController extends Controller
             }
         }
 // dd($vessel);
-
         
         
 // dd($options);
@@ -114,10 +113,14 @@ class PagesController extends Controller
         ];
         if($vessel) {
 // dd($vessel);
+            $data['head_title'] = $vessel->title->rendered . ' - Glomar // Offshore';
+            $data['meta_description'] = $vessel->title->rendered . ', ' . $vessel->type_text . ' - a vessel of Glomar // Offshore';
             return view('vessel-detail-page')->with('data', $data);
         }
         if($newsItem) {
 // dd($newsItem);
+            $data['head_title'] = $newsItem->title->rendered . ' - Glomar // Offshore';
+            $data['meta_description'] = $newsItem->card_text . ' - Glomar // Offshore';
             return view('news-detail-page')->with('data', $data);
         }
         if($section == 'contact')
