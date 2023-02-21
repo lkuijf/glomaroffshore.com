@@ -65,7 +65,7 @@ ctaBtnElms.forEach(el => {
 //     el.style.transform = "translateY(50px)";
 // });
 introTexts.forEach(el => {
-    el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
+    // el.style.opacity = 0; // Beware of user has disabled JS; do not hide elements using CSS
     el.style.transform = "translateY(50px)";
 });
 setTimeout(() => { // using setTimeout for elements that are directly in viewport, so they show the effect
