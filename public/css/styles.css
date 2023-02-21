@@ -1116,6 +1116,13 @@ header .logoNavWrap > div > img {
   font-size: 2em;
   line-height: 1em;
 }
+.contentWrapper a {
+  color: #FF5303;
+  text-decoration: none;
+}
+.contentWrapper a:hover {
+  text-decoration: underline;
+}
 
 footer {
   color: #CCC;

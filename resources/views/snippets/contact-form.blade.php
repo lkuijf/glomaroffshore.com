@@ -23,7 +23,7 @@
     <div @error('Bericht')class="error" data-err-msg="{{ $message }}"@enderror><label for="form-message">Message *</label><br /><textarea id="form-message" name="Bericht" rows="6" cols="20">{{ old('Bericht') }}</textarea></div>
     <div><input type="checkbox" id="form-receive-updates" name="Aanmelden_nieuwsbrief" value="Ja"{{ old('Aanmelden_nieuwsbrief') == 'Ja' ? ' checked' : '' }}><label for="form-receive-updates">Please send me the newsletter</label></div>
 
-    <div @error('Accept_conditions')class="error" data-err-msg="{{ $message }}"@enderror><input type="checkbox" id="form-accept-conditions" name="Accept_conditions" value="Ja"{{ old('Accept_conditions') == 'Ja' ? ' checked' : '' }}><label for="form-accept-conditions">I have read and accept the general conditions.</label></div>
+    <div @error('Accept_conditions')class="error" data-err-msg="{{ $message }}"@enderror><input type="checkbox" id="form-accept-conditions" name="Accept_conditions" value="Ja"{{ old('Accept_conditions') == 'Ja' ? ' checked' : '' }}><label for="form-accept-conditions">I have read and accept the <a href="{{ url('general-conditions') }}">general conditions</a>.</label></div>
 
     <div><button type="submit" class="g-recaptcha" data-sitekey="6LdpSX0eAAAAANrVFYR0hn3Lw63hrhK0r04UhOGN" data-callback="onSubmit" data-action="submit"><span>Send</span></button></div>
 </form>

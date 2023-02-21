@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $data['head_title'] }}</title>
     <meta name="description" content="{{ $data['meta_description'] }}">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-
     <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
-    
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
@@ -89,7 +86,7 @@
         <div class="bottomBar">
             <div class="innerFooter">
                 <div>&copy; <strong>GLOMAR</strong> // OFFSHORE</div>
-                <div><a href="">General conditions</a></div>
+                <div><a href="{{ url('general-conditions') }}">General conditions</a></div>
             </div>
         </div>
     </footer>

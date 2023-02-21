@@ -378,6 +378,13 @@ header {
         font-size: 2em;
         line-height: 1em;
     }
+    a {
+        color: $colorOrange;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 footer {
