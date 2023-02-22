@@ -15,7 +15,7 @@ $carbonFieldsArgs = array();
 $websiteOptions = array();
 // $websiteOptions[] = array('text', 'header_big', 'Website kop tekst GROOT');
 // $websiteOptions[] = array('text', 'facebook', 'Facebook link');
-$websiteOptions[] = array('text', 'linkedin', 'LinkedIn link');
+$websiteOptions[] = array('text', 'linkedin', 'LinkedIn link' . ' * ' . __( 'do translate me now', 'wtm-custom-theme' ));
 $websiteOptions[] = array('text', 'twitter', 'Twitter link');
 // $websiteOptions[] = array('text', 'instagram', 'Instagram link');
 $websiteOptions[] = array('text', 'form_success', 'Contact formulier succes melding');
@@ -50,6 +50,11 @@ add_action( 'init', 'register_taxonomy_vessel_type' );
 // add_action( 'init', 'register_taxonomy_uren_per_week' );
 // add_action( 'init', 'register_taxonomy_type_job' );
 // add_action( 'init', 'register_taxonomy_locatie' );
+
+function my_theme_load_theme_textdomain() {
+    load_theme_textdomain( 'wtm-custom-theme' );
+}
+add_action( 'after_setup_theme', 'my_theme_load_theme_textdomain' );
 
 // Our custom post type function
 function create_posttype_news() {
