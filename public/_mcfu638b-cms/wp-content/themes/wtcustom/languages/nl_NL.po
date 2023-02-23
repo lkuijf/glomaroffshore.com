@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WTM custom theme\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wtcustom\n"
-"POT-Creation-Date: 2023-02-23T13:12:07+01:00\n"
-"PO-Revision-Date: 2023-02-23 13:12+0100\n"
+"POT-Creation-Date: 2023-02-23T13:18:48+01:00\n"
+"PO-Revision-Date: 2023-02-23 13:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -27,9 +27,13 @@ msgstr ""
 msgid "Leon Kuijf"
 msgstr ""
 
-#: functions.php:16
+#: functions.php:13
 msgid "Something to translate"
-msgstr "ssssooweeee"
+msgstr "aaa"
+
+#: functions.php:13
+msgid "tl2"
+msgstr "bbb"
 
 #. Template Name of the theme
 msgid "Section-based"
