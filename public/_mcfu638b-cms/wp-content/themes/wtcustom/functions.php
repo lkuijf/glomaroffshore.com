@@ -11,11 +11,16 @@ require('inc/callbacks.inc.php');
 $editorCanAddAndRemovePages = true; // !!! may take 2 reloads for changes to take effect !!!
 $editorCanAddAndRemovePosts = true; // !!! may take 2 reloads for changes to take effect !!!
 
+function my_theme_load_theme_textdomain() {
+    load_theme_textdomain( 'wt-custom-lang', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'my_theme_load_theme_textdomain' );
+
 $carbonFieldsArgs = array();
 $websiteOptions = array();
 // $websiteOptions[] = array('text', 'header_big', 'Website kop tekst GROOT');
 // $websiteOptions[] = array('text', 'facebook', 'Facebook link');
-$websiteOptions[] = array('text', 'linkedin', 'LinkedIn link');
+$websiteOptions[] = array('text', 'linkedin', 'LinkedIn link' . __( 'The Translation goes here', 'wt-custom-lang' ));
 $websiteOptions[] = array('text', 'twitter', 'Twitter link');
 // $websiteOptions[] = array('text', 'instagram', 'Instagram link');
 $websiteOptions[] = array('text', 'form_success', 'Contact formulier succes melding');
