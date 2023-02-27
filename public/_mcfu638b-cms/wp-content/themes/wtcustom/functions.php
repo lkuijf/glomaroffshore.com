@@ -459,7 +459,8 @@ function crbRegisterFields($args) {
                 // ) )
 
         ))
-        ->add_tab( __('Page meta information'), array(
+        ->add_tab( __('Page meta data'), array(
+            Field::make( 'separator', 'separator', __( 'Information about the page' ) ),
             Field::make( 'text', 'meta_title', __( 'Page title (shown in browser tab)' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'text', 'meta_description', __( 'Page meta description (shown in search engines)' ))->set_visible_in_rest_api($visible = true),
         ));
