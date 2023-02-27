@@ -199,10 +199,11 @@ class PagesController extends Controller
         $hTitle = '';
         $sections = [];
         $reqPage = new PageApi($id);
-        $pageData = $reqPage->get();
-        foreach($pageData->head_tags as $htag) {
-            if(isset($htag->attributes->name) && $htag->attributes->name == 'description') $metaDesc = $htag->attributes->content;
-        }
+        $pageData = $reqPage->get();    
+// dd($pageData);
+        // foreach($pageData->head_tags as $htag) {
+        //     if(isset($htag->attributes->name) && $htag->attributes->name == 'description') $metaDesc = $htag->attributes->content;
+        // }
         if($pageData->title->rendered == '[HOMEPAGE]') $hTitle = config('app_wt.metaTitle');
         else $hTitle = $pageData->title->rendered . ' - ' . config('app_wt.metaTitle');
 
