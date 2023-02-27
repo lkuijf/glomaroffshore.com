@@ -571,14 +571,6 @@ function crbRegisterFields($args) {
     //         Field::make( 'rich_text', 'crb_category_text', __( 'Text' ) )->set_visible_in_rest_api($visible = true),
     //     ));
 
-    Container::make( 'post_meta', __( 'Information' ) )
-        ->where( 'post_type', '=', 'professional' )
-        ->add_fields(array(
-            Field::make( 'text', 'Meta title', __( 'Meta title' ))->set_visible_in_rest_api($visible = true),
-            Field::make( 'text', 'Meta description', __( 'Meta description' ))->set_visible_in_rest_api($visible = true),
-            )
-        );
-
 
     $fieldsToAdd = array();
     foreach($args['websiteOptions'] as $opt) {
