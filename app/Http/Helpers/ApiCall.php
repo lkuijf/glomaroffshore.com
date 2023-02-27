@@ -19,7 +19,8 @@ class ApiCall {
         $params = '';
         if($this->parameters) $params = '?' . http_build_query($this->parameters);
 
-// echo "\n" . '[' . config('app_wt.cmsPath') . $this->endpoint . $params.']' . "<br />\n";
+echo "\n" . '[' . config('app_wt.cmsPath') . $this->endpoint . $params.']' . "<br />\n";
+
         curl_setopt($curl, CURLOPT_URL, config('app_wt.cmsPath') . $this->endpoint . $params);
         if($this->method == 'POST') {
             curl_setopt($curl, CURLOPT_POST, true);
@@ -45,6 +46,13 @@ class ApiCall {
 
         $data = curl_exec($curl);
         $headers = curl_getinfo($curl);
+
+echo 'Lookup time: ' . ($headers['namelookup_time'] * 1000) . 'ms' . "<br />\n";
+echo 'Connect time: ' . ($headers['connect_time'] * 1000) . 'ms' . "<br />\n";
+echo 'Pretransfer time: ' . ($headers['pretransfer_time']) . 'ms' . "<br />\n";
+echo 'Redirect time: ' . ($headers['redirect_time'] * 1000) . 'ms' . "<br />\n";
+echo 'Time to 1st Byte time: ' . ($headers['starttransfer_time'] * 1000) . 'ms' . "<br />\n";
+echo 'Total time: ' . ($headers['total_time'] * 1000) . 'ms' . "<br />\n";
 
         curl_close($curl);
     
