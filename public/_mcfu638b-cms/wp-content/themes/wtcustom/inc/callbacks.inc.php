@@ -54,6 +54,7 @@ function getMediaSimplified(WP_REST_Request $request) {
 }
 function getPagesSimplified(WP_REST_Request $request) {
     $pages = get_pages();
+var_dump($pages);
     $aRes = getPagesCollectionAttrs($pages);
     $response = new WP_REST_Response($aRes);
     $response->set_status(200);
