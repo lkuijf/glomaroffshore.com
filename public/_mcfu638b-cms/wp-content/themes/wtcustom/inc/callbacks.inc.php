@@ -54,6 +54,9 @@ function getMediaSimplified(WP_REST_Request $request) {
 }
 function getPagesSimplified(WP_REST_Request $request) {
     $pages = get_pages();
+    foreach($pages as $k => $page) {
+        $pages[$k]->hide_from_menu = carbon_get_the_post_meta($page->ID, 'hide_from_menu');
+    }
 var_dump($pages);
     $aRes = getPagesCollectionAttrs($pages);
     $response = new WP_REST_Response($aRes);
