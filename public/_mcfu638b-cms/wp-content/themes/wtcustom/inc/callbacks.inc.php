@@ -25,6 +25,7 @@ function getMediaSimplified(WP_REST_Request $request) {
         'numberposts' => -1,
         'post_type' => 'attachment',
     ]);
+    $sizes = get_intermediate_image_sizes();
     $aRes = [];
     foreach ($media as $item) {
         $oP = new stdClass();

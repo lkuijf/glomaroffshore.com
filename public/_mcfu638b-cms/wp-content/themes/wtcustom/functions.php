@@ -359,6 +359,7 @@ add_action('carbon_fields_theme_options_container_saved', 'deleteWebsiteOptionsR
 
 add_action('add_attachment', 'deleteSimpleMediaRestCache');
 add_action('delete_attachment', 'deleteSimpleMediaRestCache');
+add_action('attachment_updated', 'deleteSimpleMediaRestCache');
 
 add_action('create_term', 'deleteSimpleTaxonomiesRestCache');
 add_action('edit_term', 'deleteSimpleTaxonomiesRestCache');
