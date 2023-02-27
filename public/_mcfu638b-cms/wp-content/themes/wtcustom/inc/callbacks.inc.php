@@ -38,7 +38,7 @@ function getMediaSimplified(WP_REST_Request $request) {
         $oP->topic = $topic;
         $oP->alt = $alt;
 
-        $thumbnails = [];
+        $thumbnails = new stdClass();
         foreach($sizes as $key => $size) {
             $src = wp_get_attachment_image_src( $item->ID, $size)[0];
             if($src && $src != $item->guid) $thumbnails[$size] = $src;
