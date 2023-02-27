@@ -245,27 +245,7 @@ function crbRegisterFields($args) {
     Container::make( 'post_meta', __( 'Page information' ) )
         ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '=', 'template-section-based.php' )
-
-        ->add_tab( __('Profile'), array(
-            Field::make( 'text', 'crb_first_name', 'First Name' ),
-            Field::make( 'text', 'crb_last_name', 'Last Name' ),
-            Field::make( 'text', 'crb_position', 'Position' ),
-        ) )
-        ->add_tab( __('Notification'), array(
-            Field::make( 'text', 'crb_email', 'Notification Email' ),
-            Field::make( 'text', 'crb_phone', 'Phone Number' ),
-        ) );
-
-        // ->add_fields(array(
-        //     Field::make( 'text', 'meta_title', __( 'Page title (shown in browser tab)' ))->set_visible_in_rest_api($visible = true),
-        //     Field::make( 'text', 'meta_description', __( 'Page meta description (shown in search engines)' ))->set_visible_in_rest_api($visible = true),
-        //     )
-        // );
-
-    Container::make( 'post_meta', __( 'Section Options' ) )
-        ->where( 'post_type', '=', 'page' )
-        ->where( 'post_template', '=', 'template-section-based.php' )
-        ->add_tab( __('Content'), array(
+        ->add_tab( __('Page content'), array(
             Field::make( 'complex', 'crb_sections', 'Sections' )->set_visible_in_rest_api($visible = true)
                 ->set_layout( 'tabbed-vertical' )
                 ->add_fields( 'hero', 'Hero (big header)', array(
@@ -479,7 +459,7 @@ function crbRegisterFields($args) {
                 // ) )
 
         ))
-        ->add_tab( __('Meta information'), array(
+        ->add_tab( __('Page meta information'), array(
             Field::make( 'text', 'meta_title', __( 'Page title (shown in browser tab)' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'text', 'meta_description', __( 'Page meta description (shown in search engines)' ))->set_visible_in_rest_api($visible = true),
         ));
