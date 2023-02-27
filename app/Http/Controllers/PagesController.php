@@ -56,7 +56,7 @@ class PagesController extends Controller
 // dd($options);
 
         // if(isset($options['header_image'])) $options['header_image'] = $this->generateMediaUrl($options['header_image']);
-        if(isset($options->working_with)) $options->working_with = $this->getMediaGallery($options->working_with);
+        if(isset($options->working_with)) $options->working_with = $this->getMediaGallery($options->working_with, 'medium');
         $vessels = array();
         $news = array();
         $vessel = false;
@@ -67,7 +67,7 @@ class PagesController extends Controller
                 if($section == 'news') $customPost = new CustomPostApi('news');
                 $items = $customPost->get();
                 foreach($items as $k => $item) {
-                    $items[$k]->small_image = $this->getMediaGallery($item->small_image);
+                    $items[$k]->small_image = $this->getMediaGallery($item->small_image, 'medium_large');
                 }
                 if($section == 'vessels') $vessels = $items;
                 if($section == 'news') $news = $items;
@@ -83,8 +83,8 @@ class PagesController extends Controller
                 $item = $customPost->get();
                 if(!$item) return abort(404);
                 $item = $item[0];
-                $item->large_image = $this->getMediaGallery($item->large_image);
-                $item->small_image = $this->getMediaGallery($item->small_image);
+                $item->large_image = $this->getMediaGallery($item->large_image, '2048x2048');
+                $item->small_image = $this->getMediaGallery($item->small_image, 'medium_large');
                 if(isset($item->{'pdf-sheet'})) $item->{'pdf-sheet'} = $this->generateMediaUrl($item->{'pdf-sheet'});
                 if(isset($item->vessel_type)) $item->vessel_type = $this->getTerms($item->vessel_type);
                 if($section == 'vessels') $vessel = $item;
@@ -288,11 +288,11 @@ class PagesController extends Controller
 
                 if($sec->_type == 'hero') {
 // dd($sec->crb_media_gallery);
-                    $sec->crb_media_gallery = $this->getMediaGallery($sec->crb_media_gallery);
+                    $sec->crb_media_gallery = $this->getMediaGallery($sec->crb_media_gallery, '2048x2048');
                 }
                 if($sec->_type == 'text') {
-                    $sec->image = $this->getMediaGallery($sec->image);
-                    $sec->image_2 = $this->getMediaGallery($sec->image_2);
+                    $sec->image = $this->getMediaGallery($sec->image, 'medium_large');
+                    $sec->image_2 = $this->getMediaGallery($sec->image_2, 'medium_large');
                 }
                 if($sec->_type == 'office_boxes') {
                     $aValuesToRetreive = array('title', 'country', 'phone', 'email', 'address1', 'address2', 'address3', 'address4', 'google_maps_address');
@@ -308,7 +308,7 @@ class PagesController extends Controller
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
                         if(!$oCustPostType) unset($sec->professional_associations[$k]);
                         else {
-                            if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery($oCustPostType->image);
+                            if($oCustPostType->image) $oCustPostType->image = $this->getMediaGallery($oCustPostType->image, 'medium_large');
                             $sec->professional_associations[$k] = $oCustPostType;
                         }
                     }
@@ -319,7 +319,7 @@ class PagesController extends Controller
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
                         if(!$oCustPostType) unset($sec->vessels_associations[$k]);
                         else {
-                            if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
+                            if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image, 'medium_large');
                             $sec->vessels_associations[$k] = $oCustPostType;
                         }
                     }
@@ -330,7 +330,7 @@ class PagesController extends Controller
                         $oCustPostType = $this->getCustomPostTypeViaRestApi($assoc->subtype, $assoc->id, $aValuesToRetreive);
                         if(!$oCustPostType) unset($sec->news_associations[$k]);
                         else {
-                            if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image);
+                            if($oCustPostType->small_image) $oCustPostType->small_image = $this->getMediaGallery($oCustPostType->small_image, 'medium_large');
                             $sec->news_associations[$k] = $oCustPostType;
                         }
                     }
@@ -771,7 +771,7 @@ class PagesController extends Controller
         }
         return $res;
     }
-    public function getMediaGallery($gall) {
+    public function getMediaGallery($gall, $size = false) {
         $res = [];
 
         if(!$gall) {
@@ -784,7 +784,7 @@ class PagesController extends Controller
         if(!is_array($gall)) $gall = array($gall);
 
         foreach($gall as $mediaId) {
-            $url = $this->generateMediaUrl($mediaId);
+            $url = $this->generateMediaUrl($mediaId, $size);
             $alt = $this->generateMediaAlt($mediaId);
             if(isset($this->allMediaById[$mediaId]) && isset($this->allMediaById[$mediaId]->alt) && $this->allMediaById[$mediaId]->alt) $alt = $this->allMediaById[$mediaId]->alt;
             $i['url'] = $url;
@@ -793,11 +793,15 @@ class PagesController extends Controller
         }
         return $res;
     }
-    public function generateMediaUrl($mediaId) {
-        if(isset($this->allMediaById[$mediaId]))
-            return str_replace(array('http://', '_mcfu638b-cms/wp-content/uploads'), array('https://', 'media'), $this->allMediaById[$mediaId]->url);
-        else
+    public function generateMediaUrl($mediaId, $size = false) {
+        if(isset($this->allMediaById[$mediaId])) {
+            if($size) $url = $this->allMediaById[$mediaId]->sizes->{$size};
+            else $url = $this->allMediaById[$mediaId]->url;
+            return str_replace(array('http://', '_mcfu638b-cms/wp-content/uploads'), array('https://', 'media'), $url);
+        }
+        else {
             return 'https://via.placeholder.com/800x600?text=Geen+afbeelding+gevonden';
+        }
     }
     public function generateMediaAlt($mediaId) {
         if(isset($this->allMediaById[$mediaId]))
