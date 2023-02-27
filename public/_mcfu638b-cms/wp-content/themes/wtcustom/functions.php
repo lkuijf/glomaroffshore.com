@@ -241,6 +241,27 @@ add_action('save_post_page', 'deleteSimplePagesRestCache');
 //     echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
 // }
 function crbRegisterFields($args) {
+
+    Container::make( 'post_meta', __( 'Page information' ) )
+        ->where( 'post_type', '=', 'page' )
+        ->where( 'post_template', '=', 'template-section-based.php' )
+
+        ->add_tab( __('Profile'), array(
+            Field::make( 'text', 'crb_first_name', 'First Name' ),
+            Field::make( 'text', 'crb_last_name', 'Last Name' ),
+            Field::make( 'text', 'crb_position', 'Position' ),
+        ) )
+        ->add_tab( __('Notification'), array(
+            Field::make( 'text', 'crb_email', 'Notification Email' ),
+            Field::make( 'text', 'crb_phone', 'Phone Number' ),
+        ) );
+
+        // ->add_fields(array(
+        //     Field::make( 'text', 'meta_title', __( 'Page title (shown in browser tab)' ))->set_visible_in_rest_api($visible = true),
+        //     Field::make( 'text', 'meta_description', __( 'Page meta description (shown in search engines)' ))->set_visible_in_rest_api($visible = true),
+        //     )
+        // );
+
     Container::make( 'post_meta', __( 'Section Options' ) )
         ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '=', 'template-section-based.php' )
@@ -482,24 +503,13 @@ function crbRegisterFields($args) {
             Field::make( 'text', 'google_maps_address', __( 'Address for Google Maps Marker' ))->set_visible_in_rest_api($visible = true),
             )
         );
-        Container::make( 'post_meta', __( 'Information' ) )
+    Container::make( 'post_meta', __( 'Information' ) )
         ->where( 'post_type', '=', 'professional' )
         ->add_fields(array(
             Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
             )
         );
-
-
-    Container::make( 'post_meta', __( 'Extra information' ) )
-        ->where( 'post_type', '=', 'page' )
-        ->where( 'post_template', '=', 'template-section-based.php' )
-        ->add_fields(array(
-            Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
-            Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
-            )
-        );
-
 
     Container::make( 'post_meta', __( 'Information' ) )
         ->where( 'post_type', '=', 'vessel' )
