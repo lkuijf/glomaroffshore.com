@@ -482,13 +482,25 @@ function crbRegisterFields($args) {
             Field::make( 'text', 'google_maps_address', __( 'Address for Google Maps Marker' ))->set_visible_in_rest_api($visible = true),
             )
         );
-    Container::make( 'post_meta', __( 'Information' ) )
+        Container::make( 'post_meta', __( 'Information' ) )
         ->where( 'post_type', '=', 'professional' )
         ->add_fields(array(
             Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
             Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
             )
         );
+
+
+    Container::make( 'post_meta', __( 'Extra information' ) )
+        ->where( 'post_type', '=', 'page' )
+        ->where( 'post_template', '=', 'template-section-based.php' )
+        ->add_fields(array(
+            Field::make( 'text', 'function', __( 'Function' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'image', 'image', __( 'Image' ) )->set_visible_in_rest_api($visible = true),
+            )
+        );
+
+
     Container::make( 'post_meta', __( 'Information' ) )
         ->where( 'post_type', '=', 'vessel' )
         ->add_fields(array(
