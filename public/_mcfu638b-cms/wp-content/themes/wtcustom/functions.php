@@ -265,7 +265,7 @@ function crbRegisterFields($args) {
     Container::make( 'post_meta', __( 'Section Options' ) )
         ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '=', 'template-section-based.php' )
-        ->add_fields( array(
+        ->add_tab( __('Content'), array(
             Field::make( 'complex', 'crb_sections', 'Sections' )->set_visible_in_rest_api($visible = true)
                 ->set_layout( 'tabbed-vertical' )
                 ->add_fields( 'hero', 'Hero (big header)', array(
@@ -478,6 +478,10 @@ function crbRegisterFields($args) {
                 //         ) )
                 // ) )
 
+        ))
+        ->add_tab( __('Meta information'), array(
+            Field::make( 'text', 'meta_title', __( 'Page title (shown in browser tab)' ))->set_visible_in_rest_api($visible = true),
+            Field::make( 'text', 'meta_description', __( 'Page meta description (shown in search engines)' ))->set_visible_in_rest_api($visible = true),
         ));
 
     Container::make( 'post_meta', __( 'Information' ) )
