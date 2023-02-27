@@ -108,13 +108,13 @@ class PagesController extends Controller
             'newsItem' => $newsItem,
         ];
         if($vessel) {
-            $data['head_title'] = $vessel->title->rendered . ' - Glomar // Offshore';
+            $data['head_title'] = $vessel->title->rendered . ' - ' . config('app_wt.cmsPath');
             $data['meta_description'] = $vessel->title->rendered . ', ' . $vessel->type_text . ' - a vessel of Glomar // Offshore';
             return view('vessel-detail-page')->with('data', $data);
         }
         if($newsItem) {
-            $data['head_title'] = $newsItem->title->rendered . ' - Glomar // Offshore';
-            $data['meta_description'] = $newsItem->card_text . ' - Glomar // Offshore';
+            $data['head_title'] = $newsItem->title->rendered . ' - ' . config('app_wt.cmsPath');
+            $data['meta_description'] = $newsItem->card_text;
             return view('news-detail-page')->with('data', $data);
         }
         if($section == 'contact')
@@ -203,8 +203,8 @@ class PagesController extends Controller
         foreach($pageData->head_tags as $htag) {
             if(isset($htag->attributes->name) && $htag->attributes->name == 'description') $metaDesc = $htag->attributes->content;
         }
-        if($pageData->title->rendered == '[HOMEPAGE]') $hTitle = 'Glomar // Offshore - A Fleet of Offshore Support Vessels';
-        else $hTitle = $pageData->title->rendered . ' - Glomar // Offshore';
+        if($pageData->title->rendered == '[HOMEPAGE]') $hTitle = config('app_wt.cmsPath');
+        else $hTitle = $pageData->title->rendered . ' - ' . config('app_wt.cmsPath');
 
         $simpleMedia = new SimpleMediaApi();
         $simpleMedia->get();
