@@ -37,6 +37,13 @@ function getMediaSimplified(WP_REST_Request $request) {
         if(isset(get_post_meta($item->ID, '_wp_attachment_image_alt')[0])) $alt = get_post_meta($item->ID, '_wp_attachment_image_alt')[0];
         $oP->topic = $topic;
         $oP->alt = $alt;
+
+        $thumbnails = [];
+        foreach($sizes as $key => $size) {
+            $thumbnails[$key] = wp_get_attachment_image_src( $item->ID, $size)[0];
+        }
+        $oP->thumbnails = $thumbnails;
+
         $aRes[] = $oP;
     }
     $response = new WP_REST_Response($aRes);
