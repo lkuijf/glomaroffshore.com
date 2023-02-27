@@ -195,17 +195,16 @@ class PagesController extends Controller
 
     public function getContent($id) {
         $res = new \stdClass();
-        $metaDesc = '';
+        $metaDesc = config('app_wt.metaDescription');
         $hTitle = '';
         $sections = [];
         $reqPage = new PageApi($id);
         $pageData = $reqPage->get();    
 // dd($pageData);
-        // foreach($pageData->head_tags as $htag) {
-        //     if(isset($htag->attributes->name) && $htag->attributes->name == 'description') $metaDesc = $htag->attributes->content;
-        // }
         if($pageData->title->rendered == '[HOMEPAGE]') $hTitle = config('app_wt.metaTitle');
         else $hTitle = $pageData->title->rendered . ' - ' . config('app_wt.metaTitle');
+        if($pageData->meta_title) $hTitle = $pageData->meta_title;
+        if($pageData->meta_description) $metaDesc = $pageData->meta_description;
 
         $simpleMedia = new SimpleMediaApi();
         $simpleMedia->get();
