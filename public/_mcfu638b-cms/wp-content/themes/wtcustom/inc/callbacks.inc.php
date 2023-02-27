@@ -38,11 +38,11 @@ function getMediaSimplified(WP_REST_Request $request) {
         $oP->topic = $topic;
         $oP->alt = $alt;
 
-        $thumbnails = [];
+        $thumbnails = new stdClass();
         foreach($sizes as $key => $size) {
-            $thumbnails[$key . ' - ' . $size] = wp_get_attachment_image_src( $item->ID, $size)[0];
+            $thumbnails[$size] = wp_get_attachment_image_src( $item->ID, $size)[0];
         }
-        $oP->thumbnails = $thumbnails;
+        $oP->sizes = $thumbnails;
 
         $aRes[] = $oP;
     }
