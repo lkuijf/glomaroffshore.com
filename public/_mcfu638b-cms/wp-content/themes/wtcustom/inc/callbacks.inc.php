@@ -53,7 +53,16 @@ function getMediaSimplified(WP_REST_Request $request) {
     return $response;
 }
 function getPagesSimplified(WP_REST_Request $request) {
-    $pages = get_pages();
+    // $pages = get_pages();
+
+    $pages = get_posts([
+        'numberposts' => -1,
+        // 'orderby' => $orderby,
+        // 'order' => $order,
+        'post_type' => 'page',
+    ]);
+
+
     foreach($pages as $k => $page) {
         $pages[$k]->hide_from_menu = carbon_get_the_post_meta($page->ID, 'hide_from_menu');
     }
