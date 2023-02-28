@@ -54,19 +54,9 @@ function getMediaSimplified(WP_REST_Request $request) {
 }
 function getPagesSimplified(WP_REST_Request $request) {
     $pages = get_pages();
-
-    // $pages = get_posts([
-    //     'numberposts' => -1,
-    //     // 'orderby' => $orderby,
-    //     // 'order' => $order,
-    //     'post_type' => 'page',
-    // ]);
-
-
     foreach($pages as $k => $page) {
         $pages[$k]->hide_from_menu = get_post_meta($page->ID, '_hide_from_menu');
     }
-var_dump($pages);
     $aRes = getPagesCollectionAttrs($pages);
     $response = new WP_REST_Response($aRes);
     $response->set_status(200);
@@ -121,6 +111,10 @@ function getPagesCollectionAttrs($coll) {
         $oP->order = $item->menu_order;
         $oP->status = $item->post_status;
         $oP->date = $item->post_date;
+        
+        $oP->hide_from_menu = false;
+        if(count($item->hide_from_menu) && $item->hide_from_menu[0] = 'yes') $oP->hide_from_menu = true;
+
         $aRes[] = $oP;
     }
     return $aRes;

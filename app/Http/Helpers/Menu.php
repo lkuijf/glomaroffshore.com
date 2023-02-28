@@ -21,7 +21,8 @@ class Menu {
             if($page->title == 'Privacyverklaring') continue;
             if($page->title == 'Interviews') continue;
             if($page->title == 'FAQ') continue;
-            if($page->title == 'General Conditions') continue;
+            // if($page->title == 'General Conditions') continue;
+            if($page->hide_from_menu) continue;
             if($page->title == '[HOMEPAGE]') $page->title = 'Home';
             
             $pageUrl = $url . '/' . $page->slug;
