@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
+use App\Http\Helpers\ApiCall;
+use App\Http\Helpers\WebsiteOptionsApi;
+
 class SubmitController extends Controller
 {
     public function submitContactForm(Request $request) {
@@ -36,7 +39,11 @@ class SubmitController extends Controller
             // return back()->withErrors($validator)->withInput();
         }
 
-        $to_email = 'leon@wtmedia-events.nl';
+        $allWebsiteOptions = new WebsiteOptionsApi();
+        $websiteOptions = $allWebsiteOptions->get();
+
+        $to_email = $websiteOptions['email_address'];
+        // $to_email = 'leon@wtmedia-events.nl';
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
         // $subject = 'Ingevuld contactformulier vanaf rsmarine.eu';
         $subjectCompany = 'Ingevuld contactformulier vanaf glomaroffshore.com';
@@ -83,7 +90,11 @@ class SubmitController extends Controller
             return redirect('/contact')->withErrors($validator)->withInput();
         }
 
-        $to_email = 'leon@wtmedia-events.nl';
+        $allWebsiteOptions = new WebsiteOptionsApi();
+        $websiteOptions = $allWebsiteOptions->get();
+
+        $to_email = $websiteOptions['email_address'];
+        // $to_email = 'leon@wtmedia-events.nl';
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
         $subjectCompany = 'Ingevuld subscription-formulier vanaf glomaroffshore.com';
         $subjectVisitor = 'Copy of your message to glomaroffshore.com';
@@ -104,57 +115,6 @@ class SubmitController extends Controller
         // mail($to_email, $subject, $message);
         // return back()->with('success', 'Bedankt dat u contact met ons heeft opgenomen, we zullen uw bericht zo snel mogelijk in behandeling nemen!');
         return redirect('/contact')->with('success', 'subscription');
-    }
-    public function submitApplyForm(Request $request) {
-        $toValidate = array(
-            'Voornaam' => 'required',
-            'Achternaam' => 'required',
-            'E-mail_adres' => 'required|email',
-            // 'Bericht' => 'required',
-        );
-        $validationMessages = array(
-            'Voornaam.required'=> 'Geef een voornaam op.',
-            'Achternaam.required'=> 'Geef een achternaam op.',
-            'E-mail_adres.required'=> 'Geef een e-mail adres op.',
-            'E-mail_adres.email'=> 'Het e-mail adres is niet juist geformuleerd.',
-            // 'Bericht.required'=> 'Vul een bericht in.',
-        );
-        /***********************************************************************************
-            Gebruik maken van manually created validator ($validated = $request->validate($toValidate,$validationMessages)
-                OF gebruik van redirect()->back() / url()->previous() WERKT NIET!!! ---> strict-origin-when-cross-origin (referrer-policy)
-            alleen redirect('/contact') gebruiken (bijvoorbeeld)
-                OF bij dynamische paginas de huidige gebruiken: url()->current()
-        ************************************************************************************/
-        // $validated = $request->validate($toValidate,$validationMessages);
-        $validator = Validator::make($request->all(), $toValidate, $validationMessages);
-        if($validator->fails()) {
-            return redirect(url()->current())->withErrors($validator)->withInput();
-            // return redirect()->back()->withErrors($validator)->withInput();
-            // return back()->withErrors($validator)->withInput();
-        }
-
-        $to_email = 'leon@wtmedia-events.nl';
-        // $to_email = 'frans@tamatta.org, rense@tamatta.org';
-        // $subject = 'Ingevuld contactformulier vanaf rsmarine.eu';
-        $subjectCompany = 'Sollicitatie vanaf rsmarine.eu';
-        $subjectVisitor = 'Kopie van je sollicitatie aan RS Marine';
-        
-        $messages = $this->getHtmlEmails($request->all(), url('statics/email/logo.png'), 'De volgende gegevens zijn achtergelaten door de bezoeker.', 'Bedankt voor je sollicitatie. De volgende informatie hebben wij ontvangen:');
-
-        $headers = array(
-            "MIME-Version: 1.0",
-            "Content-Type: text/html; charset=ISO-8859-1",
-            "From: RS Marine <sollicitatieformulier@rsmarine.eu>",
-            "Reply-To: info@rsmarine.eu",
-            // "X-Priority: 1",
-        );
-        $headers = implode("\r\n", $headers);
-        mail($to_email, $subjectCompany, $messages[0], $headers);
-        mail($request->get('E-mail_adres'), $subjectVisitor, $messages[1], $headers);
-        // mail($to_email, $subject, $message, $headers);
-        // mail($to_email, $subject, $message);
-        // return back()->with('success', 'Bedankt dat u contact met ons heeft opgenomen, we zullen uw bericht zo snel mogelijk in behandeling nemen!');
-        return redirect(url()->current())->with('success', 'Bedankt dat u contact met ons heeft opgenomen, we zullen uw bericht zo snel mogelijk in behandeling nemen!');
     }
     public function submitBestellenForm(Request $request) {
         $validated = $request->validate([
