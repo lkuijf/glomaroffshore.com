@@ -12,7 +12,7 @@ use App\Http\Helpers\WebsiteOptionsApi;
 class SubmitController extends Controller
 {
     public function submitContactForm(Request $request) {
-        
+dd($request);
         // 'prohibited' validation rule does not work!!!'
         if($request->get('valkuil') || $request->get('valstrik')) return abort(404);
 
