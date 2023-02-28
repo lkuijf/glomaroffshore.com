@@ -64,7 +64,7 @@ function getPagesSimplified(WP_REST_Request $request) {
 
 
     foreach($pages as $k => $page) {
-        $pages[$k]->hide_from_menu = get_post_meta($page->ID, '_hide_from_menu');
+        $pages[$k]->hide_from_menu = carbon_get_post_meta($page->ID, '_hide_from_menu');
     }
 var_dump($pages);
     $aRes = getPagesCollectionAttrs($pages);
