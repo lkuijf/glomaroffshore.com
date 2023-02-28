@@ -42,7 +42,7 @@ class SubmitController extends Controller
         $allWebsiteOptions = new WebsiteOptionsApi();
         $websiteOptions = $allWebsiteOptions->get();
 
-        $to_email = $websiteOptions['email_address'];
+        $to_email = $websiteOptions->email_address;
         // $to_email = 'leon@wtmedia-events.nl';
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
         // $subject = 'Ingevuld contactformulier vanaf rsmarine.eu';
@@ -93,7 +93,7 @@ class SubmitController extends Controller
         $allWebsiteOptions = new WebsiteOptionsApi();
         $websiteOptions = $allWebsiteOptions->get();
 
-        $to_email = $websiteOptions['email_address'];
+        $to_email = $websiteOptions->email_address;
         // $to_email = 'leon@wtmedia-events.nl';
         // $to_email = 'frans@tamatta.org, rense@tamatta.org';
         $subjectCompany = 'Ingevuld subscription-formulier vanaf glomaroffshore.com';
