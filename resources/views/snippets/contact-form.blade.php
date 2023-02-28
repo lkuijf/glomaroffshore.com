@@ -25,5 +25,10 @@
 
     <div @error('Accept_conditions')class="error" data-err-msg="{{ $message }}"@enderror><input type="checkbox" id="form-accept-conditions" name="Accept_conditions" value="Ja"{{ old('Accept_conditions') == 'Ja' ? ' checked' : '' }}><label for="form-accept-conditions">I have read and accept the <a href="{{ url('general-conditions') }}">general conditions</a>.</label></div>
 
-    <div><button type="submit" class="g-recaptcha" data-sitekey="6LdpSX0eAAAAANrVFYR0hn3Lw63hrhK0r04UhOGN" data-callback="onSubmit" data-action="submit"><span>Send</span></button></div>
+    <div>
+        <input type="text" name="valkuil" value="" class="snare">
+        <input type="text" name="valstrik" value="" class="snare">
+        <button type="submit"><span>Send</span></button>
+        {{-- <button type="submit" class="g-recaptcha" data-sitekey="6LdpSX0eAAAAANrVFYR0hn3Lw63hrhK0r04UhOGN" data-callback="onSubmit" data-action="submit"><span>Send</span></button> --}}
+    </div>
 </form>

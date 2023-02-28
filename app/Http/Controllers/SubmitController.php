@@ -12,6 +12,10 @@ use App\Http\Helpers\WebsiteOptionsApi;
 class SubmitController extends Controller
 {
     public function submitContactForm(Request $request) {
+        
+        // 'prohibited' validation rule does not work!!!'
+        if($request->get('valkuil') || $request->get('valstrik')) return abort(404);
+
         $toValidate = array(
             'Naam' => 'required',
             'E-mail_adres' => 'required|email',
@@ -67,6 +71,10 @@ class SubmitController extends Controller
         return redirect('/contact')->with('success', 'contact');
     }
     public function submitSubscriptionForm(Request $request) {
+
+        // 'prohibited' validation rule does not work!!!'
+        if($request->get('valkuil') || $request->get('valstrik')) return abort(404);
+
         $toValidate = array(
             'First_name' => 'required',
             'Last_name' => 'required',

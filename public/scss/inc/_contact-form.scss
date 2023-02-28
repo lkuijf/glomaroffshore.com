@@ -66,6 +66,11 @@
     }
 }
 form {
+    input, textarea {
+        &.snare {
+            display: none;
+        }
+    }
     .error {
         input, textarea {
             border-color: red !important;
