@@ -67,9 +67,9 @@
 }
 form {
     input, textarea {
-        // &.snare {
-        //     display: none;
-        // }
+        &.snare {
+            display: none;
+        }
     }
     .error {
         input, textarea {
