@@ -16,11 +16,6 @@ class Menu {
         for($x=0;$x<count($this->allPagesFlattenedPerParent[$parentId]);$x++) { // using for(), key can be an order integer
             $page = $this->allPagesFlattenedPerParent[$parentId][$x];
             // if($page->title == '[HOMEPAGE]') continue;
-            if($page->title == 'Algemene voorwaarden') continue;
-            if($page->title == 'Antidiscriminatiebeleid') continue;
-            if($page->title == 'Privacyverklaring') continue;
-            if($page->title == 'Interviews') continue;
-            if($page->title == 'FAQ') continue;
             // if($page->title == 'General Conditions') continue;
             if($page->hide_from_menu) continue;
             if($page->title == '[HOMEPAGE]') $page->title = 'Home';
