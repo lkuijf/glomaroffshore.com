@@ -69,9 +69,6 @@
   transform: translate(2px, 2px);
 }
 
-form input.snare, form textarea.snare {
-  display: none;
-}
 form .error input, form .error textarea {
   border-color: red !important;
 }
