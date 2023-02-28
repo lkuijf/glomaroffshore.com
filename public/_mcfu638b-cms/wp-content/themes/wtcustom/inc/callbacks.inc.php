@@ -57,8 +57,6 @@ function getPagesSimplified(WP_REST_Request $request) {
     foreach($pages as $k => $page) {
         $pages[$k]->hide_from_menu = get_post_meta($page->ID, '_hide_from_menu');
     }
-var_dump($pages);
-die();
     $aRes = getPagesCollectionAttrs($pages);
     $response = new WP_REST_Response($aRes);
     $response->set_status(200);
@@ -115,7 +113,7 @@ function getPagesCollectionAttrs($coll) {
         $oP->date = $item->post_date;
         
         $oP->hide_from_menu = false;
-        if(count($item->hide_from_menu) && $item->hide_from_menu[0] = 'yes') $oP->hide_from_menu = true;
+        if(count($item->hide_from_menu) && $item->hide_from_menu[0] == 'yes') $oP->hide_from_menu = true;
 
         $aRes[] = $oP;
     }
