@@ -57,6 +57,8 @@ function getPagesSimplified(WP_REST_Request $request) {
     foreach($pages as $k => $page) {
         $pages[$k]->hide_from_menu = get_post_meta($page->ID, '_hide_from_menu');
     }
+var_dump($pages);
+die();
     $aRes = getPagesCollectionAttrs($pages);
     $response = new WP_REST_Response($aRes);
     $response->set_status(200);
