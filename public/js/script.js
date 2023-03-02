@@ -33,9 +33,9 @@ function slideShow() {
         });
     }
     heroSlideshowImages[curIndex].style.opacity = 1;
-    setTimeout("slideShow()", imgDuration);
+    setTimeout(slideShow, imgDuration);
 }
-if(heroSlideshowImages && heroSlideshowImages.length > 1) setTimeout("slideShow()", imgDuration);
+if(heroSlideshowImages && heroSlideshowImages.length > 1) setTimeout(slideShow, imgDuration);
 /*********************************************/
 /***** Fade in elements when in viewport *****/
 // Beware of user has disabled JS; do not hide elements using CSS
