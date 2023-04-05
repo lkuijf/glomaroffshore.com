@@ -63,24 +63,24 @@
                     </div>
                     <div>
                         <h4>{!! $data['website_options']->footer_office_1[0]->country !!}</h4>
-                        <p class="contactIcon naw">{{ $data['website_options']->footer_office_1[0]->address1 }}<br />
-                            {{ $data['website_options']->footer_office_1[0]->address2 }}<br />
-                            {{ $data['website_options']->footer_office_1[0]->address3 }}<br />
+                        <p class="contactIcon naw">{{ $data['website_options']->footer_office_1[0]->address1 }}<br>
+                            {{ $data['website_options']->footer_office_1[0]->address2 }}<br>
+                            {{ $data['website_options']->footer_office_1[0]->address3 }}<br>
                             {{ $data['website_options']->footer_office_1[0]->address4 }}</p>
                         <p class="contactIcon phone"><a href="tel:{{ Str::replace(' ', '', $data['website_options']->footer_office_1[0]->phone) }}">{{ $data['website_options']->footer_office_1[0]->phone }}</a></p>
                         <p class="contactIcon email"><a href="mailto:{{ $data['website_options']->footer_office_1[0]->email }}">{{ $data['website_options']->footer_office_1[0]->email }}</a></p>
                     </div>
                     <div>
                         <h4>{!! $data['website_options']->footer_office_2[0]->country !!}</h4>
-                        <p class="contactIcon naw">{{ $data['website_options']->footer_office_2[0]->address1 }}<br />
-                            {{ $data['website_options']->footer_office_2[0]->address2 }}<br />
-                            {{ $data['website_options']->footer_office_2[0]->address3 }}<br />
+                        <p class="contactIcon naw">{{ $data['website_options']->footer_office_2[0]->address1 }}<br>
+                            {{ $data['website_options']->footer_office_2[0]->address2 }}<br>
+                            {{ $data['website_options']->footer_office_2[0]->address3 }}<br>
                             {{ $data['website_options']->footer_office_2[0]->address4 }}</p>
                         <p class="contactIcon phone"><a href="tel:{{ Str::replace(' ', '', $data['website_options']->footer_office_2[0]->phone) }}">{{ $data['website_options']->footer_office_2[0]->phone }}</a></p>
                         <p class="contactIcon email"><a href="mailto:{{ $data['website_options']->footer_office_2[0]->email }}">{{ $data['website_options']->footer_office_2[0]->email }}</a></p>
                     </div>
                     <div>
-                        <h4>STAY <strong>UP-TO-DATE</strong><br />Subscribe to our newsletter</h4>
+                        <h4>STAY <strong>UP-TO-DATE</strong><br>Subscribe to our newsletter</h4>
                         @include('snippets.subscription-form')
                     </div>
                     <div>
