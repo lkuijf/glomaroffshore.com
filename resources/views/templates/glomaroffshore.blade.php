@@ -26,7 +26,7 @@
     <header>
         <div class="topBar">
             <div class="inner">
-                <div><a href="tel:{{ $data['website_options']->phone_number }}" class="topBarBtn_phone"><span>{{ $data['website_options']->phone_number }}</span></a><a href="mailto:{{ $data['website_options']->email_address }}" class="topBarBtn_email"><span>{{ $data['website_options']->email_address }}</span></a></div>
+                <div><a href="tel:{{ Str::replace(' ', '', $data['website_options']->phone_number) }}" class="topBarBtn_phone"><span>{{ $data['website_options']->phone_number }}</span></a><a href="mailto:{{ $data['website_options']->email_address }}" class="topBarBtn_email"><span>{{ $data['website_options']->email_address }}</span></a></div>
                 <div><a href="{{ $data['website_options']->linkedin }}" class="topBarBtn_linkedin"><span>LinkedIn</span></a><a href="{{ $data['website_options']->twitter }}" class="topBarBtn_twitter"><span>Twitter</span></a></div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                             {{ $data['website_options']->footer_office_1[0]->address2 }}<br />
                             {{ $data['website_options']->footer_office_1[0]->address3 }}<br />
                             {{ $data['website_options']->footer_office_1[0]->address4 }}</p>
-                        <p class="contactIcon phone"><a href="tel:{{ $data['website_options']->footer_office_1[0]->phone }}">{{ $data['website_options']->footer_office_1[0]->phone }}</a></p>
+                        <p class="contactIcon phone"><a href="tel:{{ Str::replace(' ', '', $data['website_options']->footer_office_1[0]->phone) }}">{{ $data['website_options']->footer_office_1[0]->phone }}</a></p>
                         <p class="contactIcon email"><a href="mailto:{{ $data['website_options']->footer_office_1[0]->email }}">{{ $data['website_options']->footer_office_1[0]->email }}</a></p>
                     </div>
                     <div>
@@ -76,7 +76,7 @@
                             {{ $data['website_options']->footer_office_2[0]->address2 }}<br />
                             {{ $data['website_options']->footer_office_2[0]->address3 }}<br />
                             {{ $data['website_options']->footer_office_2[0]->address4 }}</p>
-                        <p class="contactIcon phone"><a href="tel:{{ $data['website_options']->footer_office_2[0]->phone }}">{{ $data['website_options']->footer_office_2[0]->phone }}</a></p>
+                        <p class="contactIcon phone"><a href="tel:{{ Str::replace(' ', '', $data['website_options']->footer_office_2[0]->phone) }}">{{ $data['website_options']->footer_office_2[0]->phone }}</a></p>
                         <p class="contactIcon email"><a href="mailto:{{ $data['website_options']->footer_office_2[0]->email }}">{{ $data['website_options']->footer_office_2[0]->email }}</a></p>
                     </div>
                     <div>
