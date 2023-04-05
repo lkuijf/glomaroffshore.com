@@ -84,7 +84,7 @@
                         @include('snippets.subscription-form')
                     </div>
                     <div>
-                        <h4>ACCREDITATIONS</strong></h4>
+                        <h4>ACCREDITATIONS</h4>
                         <img src="{{ asset('statics/glomar-accreditations.png') }}" alt="Accreditations Glomar Offshore">
                     </div>
                 </div>
